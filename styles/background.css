@@ -16,8 +16,8 @@
 }
 
 .background span {
-  width: 1vmin;
-  height: 1vmin;
+  width: 10%;
+  height: 10vmin;
   border-radius: 1vmin;
   backface-visibility: hidden;
   position: absolute;

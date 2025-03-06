@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const background = document.querySelector(".background");
   
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 20; i++) {
       let span = document.createElement("span");
       span.style.position = "absolute";
       span.style.width = "1vmin";
