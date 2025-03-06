@@ -75,51 +75,6 @@
         font-size: 14px;
       }
 
-      /* Portfolio with glass effect */
-      .portfolio {
-        padding: 60px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 40px;
-        margin-bottom: 40px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      }
-
-      .portfolio-content {
-        width: 50%;
-      }
-
-      .portfolio h2 {
-        font-size: 30px;
-        margin-bottom: 20px;
-        color: #222;
-      }
-
-      .portfolio p {
-        font-size: 14px;
-        color: #666;
-        margin-bottom: 30px;
-        max-width: 500px;
-      }
-
-      .portfolio-images {
-        width: 45%;
-        display: flex;
-        justify-content: center;
-      }
-
-      .phone-mockup {
-        width: 150px;
-        margin: 0 -15px;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
       /* Pricing with glassmorphism */
       .pricing {
         padding: 60px 0;
