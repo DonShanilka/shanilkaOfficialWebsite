@@ -17,11 +17,11 @@
 }
 
 .hero-content {
-  width: 50%;
+  width: 80%;
 }
 
 .hero h1 {
-  font-size: 40px;
+  font-size: 90px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #222;
@@ -38,7 +38,7 @@
   font-size: 16px;
   color: #666;
   margin-bottom: 30px;
-  max-width: 450px;
+  width: 68%;
 }
 
 .btn {
