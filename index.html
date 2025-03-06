@@ -1,156 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alex Chen - Software Engineer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "custom-purple": "#1A1A2E",
-              "custom-pink": "#16213E",
-              "custom-blue": "#0F3460",
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 70px;
-      }
-      .background {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        background: #000357;
-        overflow: hidden;
-      }
-    </style>
-    <link rel="stylesheet" href="./styles/background.css">
-  </head>
-  <body class="bg-gradient-to-br from-custom-purple via-custom-pink to-custom-blue text-white">
-    <div class="background"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUMPFIT - Progressive Unique Mobile Product IT</title>
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full  z-50 py-4 backdrop-blur-md">
-      <div class="flex justify-between items-center max-w-6xl mx-auto px-4">
-        <div class="text-2xl font-bold">Alex Chen</div>
-        <div class="space-x-4 hidden md:flex">
-          <a href="#home" class="hover:text-purple-300">Home</a>
-          <a href="#about" class="hover:text-purple-300">About</a>
-          <a href="#services" class="hover:text-purple-300">Services</a>
-          <a href="#skills" class="hover:text-purple-300">Skills</a>
-          <a href="#projects" class="hover:text-purple-300">Projects</a>
-          <a href="#goals" class="hover:text-purple-300">Goals</a>
-          <a href="#contact" class="hover:text-purple-300">Contact</a>
-          <button class="bg-purple-600 px-4 py-2 rounded-lg hover:bg-purple-700">Hire Me</button>
-        </div>
-        <!-- Mobile Menu Toggle -->
-        <div class="md:hidden flex items-center">
-          <button id="hamburger" class="text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <!-- Mobile Menu -->
-      <div id="mobileMenu" class="hidden md:hidden bg-black/70 py-4 px-6 space-y-4">
-        <a href="#home" class="block hover:text-purple-300">Home</a>
-        <a href="#about" class="block hover:text-purple-300">About</a>
-        <a href="#services" class="block hover:text-purple-300">Services</a>
-        <a href="#skills" class="block hover:text-purple-300">Skills</a>
-        <a href="#projects" class="block hover:text-purple-300">Projects</a>
-        <a href="#goals" class="block hover:text-purple-300">Goals</a>
-        <a href="#contact" class="block hover:text-purple-300">Contact</a>
-        <button class="block bg-purple-600 px-4 py-2 rounded-lg hover:bg-purple-700">Hire Me</button>
-      </div>
-    </nav>
+<body>
+  <!-- Glass background blobs -->
+  <div class="glass-blob glass-blob-1"></div>
+  <div class="glass-blob glass-blob-2"></div>
+  <div class="glass-blob glass-blob-3"></div>
 
-    <!-- Sections -->
-    <div class="mt-20 px-6 md:px-12 lg:px-24">
-      <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-between">
-        <div class="text-center md:text-left md:w-1/2 space-y-6">
-          <h1 class="text-5xl font-bold">Hi, I'm <span class="text-pink-500">Nishith Shanilka</span></h1>
-          <p class="text-gray-300 text-lg">As a passionate Full Stack Developer, I specialize in building scalable, user-friendly web applications. With expertise in JavaScript, React, Node.js, and Python, I craft seamless experiences from frontend to backend. I’m dedicated to delivering high-quality solutions, optimizing performance, and continuously learning new technologies to stay ahead in the industry.</p>
-          <button class="mt-4 bg-pink-600 px-6 py-3 rounded-lg hover:bg-pink-700">Download Resume</button>
-        </div>
-        <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
-          <img src="your-image.jpg" alt="Your Name" class="w-80 h-80 object-cover rounded-full shadow-lg border-4 border-pink-500">
-        </div>
+  <div class="container">
+      <header>
+          <div class="logo">PUMPFIT</div>
+          <nav>
+              <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Advanced Features</a></li>
+                  <li><a href="#">For Partners</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+          </nav>
+      </header>
+
+      <section class="hero">
+          <div class="hero-content">
+              <h1>Progressive Unique</h1>
+              <h2>Mobile Product IT</h2>
+              <p>Innovative mobile solutions for modern users</p>
+              <a href="#" class="btn">Contact Us</a>
+          </div>
+          <div class="floating-person"></div>
+          <div class="cloud cloud-1"></div>
+          <div class="cloud cloud-2"></div>
+          <div class="cloud cloud-3"></div>
       </section>
 
-      <section id="about" class="min-h-screen flex items-center justify-center">
-        <div class="max-w-2xl text-center">
-          <h2 class="text-3xl font-semibold">About Me</h2>
-          <p class="text-gray-300 mt-4">Dedicated software engineer with expertise in JavaScript, React, Node.js.</p>
-        </div>
+      <section class="features">
+          <h2 class="section-title">Application Areas</h2>
+          <div class="features-grid">
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">Automation and Process Optimization</h3>
+                  <p class="feature-description">Improving workflows and increasing efficiency</p>
+              </div>
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">Artificial Intelligence</h3>
+                  <p class="feature-description">Smart solutions adapting to your needs</p>
+              </div>
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">Professional Analysis</h3>
+                  <p class="feature-description">In-depth data analysis for decision-making</p>
+              </div>
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">Finance</h3>
+                  <p class="feature-description">Secure and convenient solutions for financial transactions</p>
+              </div>
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">Integration</h3>
+                  <p class="feature-description">Seamless interaction with existing systems</p>
+              </div>
+              <div class="feature-card">
+                  <img src="/api/placeholder/60/60" alt="Icon" class="feature-icon">
+                  <h3 class="feature-title">IoT</h3>
+                  <p class="feature-description">Innovative solutions for the Internet of Things</p>
+              </div>
+          </div>
       </section>
 
-      <section id="services" class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-          <h2 class="text-3xl font-semibold">Services</h2>
-          <p class="text-gray-300 mt-4">Web Development, Mobile Apps, Cloud Solutions.</p>
-        </div>
+      <section class="how-we-work">
+          <h2 class="section-title">How We Work</h2>
+          <div class="workflow-grid">
+              <div class="workflow-card">
+                  <p class="workflow-number">1. Data Collection</p>
+                  <h3 class="workflow-title">Requirements Analysis</h3>
+                  <p class="workflow-description">Collecting information to understand your needs</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">2. Planning</p>
+                  <h3 class="workflow-title">Development Strategy</h3>
+                  <p class="workflow-description">Creating a plan based on all requirements</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">3. Analytics</p>
+                  <h3 class="workflow-title">In-depth Research</h3>
+                  <p class="workflow-description">Researching the market and needs</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">4. Design</p>
+                  <h3 class="workflow-title">Architecture Creation</h3>
+                  <p class="workflow-description">Developing the structure of the future application</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">5. Data Testing</p>
+                  <h3 class="workflow-title">Hypothesis Testing</h3>
+                  <p class="workflow-description">Testing solutions on real data</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">6. Design Development</p>
+                  <h3 class="workflow-title">Creating the Interface</h3>
+                  <p class="workflow-description">Designing an intuitive user experience</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">7. MVP</p>
+                  <h3 class="workflow-title">Minimal Product</h3>
+                  <p class="workflow-description">Creating a working prototype</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">8. Version and Testing</p>
+                  <h3 class="workflow-title">Product Testing</h3>
+                  <p class="workflow-description">Testing the product with real users</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">9. Testing</p>
+                  <h3 class="workflow-title">Final Check</h3>
+                  <p class="workflow-description">Final testing before launch</p>
+              </div>
+              <div class="workflow-card">
+                  <p class="workflow-number">10. Release</p>
+                  <h3 class="workflow-title">Product Launch</h3>
+                  <p class="workflow-description">Publishing the completed solution</p>
+              </div>
+          </div>
       </section>
 
-      <section id="skills" class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-          <h2 class="text-3xl font-semibold">Technical Skills</h2>
-          <p class="text-gray-300 mt-4">React, Vue.js, Node.js, Python, AWS.</p>
-        </div>
+      <section class="portfolio">
+          <div class="portfolio-content">
+              <h2>Portfolio</h2>
+              <p>We have been creating mobile applications for various industries for many years. Our team specializes in innovative solutions that help businesses grow and develop. Our work is distinguished by quality, stylish design, and user-friendly interfaces. Most of our clients rehire us, which is the best indicator of our work.</p>
+              <a href="#" class="btn">View Cases</a>
+          </div>
+          <div class="portfolio-images">
+              <img src="/api/placeholder/150/300" alt="Phone Mockup 1" class="phone-mockup">
+              <img src="/api/placeholder/150/300" alt="Phone Mockup 2" class="phone-mockup">
+          </div>
       </section>
 
-      <section id="projects" class="min-h-screen flex items-center justify-center">
-        <div class="text-center">
-          <h2 class="text-3xl font-semibold">Notable Projects</h2>
-          <p class="text-gray-300 mt-4">Showcasing my best work.</p>
-        </div>
+      <section class="pricing">
+          <h2 class="section-title">Pricing</h2>
+          <div class="pricing-grid">
+              <div class="pricing-card">
+                  <h3 class="pricing-title">Basic</h3>
+                  <p class="pricing-description">An ideal solution for startups and small businesses. Includes basic features and support.</p>
+              </div>
+              <div class="pricing-card">
+                  <h3 class="pricing-title">Standard</h3>
+                  <p class="pricing-description">An extended package with additional features for growing businesses.</p>
+              </div>
+              <div class="pricing-card">
+                  <h3 class="pricing-title">Premium</h3>
+                  <p class="pricing-description">A full set of features for companies needing maximum functionality.</p>
+              </div>
+              <div class="pricing-card">
+                  <h3 class="pricing-title">Custom Solution</h3>
+                  <p class="pricing-description">Creating a unique product tailored to your business needs.</p>
+              </div>
+          </div>
       </section>
-
-      <section id="goals" class="min-h-screen flex items-center justify-center">
-        <div class="max-w-2xl text-center">
-          <h2 class="text-3xl font-semibold">Professional Goals</h2>
-          <p class="text-gray-300 mt-4">Innovating and mentoring aspiring developers.</p>
-        </div>
-      </section>
-
-      <section id="contact" class="min-h-screen flex items-center justify-center">
-        <div class="max-w-lg text-center">
-          <h2 class="text-3xl font-semibold">Get in Touch</h2>
-          <form class="mt-4">
-            <input type="text" placeholder="Your Name" class="w-full mb-4 p-3 rounded-lg bg-gray-800 border border-gray-600" />
-            <input type="email" placeholder="Your Email" class="w-full mb-4 p-3 rounded-lg bg-gray-800 border border-gray-600" />
-            <textarea placeholder="Your Message" class="w-full mb-4 p-3 rounded-lg bg-gray-800 border border-gray-600"></textarea>
-            <button class="bg-blue-600 px-6 py-3 rounded-lg hover:bg-blue-700">Send Message</button>
-          </form>
-        </div>
-      </section>
-    </div>
-
-    <!-- Footer -->
-    <footer class="mt-16 text-center py-4 bg-blue-600 text-gray-400">
-      <p>© 2025 Alex Chen - Software Engineer. All rights reserved.</p>
-    </footer>
-
-    <!-- JavaScript for Background Animation -->
-    <script src="./javaScripts/backGroundAnimation.js"></script>
-
-    <script>
-      // Mobile menu toggle
-      const hamburger = document.getElementById('hamburger');
-      const mobileMenu = document.getElementById('mobileMenu');
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    </script>
-  </body>
+  </div>
+</body>
 </html>
