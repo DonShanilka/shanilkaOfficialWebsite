@@ -20,6 +20,7 @@
   padding: 40px;
   margin-top: 60px;
   margin-bottom: 60px;
+  z-index: -1;
 }
 
 .portfolio-content {
