@@ -1,262 +1,254 @@
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-      }
-
-      body {
-        background: linear-gradient(135deg, #f5f7ff 0%, #f5f9ff 100%);
-        width: 100%;
-        padding-top: 80px;
-      }
-
-
-      /* Glass background effect for entire page */
-      body::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 600%;
-        background: linear-gradient(135deg, rgba(192, 196, 255, 0.2) 0%, rgba(183, 182, 255, 0.2) 50%, rgba(225, 227, 255, 0.2) 100%);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-
-      .navBarContainer {
-        max-width: 98%;
-        margin: 0 auto;
-        padding: 20px;
-        position: fixed;
-        z-index: 1000;
-      }
-
-      .container {
-        max-width: 98%;
-        margin: 0 auto;
-        padding: 20px;
-        height: 100%;
-      }
-
-      /* Header with glass effect */
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 30px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        width: 96%;
-        position: fixed; 
-        top: 0;
-        left: 2%;
-        right: 2%;
-        height: 50px;
-        z-index: 100;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
     }
-    
-    
+
+    body {
+      background: linear-gradient(135deg, #f5f7ff 0%, #f5f9ff 100%);
+      width: 100%;
+      padding-top: 80px;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 600%;
+      background: linear-gradient(135deg, rgba(192, 196, 255, 0.2) 0%, rgba(183, 182, 255, 0.2) 50%, rgba(225, 227, 255, 0.2) 100%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .navBarContainer {
+      max-width: 98%;
+      margin: 0 auto;
+      padding: 20px;
+      position: fixed;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 98%;
+      margin: 0 auto;
+      padding: 20px;
+      height: 100%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      width: 96%;
+      position: fixed;
+      top: 0;
+      left: 2%;
+      right: 2%;
+      height: 50px;
+      z-index: 100;
+    }
+
     .logo {
-        font-weight: bold;
-        font-size: 18px;
+      font-weight: bold;
+      font-size: 18px;
     }
-    
+
     nav ul {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
-    
+
     nav ul li {
-        margin-left: 30px;
+      margin-left: 30px;
     }
-    
+
     nav ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 14px;
-        transition: 0.3s;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+      transition: 0.3s;
     }
-    
+
     nav ul li a:hover {
-        color: #007BFF;
+      color: #007BFF;
     }
-    
 
-      /* Hero Animation */
-      .floating-person {
-        position: absolute;
-        top: 50%;
-        right: 10%;
+    .floating-person {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 300px;
+      background-image: url('/api/placeholder/300/300');
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% {
         transform: translateY(-50%);
-        width: 300px;
-        height: 300px;
-        background-image: url('/api/placeholder/300/300');
-        background-size: contain;
-        background-repeat: no-repeat;
-        z-index: 2;
-        animation: float 6s ease-in-out infinite;
       }
 
-      @keyframes float {
-        0% {
-          transform: translateY(-50%);
-        }
-
-        50% {
-          transform: translateY(-60%);
-        }
-
-        100% {
-          transform: translateY(-50%);
-        }
+      50% {
+        transform: translateY(-60%);
       }
 
-      .cloud {
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.7);
-        border-radius: 50%;
-        z-index: 1;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      100% {
+        transform: translateY(-50%);
+      }
+    }
+
+    .cloud {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      z-index: 1;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .cloud-1 {
+      width: 80px;
+      height: 80px;
+      top: 30%;
+      right: 25%;
+      animation: floatCloud 7s ease-in-out infinite;
+    }
+
+    .cloud-2 {
+      width: 60px;
+      height: 60px;
+      top: 60%;
+      right: 30%;
+      animation: floatCloud 9s ease-in-out infinite 1s;
+    }
+
+    .cloud-3 {
+      width: 40px;
+      height: 40px;
+      top: 40%;
+      right: 40%;
+      animation: floatCloud 8s ease-in-out infinite 2s;
+    }
+
+    @keyframes floatCloud {
+      0% {
+        transform: translateY(0);
       }
 
-      .cloud-1 {
-        width: 80px;
-        height: 80px;
-        top: 30%;
-        right: 25%;
-        animation: floatCloud 7s ease-in-out infinite;
+      50% {
+        transform: translateY(-15px);
       }
 
-      .cloud-2 {
-        width: 60px;
-        height: 60px;
-        top: 60%;
-        right: 30%;
-        animation: floatCloud 9s ease-in-out infinite 1s;
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .glass-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -3;
+      opacity: 0.4;
+    }
+
+    .glass-blob-1 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, #ffadad 0%, #ffd6a5 100%);
+      top: 10%;
+      left: 0;
+    }
+
+    .glass-blob-2 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #a0c4ff 0%, #bdb2ff 100%);
+      bottom: 0;
+      right: 10%;
+    }
+
+    .glass-blob-3 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #ffc6ff 0%, #ffadad 100%);
+      top: 50%;
+      right: 20%;
+    }
+
+    @media (max-width: 768px) {
+
+      .hero-content,
+      .portfolio-content {
+        width: 100%;
       }
 
-      .cloud-3 {
-        width: 40px;
-        height: 40px;
-        top: 40%;
-        right: 40%;
-        animation: floatCloud 8s ease-in-out infinite 2s;
+      .hero {
+        flex-direction: column;
+        text-align: center;
       }
 
-      @keyframes floatCloud {
-        0% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-15px);
-        }
-
-        100% {
-          transform: translateY(0);
-        }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      /* Glass gradient background patterns */
-      .glass-blob {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(60px);
-        z-index: -3;
-        opacity: 0.4;
+      .workflow-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .glass-blob-1 {
-        width: 500px;
-        height: 500px;
-        background: linear-gradient(135deg, #ffadad 0%, #ffd6a5 100%);
-        top: 10%;
-        left: 0;
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .glass-blob-2 {
-        width: 400px;
-        height: 400px;
-        background: linear-gradient(135deg, #a0c4ff 0%, #bdb2ff 100%);
-        bottom: 0;
-        right: 10%;
+      .portfolio {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .glass-blob-3 {
-        width: 300px;
-        height: 300px;
-        background: linear-gradient(135deg, #ffc6ff 0%, #ffadad 100%);
-        top: 50%;
-        right: 20%;
+      .hero-image,
+      .portfolio-images {
+        width: 100%;
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .features-grid,
+      .workflow-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
       }
 
-      /* Responsive design */
-      @media (max-width: 768px) {
-
-        .hero-content,
-        .portfolio-content {
-          width: 100%;
-        }
-
-        .hero {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .features-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .workflow-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .pricing-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .portfolio {
-          flex-direction: column;
-          text-align: center;
-        }
-
-        .hero-image,
-        .portfolio-images {
-          width: 100%;
-          margin-top: 30px;
-        }
+      nav ul {
+        display: none;
       }
 
-      @media (max-width: 480px) {
-
-        .features-grid,
-        .workflow-grid,
-        .pricing-grid {
-          grid-template-columns: 1fr;
-        }
-
-        nav ul {
-          display: none;
-        }
-
-        .section-title {
-          font-size: 24px;
-        }
-
-        .hero h1 {
-          font-size: 32px;
-        }
-
-        .hero h2 {
-          font-size: 24px;
-        }
+      .section-title {
+        font-size: 24px;
       }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero h2 {
+        font-size: 24px;
+      }
+    }
