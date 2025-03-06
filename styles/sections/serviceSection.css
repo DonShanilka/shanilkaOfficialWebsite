@@ -82,7 +82,7 @@
 
 @media (max-width: 768px) {
   .service {
-    height: 1100px;
+    height: 1200px;
   }
 
   .workflow-card {
@@ -90,12 +90,32 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 551px) {
+  .service {
+    height: 1400px;
+  }
+
+  .workflow-card {
+    flex: 1 1 100%; /* 1 per row */
+  }
+}
+
+@media (max-width: 490px) {
   .service {
     height: 2000px;
   }
 
   .workflow-card {
     flex: 1 1 100%; /* 1 per row */
+  }
+
+  @media (max-width: 355px) {
+    .service {
+      height: 2200px;
+    }
+  
+    .workflow-card {
+      flex: 1 1 100%; /* 1 per row */
+    }
   }
 }
