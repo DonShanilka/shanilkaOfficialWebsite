@@ -1,0 +1,68 @@
+
+.about {
+  height: 840px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 0;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.aboutMainDiv {
+  height: 950px;
+  padding: 0.5px;
+  background-color: #00000000;
+}
+
+.section-title {
+  font-size: 30px;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.feature-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.feature-description {
+  font-size: 14px;
+  color: #666;
+}
