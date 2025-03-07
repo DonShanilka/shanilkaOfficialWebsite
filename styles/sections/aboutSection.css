@@ -23,14 +23,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px; /* Adjusts spacing between elements */
+  gap: 30px; 
 }
 
 .about-title {
   text-align: center;
   font-size: 50px;
   color: #222;
-  margin-bottom: 20px; /* Adds spacing below the title */
+  margin-bottom: 20px; 
 }
 
 .about-para {
@@ -38,7 +38,7 @@
   color: #666;
   font-size: 20px;
   max-width: 80%;
-  margin-bottom: 40px; /* Adds spacing below paragraph */
+  margin-bottom: 40px; 
 }
 
 .about-flex-container {
@@ -47,7 +47,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px; /* Increased spacing between items */
+  gap: 20px;
   padding: 20px;
   box-sizing: border-box;
 }
