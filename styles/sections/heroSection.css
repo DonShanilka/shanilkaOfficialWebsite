@@ -268,7 +268,7 @@
 
 @media (min-width: 321px) and (max-width: 480px) { 
   .hero {
-    height: 715px;
+    height: 865px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -287,7 +287,7 @@
 
   .hero-content {
     position: absolute;
-    margin-top: 340px;
+    margin-top: 440px;
     width: 90%;
     align-items: center;
     text-align: center;
