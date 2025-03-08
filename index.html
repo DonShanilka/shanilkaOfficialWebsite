@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/main.css" />
     <link rel="stylesheet" href="./styles/sections/heroSection.css" />
     <link rel="stylesheet" href="./styles/sections/aboutSection.css" />
-    <!-- <link rel="stylesheet" href="./styles/sections/serviceSection.css" /> -->
+    <link rel="stylesheet" href="./styles/sections/headerSection.css" />
     <link rel="stylesheet" href="./styles/sections/skillsSection.css" />
     <link rel="stylesheet" href="./styles/sections/projectSection.css" />
     <link rel="stylesheet" href="./styles/sections/contactSection.css" />
@@ -25,19 +25,23 @@
 
       <div class="navBarContainer">
         <header>
-          <div class="logo">SHANILKA</div>
-          <nav>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <!-- <li><a href="#service">Service</a></li> -->
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
+            <div class="logo">SHANILKA</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            </nav>
         </header>
-      </div>
+    </div>
+
+    <!-- Blur Background -->
+    <div class="blur-background"></div>
+
 
       <div class="container">
         <section id="home" class="hero">
@@ -384,5 +388,15 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      function toggleMenu() {
+          const nav = document.querySelector(".nav-links");
+          const blurBg = document.querySelector(".blur-background");
+          nav.classList.toggle("active");
+          blurBg.classList.toggle("active");
+      }
+    </script>
+
   </body>
 </html>

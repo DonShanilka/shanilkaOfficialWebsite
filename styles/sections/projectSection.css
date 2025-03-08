@@ -8,7 +8,7 @@
 
 .projects {
   height: 840px;
-  width: 100vw; /* Full viewport width */
+  width: 100vw; 
   text-align: center;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -28,7 +28,7 @@
   width: 90%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 72px; /* Increased gap for more space between cards */
+  gap: 72px; 
   margin-top: 40px;
   padding: 30px;
 }
@@ -43,22 +43,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px; /* Adds space between icon and text */
+  gap: 40px; 
 }
 
-/* .card:hover {
-  transform: translateY(-5px);
-}
+@media (min-width: 321px) and (max-width: 480px) { 
 
-.content svg {
-  width: 50px;
-  height: 50px;
-  color: #007bff;
 }
-
-.para {
-  color: #333;
-  font-size: 14px;
-  margin-top: 10px;
-}  */
 

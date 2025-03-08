@@ -1,0 +1,227 @@
+.navBarContainer {
+  max-width: 98%;
+  margin: 0 auto;
+  padding: 20px;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 96%;
+  position: fixed;
+  top: 0;
+  left: 2%;
+  right: 2%;
+  height: 50px;
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #007BFF;
+}
+
+/* Hamburger Menu (Hidden by Default) */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  
+  .menu-toggle {
+      display: block;
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px 0;
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .nav-links li {
+      margin: 15px 0;
+  }
+}
+
+/* Blur Background */
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* When Menu is Active */
+.blur-background.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+@media (max-width: 480px) { 
+
+  /* .navBarContainer {
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 76%;
+    position: fixed;
+    top: 0;
+    left: 2%;
+    right: 2%;
+    height: 50px;
+    z-index: 100;
+  } */
+
+  .navBarContainer {
+    max-width: 100%;
+    padding: 10px;
+    width: 100%;
+  }
+
+  /* Adjust header */
+  header {
+    padding: 10px 15px;
+    width: 100%;
+    height: 50px;
+    left: 0;
+    right: 0;
+    border-radius: 0; /* Remove unnecessary border-radius */
+  }
+
+  /* Align logo */
+  .logo {
+    font-size: 16px;
+  }
+
+  /* Hamburger menu */
+  .menu-toggle {
+    display: block;
+    font-size: 22px;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+  }
+
+  /* Navigation links */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px; /* Adjusted position */
+    right: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  /* Ensure blur background covers the entire screen */
+  .blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .blur-background.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+
