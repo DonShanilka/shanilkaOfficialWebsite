@@ -71,86 +71,193 @@
 
 /* ####################################### 481px to 768px ###################################### */
 @media (min-width: 481px) and (max-width: 768px) {
+  .about {
+    width: 100%;
+    height: 750px;
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;
+    justify-content: center;
+    /* padding: 60px 20px; */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    /* margin: 60px 0; */
+    /* padding: 40px; */
+    margin-top: 80px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .aboutMainDiv {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 30px;  */
+  }
+
   .about-title {
+    position: absolute;
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     color: #222;
-    margin-bottom: 20px; 
-    display: none;
+    top: 60px; 
   }
   
   .about-para {
+    position: absolute;;
     text-align: center;
     color: #666;
-    font-size: 20px;
-    max-width: 80%;
-    margin-bottom: 40px; 
-    display: none;
+    font-size: 14px;
+    max-width: 90%;
+    top: 140px; 
   }
   
   .about-flex-container {
-    width: 80%;
+    position: absolute;
+    width: 100%;
+    top: 440px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
     box-sizing: border-box;
-    display: none;
   }
   
   .about-flex-container > div {
     width: auto;
-    border: 1px solid #c7c7c7d8;
-    padding: 15px 20px;
+    /* height: auto; */
+    border: 1px solid #c7c7c700;
+    padding: 10px 15px;
     border-radius: 30px;
     background-color: rgba(241, 241, 241, 0.267);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
-    display: none;
+    font-size: 10px;
+  }
+
+  .about-flex-container > :nth-child(3) {
+    width: 120px;
+    /* height: auto; */
+    border: 1px solid #c7c7c7d8;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: rgba(241, 241, 241, 0.267);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 10px;
+  }
+  .about-flex-container > :nth-child(4) {
+    width: 120px;
+    /* height: auto; */
+    border: 1px solid #c7c7c7d8;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: rgba(241, 241, 241, 0.267);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 10px;
   }
 }
 
 /* ################################## 321px to 480px ###################################### */
 @media (min-width: 321px) and (max-width: 480px) { 
+  .about {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;
+    justify-content: center;
+    /* padding: 60px 20px; */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    /* margin: 60px 0; */
+    /* padding: 40px; */
+    margin-top: 80px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .aboutMainDiv {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 30px;  */
+  }
+
   .about-title {
+    position: absolute;
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     color: #222;
-    margin-bottom: 20px; 
-    display: none;
+    top: 20px; 
   }
   
   .about-para {
+    position: absolute;;
     text-align: center;
     color: #666;
-    font-size: 20px;
+    font-size: 14px;
     max-width: 80%;
-    margin-bottom: 40px; 
-    display: none;
+    top: 80px; 
   }
   
   .about-flex-container {
-    width: 80%;
+    position: absolute;
+    width: 100%;
+    top: 540px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
     box-sizing: border-box;
-    display: none;
   }
   
   .about-flex-container > div {
     width: auto;
-    border: 1px solid #c7c7c7d8;
-    padding: 15px 20px;
+    /* height: auto; */
+    border: 1px solid #c7c7c700;
+    padding: 10px 15px;
     border-radius: 30px;
     background-color: rgba(241, 241, 241, 0.267);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
-    display: none;
+    font-size: 10px;
+  }
+
+  .about-flex-container > :nth-child(3) {
+    width: 120px;
+    /* height: auto; */
+    border: 1px solid #c7c7c7d8;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: rgba(241, 241, 241, 0.267);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 10px;
+  }
+  .about-flex-container > :nth-child(4) {
+    width: 120px;
+    /* height: auto; */
+    border: 1px solid #c7c7c7d8;
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: rgba(241, 241, 241, 0.267);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    font-size: 10px;
   }
 }
+
