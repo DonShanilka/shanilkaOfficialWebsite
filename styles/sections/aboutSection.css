@@ -48,7 +48,49 @@
   top: 340px;
   width: 80%;
   height: 40%;
-  background-color: aqua;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.div-1 {
+  position: absolute;
+  top: -80px;
+  left: 320px;
+  text-align: right;
+  background-color: #007bff00;
+  width: 30%;
+  color: #535353;
+}
+
+.div-2 {
+  position: absolute;
+  right: 0;
+  background-color: #007bff;
+  width: 40%;
+  color: #535353;
+}
+
+.div-1>div {
+  margin: 60px;
+}
+
+.div-2>div {
+  margin: 60px;
+}
+
+strong {
+  color: #000000;
+  font-size: 16px;
+}
+
+.main-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 2px;
+  background: #000000;
+  height: 100%;
 }
 
 
