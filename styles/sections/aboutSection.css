@@ -53,7 +53,7 @@
 
 .div-1 {
   position: absolute;
-  top: -80px;
+  top: -53px;
   left: 320px;
   text-align: right;
   background-color: #007bff00;
@@ -63,8 +63,9 @@
 
 .div-2 {
   position: absolute;
-  right: 0;
-  background-color: #007bff;
+  top: -53px;
+  right: 175px;
+  background-color: #007bff00;
   width: 40%;
   color: #535353;
 }
@@ -84,13 +85,34 @@ strong {
 
 .main-line {
   position: absolute;
-  top: 0;
+  top: -15px;
   left: 0;
   right: 0;
   margin: auto;
   width: 2px;
   background: #000000;
-  height: 100%;
+  height: 110%;
+}
+
+.badge {
+  background-color: #444;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.badge-text {
+  display: flex;
+  align-items: center;
+}
+
+.badge-divider {
+  margin: 0 5px;
+  font-size: 14px;
+  opacity: 0.7;
 }
 
 
