@@ -103,3 +103,48 @@
   }
 
 }
+
+@media (min-width: 1025px) and (max-width: 1200px) { 
+  .hero {
+    height: 710px;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 0;
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 60px;
+    margin-top: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .hero-content {
+    width: 75%;
+  }
+
+  .hero h1 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  .hero h2 {
+    font-size: 23px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    color: #666;
+  }
+  
+  .hero p {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 30px;
+    width: 68%;
+  }
+}
