@@ -50,7 +50,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  width: 80%;
+  width: 85%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,7 +61,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 60px;
+  gap: 40px;
 }
 
 .icon-box {
