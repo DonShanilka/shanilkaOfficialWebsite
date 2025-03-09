@@ -78,8 +78,8 @@
   align-items: center;
   width: 80px;
   height: 80px;
-  background-color: rgba(255, 255, 255, 0.322);
-  border: 1px solid #9b9b9b69;
+  background-color: rgba(255, 255, 255, 0.274);
+  border: 1px solid #9b9b9b5d;
   border-radius: 10px;
   /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); */
   transform: rotate(-45deg);
