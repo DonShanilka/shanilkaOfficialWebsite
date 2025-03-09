@@ -28,7 +28,7 @@
 
 .about-title {
   position: absolute;
-  top: 40px;
+  top: 100px;
   text-align: center;
   font-size: 50px;
   color: #222;
@@ -36,7 +36,7 @@
 
 .about-para {
   position: absolute;
-  top: 140px;
+  top: 200px;
   text-align: center;
   color: #666;
   font-size: 20px;
@@ -45,7 +45,7 @@
 
 .my-details {
   position: absolute;
-  top: 340px;
+  top: 400px;
   width: 80%;
   height: 40%;
   background-color: rgba(255, 255, 255, 0);
