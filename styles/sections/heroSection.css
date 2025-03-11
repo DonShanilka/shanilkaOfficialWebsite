@@ -211,7 +211,7 @@
 /* ############################## 481px to 768px ######################################## */
 @media (min-width: 481px) and (max-width: 768px) { 
   .hero {
-    height: 920px;
+    height: 940px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -230,7 +230,7 @@
 
   .hero-content {
     position: absolute;
-    margin-top: 440px;
+    margin-top: 420px;
     width: 90%;
     align-items: center;
     text-align: center;
@@ -270,7 +270,7 @@
 /* ############################## 321px to 480px ######################################## */
 @media (min-width: 321px) and (max-width: 480px) { 
   .hero {
-    height: 920px;
+    height: 940px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -289,7 +289,7 @@
 
   .hero-content {
     position: absolute;
-    margin-top: 440px;
+    margin-top: 420px;
     width: 90%;
     align-items: center;
     text-align: center;
