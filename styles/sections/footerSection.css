@@ -57,3 +57,130 @@ footer {
   font-size: 12px;
   margin-top: 10px;
 }
+
+
+/* ##################################### 481px to 768px #############################*/
+@media (min-width: 481px) and (max-width: 768px) {
+  footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    bottom: 0;
+  }
+  
+  .footer-container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #66666600;
+    margin-bottom: 0;
+  }
+  
+  .footer-logo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-nav ul li {
+    display: inline;
+  }
+  
+  .footer-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  .footer-nav ul li a:hover {
+    color: #007BFF;
+  }
+  
+  .footer-text {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+/* ##################################### 321px to 481px #############################*/
+@media (min-width: 321px) and (max-width: 481px) {
+  footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    width: 96%;
+    left: 2%;
+    right: 2%;
+    bottom: 0;
+  }
+  
+  .footer-container {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #66666600;
+    margin-bottom: 0;
+  }
+  
+  .footer-logo {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-nav ul li {
+    display: inline;
+  }
+  
+  .footer-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  .footer-nav ul li a:hover {
+    color: #007BFF;
+  }
+  
+  .footer-text {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
