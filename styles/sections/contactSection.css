@@ -46,17 +46,18 @@
   width: 100%;
 }
 
-.contact-form input {
+.contact-form input{
   width: 100%;
-  height: 50px;
   padding: 12px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  outline-color: #000000;
-  outline-width: 1px;
+  border-radius: 5px;
+  border-bottom: 2px solid #ffffff00;
+   /* Royal Blue for a sleek look */
+  background: #f9f9f975;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0s ease-in-out;
 }
 
 .contact-form textarea {
@@ -65,16 +66,21 @@
   padding: 12px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  background: #f9f9f975;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  outline-color: #000000;
-  outline-width: 1px;
+  outline: none;
+  transition: all 0s ease-in-out;
+} 
+
+/* Add focus effects */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border: 2px solid #4169E1;
+  box-shadow: 0 4px 12px rgba(65, 105, 225, 0.3);
 }
 
-.contact-form textarea {
-  resize: none;
-}
+
 
 .submit-btn {
   padding: 12px 20px;
@@ -91,6 +97,66 @@
 .submit-btn:hover {
   background: #0056b3;
 }
+
+.black-line {
+  position: absolute;
+  top: 170px;
+  left: 0;
+  right: -32%;
+  margin: auto;
+  width: 2px;
+  height: 70%;
+  background-color: #000000;
+}
+
+
+.contact-details {
+  width: 40%;
+  max-width: 400px;
+  background: rgba(112, 112, 112, 0);
+  color: #7a7a7a;
+  font-family: "Lexend Giga", sans-serif;
+  font-size: 16px;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 160px;
+  right: 8%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+}
+
+.contact-details p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.contact-details p:first-child,
+.contact-details p:nth-child(4),
+.contact-details p:nth-child(7) {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #000000;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.address, .hours, .contacts {
+  font-size: 14px;
+  color: #444444;
+  margin: 20px;
+}
+
+@media (max-width: 768px) {
+  .contact-details {
+    width: 80%;
+    max-width: 100%;
+    right: 10%;
+    top: 150px;
+    padding: 15px;
+  }
+}
+
+
 
 @media (max-width: 600px) {
   .contact {
