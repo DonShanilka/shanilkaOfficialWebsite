@@ -211,7 +211,7 @@
 /* ############################## 481px to 768px ######################################## */
 @media (min-width: 481px) and (max-width: 768px) { 
   .hero {
-    height: 885px;
+    height: 920px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
@@ -270,7 +270,7 @@
 /* ############################## 321px to 480px ######################################## */
 @media (min-width: 321px) and (max-width: 480px) { 
   .hero {
-    height: 885px;
+    height: 920px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
