@@ -76,6 +76,7 @@ footer {
     right: 2%;
     height: 100px;
     bottom: 0;
+    margin-bottom: 0;
   }
   
   .footer-container {
@@ -139,7 +140,7 @@ footer {
     left: 2%;
     right: 2%;
     height: 100px;
-    bottom: 0;
+    margin-bottom: 0;
   }
   
   .footer-container {
