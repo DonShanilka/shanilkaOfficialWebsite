@@ -193,7 +193,7 @@
 /* ##################################### 321px to 480px ###############################  */
 @media (min-width: 321px) and (max-width: 480px) {
   .skills {
-    height: 1240px;
+    height: 920px;
     width: 100vw; 
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
@@ -231,7 +231,7 @@
   
   .skill-container {
     position: absolute;
-    top: 350px;
+    top: 290px;
     left: 0;
     right: 0;
     margin: auto;
