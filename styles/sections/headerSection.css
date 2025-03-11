@@ -125,11 +125,16 @@ nav {
   pointer-events: all;
 }
 
+/* ############################################# 480px to 768px ################################ */
+@media (min-width: 481px) and (max-width: 768px) {
 
-/* ############################################# 321 px to 480px ############################### */
+}
+
+
+/* ############################################# 321px to 480px ############################### */
 
 @media (min-width: 321px) and (max-width: 480px) {
-  header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
