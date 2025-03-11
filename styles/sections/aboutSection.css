@@ -120,18 +120,15 @@ strong {
 @media (min-width: 481px) and (max-width: 768px) {
   .about {
     width: 100%;
-    height: 750px;
+    height: 900px;
     display: flex;
-    flex-direction: column; /* Stacks items vertically */
+    flex-direction: column; 
     align-items: center;
     justify-content: center;
-    /* padding: 60px 20px; */
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
-    /* margin: 60px 0; */
-    /* padding: 40px; */
     margin-top: 80px;
     margin-bottom: 40px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -143,7 +140,6 @@ strong {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* gap: 30px;  */
   }
 
   .about-title {
@@ -151,19 +147,71 @@ strong {
     text-align: center;
     font-size: 30px;
     color: #222;
-    top: 60px; 
+    top: 40px; 
   }
   
   .about-para {
     position: absolute;;
     text-align: center;
     color: #666;
-    font-size: 14px;
-    max-width: 90%;
-    top: 140px; 
+    font-size: 12px;
+    max-width: 80%;
+    top: 100px; 
+  }
+
+  .my-details {
+    position: absolute;
+    top: 400px;
+    width: 80%;
+    height: 40%;
+    background-color: rgba(255, 255, 255, 0);
   }
   
+  .div-1 {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    font-size: 12px;
+    background-color: #007bff00;
+    width: 100%;
+    color: #535353;
+  }
+  
+  .div-2 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    background-color: #007bff00;
+    width: 100%;
+    color: #535353;
+    font-size: 12px;
+  }
+  
+  .div-1>div {
+    margin: 20px;
+  }
+  
+  .div-2>div {
+    margin: 20px;
+  }
 
+  .main-line {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 2px;
+    background: #000000;
+    height: 110%;
+    display: none;
+  }
 }
 
 /* ################################## 321px to 480px ###################################### */
