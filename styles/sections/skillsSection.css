@@ -97,9 +97,10 @@
   color: #000000;
 }
 
+/* ############################## 481px tp 768px ################################ */
 @media (min-width: 481px) and (max-width: 768px) {
   .skills {
-    height: 1240px;
+    height: 1140px;
     width: 100vw; 
     text-align: center;
     background: rgba(255, 255, 255, 0.1);

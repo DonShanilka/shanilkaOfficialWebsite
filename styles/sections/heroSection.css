@@ -211,7 +211,7 @@
 /* ############################## 481px to 768px ######################################## */
 @media (min-width: 481px) and (max-width: 768px) { 
   .hero {
-    height: 865px;
+    height: 885px;
     background-color: #000;
     display: flex;
     justify-content: space-between;
