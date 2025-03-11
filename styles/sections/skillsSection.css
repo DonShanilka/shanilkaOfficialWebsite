@@ -100,7 +100,7 @@
 /* ############################## 481px tp 768px ################################ */
 @media (min-width: 481px) and (max-width: 768px) {
   .skills {
-    height: 920px;
+    height: 1000px;
     width: 100vw; 
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
@@ -193,7 +193,7 @@
 /* ##################################### 321px to 480px ###############################  */
 @media (min-width: 321px) and (max-width: 480px) {
   .skills {
-    height: 920px;
+    height: 1000px;
     width: 100vw; 
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
