@@ -197,7 +197,7 @@ strong {
     text-align: center;
     font-size: 30px;
     color: #222;
-    top: 20px; 
+    top: 40px; 
   }
   
   .about-para {
@@ -206,7 +206,7 @@ strong {
     color: #666;
     font-size: 12px;
     max-width: 80%;
-    top: 80px; 
+    top: 100px; 
   }
 
   .my-details {
@@ -219,7 +219,7 @@ strong {
   
   .div-1 {
     position: absolute;
-    top: -25%;
+    top: -15%;
     left: 0;
     right: 0;
     margin: auto;
@@ -232,7 +232,7 @@ strong {
   
   .div-2 {
     position: absolute;
-    top: 27%;
+    top: 50%;
     left: 0;
     right: 0;
     margin: auto;
