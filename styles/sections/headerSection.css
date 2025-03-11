@@ -69,6 +69,15 @@ nav {
 
 
 @media (max-width: 768px) {
+
+  .navBarContainer {
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+  }
   
   .menu-toggle {
       display: block;
@@ -127,6 +136,15 @@ nav {
 
 /* ############################################# 480px to 768px ################################ */
 @media (min-width: 481px) and (max-width: 768px) {
+  .navBarContainer {
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+  }
+
   header {
     display: flex;
     justify-content: space-between;
