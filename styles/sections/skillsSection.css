@@ -97,6 +97,100 @@
   color: #000000;
 }
 
+
+/* ################################## 1025px to 1440px ###################################### */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .skills {
+    height: 535px;
+    width: 100vw; 
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 60px 0;
+    padding: 40px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+  
+  .skills>h1 {
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 60px;
+    font-size: 30px;
+    color: #222;
+  }
+  
+  .skills>p {
+    position: absolute;
+    width: 88%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 130px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .skill-container {
+    position: absolute;
+    top: 240px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .icons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 5px;
+  }
+  
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.274);
+    border: 1px solid #9b9b9b5d;
+    border-radius: 10px;
+    transform: rotate(-45deg);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .icon img {
+    width: 30px;
+    height: 30px;
+    transform: rotate(45deg);
+  }
+  
+  .icon-box p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000000;
+  }
+}
+
 /* ############################## 481px tp 768px ################################ */
 @media (min-width: 481px) and (max-width: 768px) {
   .skills {
