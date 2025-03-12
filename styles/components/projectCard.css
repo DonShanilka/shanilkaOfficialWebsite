@@ -110,7 +110,7 @@
   }
   #timeline .demo-card {
     max-width: 450px;
-    height: 200px;
+    height: 400px;
     margin: 90px;
     margin-top: 45px;
     margin-bottom: 45px;
@@ -146,7 +146,7 @@
 }
 
 
-/* @media (min-width: 1000px) {
+@media (min-width: 1000px) {
   #timeline .demo-card-wrapper {
     display: flex;
     flex-flow: column wrap;
@@ -168,7 +168,7 @@
   #timeline .demo-card-wrapper::after {
     border-left: 1px solid #bdbdbd;
   }
-} */
+}
 #timeline .demo-card {
   position: relative;
   display: block;
@@ -189,7 +189,7 @@
   }
 }
 
-/* @media (min-width: 1000px) {
+@media (min-width: 1000px) {
   #timeline .demo-card {
     max-width: 450px;
     height: 400px;
@@ -225,7 +225,7 @@
   #timeline .demo-card:nth-child(2) {
     margin-top: 180px;
   }
-} */
+}
 
 #timeline .demo-card .head {
   position: relative;
@@ -282,11 +282,11 @@
   padding: 15px;
 }
 
-/* @media (min-width: 1000px) {
+@media (min-width: 1000px) {
   #timeline .demo-card .body {
     height: 315px;
   }
-} */
+}
 
 #timeline .demo-card .body p {
   font-size: 14px;
