@@ -116,6 +116,127 @@ strong {
 }
 
 
+/* ################################## 1025px to 1440px ###################################### */
+@media (min-width: 1025px) and (max-width: 1440px) { 
+  .about {
+    width: 100%;
+    height: 535px;
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin: 60px 0;
+    padding: 40px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .aboutMainDiv {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; 
+  }
+  
+  .about-title {
+    position: absolute;
+    top: 45px;
+    text-align: center;
+    font-size: 30px;
+    color: #222;
+  }
+  
+  .about-para {
+    position: absolute;
+    top: 110px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    max-width: 80%;
+  }
+  
+  .my-details {
+    position: absolute;
+    top: 260px;
+    width: 80%;
+    height: 40%;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .div-1 {
+    position: absolute;
+    top: -48px;
+    left: 10px;
+    text-align: right;
+    background-color: #007bff00;
+    width: 50%;
+    color: #535353;
+  }
+  
+  .div-2 {
+    position: absolute;
+    top: -48px;
+    right: 115px;
+    background-color: #007bff00;
+    width: 40%;
+    color: #535353;
+  }
+  
+  .div-1>div {
+    margin: 30px;
+  }
+  
+  .div-2>div {
+    margin: 30px;
+  }
+  
+  strong {
+    color: #000000;
+    font-size: 15px;
+  }
+  
+  .main-line {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 2px;
+    background: #000000;
+    height: 120%;
+  }
+  
+  .badge {
+    background-color: #444;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .badge-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .badge-divider {
+    margin: 0 5px;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+}
+
+
 /* ####################################### 481px to 768px ###################################### */
 @media (min-width: 481px) and (max-width: 768px) {
   .about {
