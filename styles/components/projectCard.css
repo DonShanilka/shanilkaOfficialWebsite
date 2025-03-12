@@ -76,8 +76,8 @@
 #timeline {
   padding: 100px 0;
   background: #f7f7f700;
-  height: 720px; /* Adjust height as needed */
-  overflow-y: auto;  /* Enables vertical scrolling */
+  height: 720px; 
+  overflow-y: auto; 
 }
 
 #timeline h1 {
@@ -96,6 +96,36 @@
   position: relative;
   margin: auto;
 }
+
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+  #timeline {
+    position: absolute;
+    top: 20%;
+    padding: 100px 0;
+    background: #f7f7f700;
+    height: 400px; 
+    overflow-y: auto; 
+  }
+
+  .demo-card {
+    width: 40%; 
+    height: 50px; 
+    left: auto;
+    margin: 20px auto;
+  }
+
+  #timeline .demo-card:nth-child(odd) {
+    margin-right: 30px;
+  }
+
+  #timeline .demo-card:nth-child(even) {
+    margin-left: 30px;
+  }
+}
+
+
 @media (min-width: 1000px) {
   #timeline .demo-card-wrapper {
     display: flex;
