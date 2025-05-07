@@ -231,7 +231,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  color: #ffffff;
+  color: #000000;
   font-weight: 400;
 }
 
@@ -276,7 +276,7 @@
 
 /* Card Body */
 #timeline .demo-card .body {
-  background: #ff3f3f;
+  background: #ff3f3f00;
   border: 1px solid rgba(191, 191, 191, 0.4);
   border-top: 0;
   padding: 15px;
@@ -300,82 +300,113 @@
 }
 
 #timeline .demo-card--step1 {
-  background-color: #46b8e9;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step1 .head::after {
-  border-color: #46b8e9;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step2 {
-  background-color: #3ee9d1;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step2 .head::after {
-  border-color: #3ee9d1;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step3 {
-  background-color: #e1b332;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step3 .head::after {
-  border-color: #e1b332;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step4 {
-  background-color: #ae66bf;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step4 .head::after {
-  border-color: #ae66bf;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step5 {
-  background-color: #feb7b7;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step5 .head::after {
-  border-color: #feb7b7;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step6 {
-  background-color: #f08282;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step6 .head::after {
-  border-color: #f08282;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step7 {
-  background-color: #b8b8e9;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step7 .head::after {
-  border-color: #b8b8e9;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step8 {
-  background-color: #ed7f34;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #timeline .demo-card--step8 .head::after {
-  border-color: #ed7f34;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step9 {
-  background-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step9 .head::after {
-  border-color: #ff6b6b;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step10 {
-  background-color: #ff98d1;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step10 .head::after {
-  border-color: #ff98d1;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step11 {
-  background-color: #90f4b2;
+  background: rgba(255, 255, 255, 0.1);
 }
 #timeline .demo-card--step11 .head::after {
-  border-color: #90f4b2;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+.number-box {
+  background: #4caf50;
+  color: #000000;
+  padding: 8px 12px;
+  border-radius: 50%;
+}
+.system-image {
+  width: 50%;
+  height: 60%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.button-group {
+  margin-top: 12px;
+}
+.button-group .btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  transition: background 0.3s;
+}
+.button-group .btn:hover {
+  background: #45a049;
 }
