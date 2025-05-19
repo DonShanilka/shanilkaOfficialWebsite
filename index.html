@@ -46,17 +46,16 @@
         <a href="#projects" class="hover:text-lime-400">Projects</a>
         <a href="#contact" class="hover:text-lime-400">Contact</a>
       </nav>
-      
 
       <!-- In Navbar -->
-    <div class="md:hidden cursor-pointer" onclick="toggleMenu()">☰</div>
-    <nav id="mobile-menu" class="space-y-2 mt-2 text-sm md:hidden hidden">
-      <a href="#home" class="block hover:text-lime-400">Home</a>
-      <a href="#about" class="block hover:text-lime-400">About</a>
-      <a href="#skills" class="block hover:text-lime-400">Skills</a>
-      <a href="#projects" class="block hover:text-lime-400">Projects</a>
-      <a href="#contact" class="block hover:text-lime-400">Contact</a>
-    </nav>
+      <div class="md:hidden cursor-pointer" onclick="toggleMenu()">☰</div>
+      <nav id="mobile-menu" class="space-y-2 mt-2 text-sm md:hidden hidden">
+        <a href="#home" class="block hover:text-lime-400">Home</a>
+        <a href="#about" class="block hover:text-lime-400">About</a>
+        <a href="#skills" class="block hover:text-lime-400">Skills</a>
+        <a href="#projects" class="block hover:text-lime-400">Projects</a>
+        <a href="#contact" class="block hover:text-lime-400">Contact</a>
+      </nav>
     </header>
 
     <!-- Hero Section -->
@@ -675,52 +674,277 @@
           </div>
         </div>
         <div class="flex justify-center mt-8">
-  <a href="https://github.com/DonShanilka">
-    <button class="bg-lime-400 text-black px-6 py-2 rounded-xl hover:bg-lime-500 transition">
-      View More Projects &gt;
-    </button>
-  </a>
-</div>
-
-
+          <a href="https://github.com/DonShanilka">
+            <button
+              class="bg-lime-400 text-black px-6 py-2 rounded-xl hover:bg-lime-500 transition"
+            >
+              View More Projects &gt;
+            </button>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- Contact Section -->
     <section
       id="contact"
-      class="min-h-screen flex flex-col justify-center items-center px-4 md:px-20 py-16"
+      class="min-h-screen flex items-center bg-black py-24 px-6 md:px-16 lg:px-24"
     >
-      <h2 class="text-2xl font-bold text-center text-lime-400 mb-8">
-        Let's Talk
-      </h2>
-      <form class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          class="p-3 rounded bg-gray-800 text-white"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          class="p-3 rounded bg-gray-800 text-white"
-        />
-        <input
-          type="text"
-          placeholder="Subject"
-          class="p-3 rounded bg-gray-800 text-white md:col-span-2"
-        />
-        <textarea
-          placeholder="Message"
-          class="p-3 rounded bg-gray-800 text-white md:col-span-2"
-        ></textarea>
-        <button
-          type="submit"
-          class="bg-lime-400 text-black py-2 px-6 rounded md:col-span-2"
-        >
-          Send Message
-        </button>
-      </form>
+      <div class="container mx-auto">
+        <!-- Two column layout -->
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          <!-- Left Column - Text -->
+          <div class="w-full lg:w-1/2">
+            <div class="mb-8">
+              <p class="text-gray-400">Get In Touch</p>
+              <h2 class="text-4xl md:text-5xl font-bold text-white mt-2">
+                Let's Talk For your <br />
+                <span class="text-lime-400">Next Projects</span>
+              </h2>
+            </div>
+
+            <p class="text-gray-400 mb-10">
+              Sed ut perspiciatis unde omnin natus totam<br />
+              rem aperiam eaque inventore veritatis
+            </p>
+
+            <!-- Features with check icons -->
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <span class="bg-lime-400 text-black p-1 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span class="text-gray-300">2+ Years Of Experience</span>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <span class="bg-lime-400 text-black p-1 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span class="text-gray-300">Professional Web Designer</span>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <span class="bg-lime-400 text-black p-1 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span class="text-gray-300">Mobile Apps Design</span>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <span class="bg-lime-400 text-black p-1 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                <span class="text-gray-300">Custom Design Support</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column - Form -->
+          <div class="w-full lg:w-1/2 space-y-6">
+            <div class="grid grid-cols-1 gap-6">
+              <!-- Full Name -->
+              <div>
+                <label
+                  for="name"
+                  class="block text-sm font-medium text-gray-400 mb-1"
+                  >Full Name</label
+                >
+                <div class="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Richard D. Hammond"
+                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email Address -->
+              <div>
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-400 mb-1"
+                  >Email Address</label
+                >
+                <div class="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="support@gmail.com"
+                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                      />
+                      <path
+                        d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Phone Number -->
+              <div>
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-400 mb-1"
+                  >Phone Number</label
+                >
+                <div class="relative">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+880 (123) 456 99"
+                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
+                  />
+                  <div
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div>
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-gray-400 mb-1"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="I would like to discuss..."
+                  class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
+                />
+              </div>
+
+              <!-- Message -->
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-400 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write message"
+                  class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
+                ></textarea>
+              </div>
+
+              <!-- Submit button -->
+              <div class="mt-4">
+                <button
+                  type="submit"
+                  class="bg-lime-400 hover:bg-lime-500 text-black font-medium py-3 px-6 rounded-md flex items-center gap-2 transition-colors"
+                >
+                  Send Us Message
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
