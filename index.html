@@ -46,7 +46,17 @@
         <a href="#projects" class="hover:text-lime-400">Projects</a>
         <a href="#contact" class="hover:text-lime-400">Contact</a>
       </nav>
-      <div class="md:hidden">☰</div>
+      
+
+      <!-- In Navbar -->
+    <div class="md:hidden cursor-pointer" onclick="toggleMenu()">☰</div>
+    <nav id="mobile-menu" class="space-y-2 mt-2 text-sm md:hidden hidden">
+      <a href="#home" class="block hover:text-lime-400">Home</a>
+      <a href="#about" class="block hover:text-lime-400">About</a>
+      <a href="#skills" class="block hover:text-lime-400">Skills</a>
+      <a href="#projects" class="block hover:text-lime-400">Projects</a>
+      <a href="#contact" class="block hover:text-lime-400">Contact</a>
+    </nav>
     </header>
 
     <!-- Hero Section -->
@@ -161,36 +171,35 @@
 
         <!-- Right Image -->
         <div class="relative flex justify-center items-center">
-  <!-- Main Image -->
-  <img
-    src="./assets/images/myImage2.jpg"
-    alt="Nishith Shanilka"
-    class="w-80 h-96 object-cover shadow-lg"
-  />
+          <!-- Main Image -->
+          <img
+            src="./assets/images/myImage2.jpg"
+            alt="Nishith Shanilka"
+            class="w-80 h-96 object-cover shadow-lg"
+          />
 
-  <!-- Floating Tag: Top Right -->
-  <div
-    class="absolute top-62 right-12 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
-  >
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-      class="w-5 h-5"
-    />
-    Experience Developer
-  </div>
+          <!-- Floating Tag: Top Right -->
+          <div
+            class="absolute top-62 right-12 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              class="w-5 h-5"
+            />
+            Experience Developer
+          </div>
 
-  <!-- Floating Tag: Bottom Right -->
-  <div
-    class="absolute bottom-8 right-0 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
-  >
-    <img
-      src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-      class="w-6 h-5 rounded-full"
-    />
-    Nishith Shanilka
-  </div>
-</div>
-
+          <!-- Floating Tag: Bottom Right -->
+          <div
+            class="absolute bottom-8 right-0 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              class="w-6 h-5 rounded-full"
+            />
+            Nishith Shanilka
+          </div>
+        </div>
       </div>
     </section>
 
@@ -466,9 +475,9 @@
 
     <!-- Projects Section -->
     <section
+      id="projects"
       class="min-h-screen py-20 px-6 md:px-12 lg:px-16 max-w-7xl mx-auto bg-[#0d0d0d]"
     >
-      <!-- Section Header -->
       <div class="mb-14">
         <span class="text-gray-300 text-sm">Latest Works</span>
         <h2 class="text-4xl md:text-5xl font-bold mt-2">
@@ -476,258 +485,192 @@
         </h2>
       </div>
 
-      <!-- Projects Container (Scrollable) -->
-      <div class="overflow-x-auto custom-scrollbar pb-8">
-        <div class="flex gap-6 min-w-max">
-          <!-- Project 1: Mobile Application Design -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-300 p-10 rounded-lg">
-              <div class="w-64 mx-auto">
-                <img
-                  src="/api/placeholder/400/700"
-                  alt="Mobile Application Design"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Product Design</span>
-              <h3 class="text-3xl font-bold mt-2">Mobile Application Design</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+      <div class="flex flex-col gap-20">
+        <!-- 01 Crop Monitoring System -->
+        <div class="flex flex-col md:flex-row gap-10 items-center">
+          <div class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
+              alt="Crop Monitoring System"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">Green Shadow</span>
+            <h3 class="text-3xl font-bold mt-2">Crop Monitoring System</h3>
+            <p class="text-gray-400 mt-3">
+              Frontend with HTML, Tailwind CSS | Backend with Spring Boot.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
+              <a
+                href="https://github.com/DonShanilka/greenShadow-SpringBoot-BackEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Backend (GitHub)</a
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Project 2: Website Makeup Design -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-200 p-10 rounded-lg">
-              <div class="w-full mx-auto">
-                <img
-                  src="/api/placeholder/600/400"
-                  alt="Website Makeup Design"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Product Design</span>
-              <h3 class="text-3xl font-bold mt-2">Website Makeup Design</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <!-- 02 Hotel Management System -->
+        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+          <div class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
+              alt="Hotel Management System"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">Blue Beach Villa</span>
+            <h3 class="text-3xl font-bold mt-2">Hotel Management System</h3>
+            <p class="text-gray-400 mt-3">
+              React + Tailwind CSS | Express.js + Node.js + MySQL + Prisma.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/hotel_management_system-frontend"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
+              <a
+                href="https://github.com/DonShanilka/hotelmanager_expressjs_backend"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Backend (GitHub)</a
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Project 3 -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-300 p-10 rounded-lg">
-              <div class="w-full mx-auto">
-                <img
-                  src="/api/placeholder/600/400"
-                  alt="UI/UX Design"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Product Design</span>
-              <h3 class="text-3xl font-bold mt-2">UI/UX Design</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <!-- 03 Food Delivery App -->
+        <div class="flex flex-col md:flex-row gap-10 items-center">
+          <div class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
+              alt="Food Delivery App"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">Hot Plate</span>
+            <h3 class="text-3xl font-bold mt-2">Food Delivery App</h3>
+            <p class="text-gray-400 mt-3">
+              React Native + Tailwind CSS | Express.js + Node.js + MySQL +
+              TypeScript.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
+              <a
+                href="https://github.com/DonShanilka/hotPlate_MobileApp_BackEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Backend (GitHub)</a
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Project 4 -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-200 p-10 rounded-lg">
-              <div class="w-full mx-auto">
-                <img
-                  src="/api/placeholder/600/400"
-                  alt="Web Application"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Development</span>
-              <h3 class="text-3xl font-bold mt-2">Web Application</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <!-- 04 MoneyMap Expense Tracker -->
+        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+          <div class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/b6/63/f6/b663f6645a832506231c4f94d266ab63.jpg"
+              alt="MoneyMap Tracker"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">MoneyMap</span>
+            <h3 class="text-3xl font-bold mt-2">Expense Tracker</h3>
+            <p class="text-gray-400 mt-3">
+              React + Tailwind CSS + JavaScript | Node.js + Express.js + MySQL.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/moneyMap-personal-expense-tracker-web-frontEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
+              <a
+                href="https://github.com/DonShanilka/MoneyMap-personal-expense-tracker-backEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Backend (GitHub)</a
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Project 5 -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-300 p-10 rounded-lg">
-              <div class="w-64 mx-auto">
-                <img
-                  src="/api/placeholder/400/700"
-                  alt="Mobile App Development"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Development</span>
-              <h3 class="text-3xl font-bold mt-2">Mobile App Development</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <!-- 05 Real Estate App -->
+        <div class="flex flex-col md:flex-row gap-10 items-center">
+          <div class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/f3/05/73/f30573ef0184d1ffd1523b1faa73dfe7.jpg"
+              alt="RoofTop Real Estate"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">RoofTop</span>
+            <h3 class="text-3xl font-bold mt-2">Real Estate App</h3>
+            <p class="text-gray-400 mt-3">
+              Swift + SwiftUI for iOS mobile real estate listings and
+              management.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/RoofTop--RealEstateApp--Swift-"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
             </div>
           </div>
+        </div>
 
-          <!-- Project 6 -->
-          <div class="flex flex-col w-[500px]">
-            <div class="bg-neutral-200 p-10 rounded-lg">
-              <div class="w-full mx-auto">
-                <img
-                  src="/api/placeholder/600/400"
-                  alt="Brand Identity"
-                  class="w-full h-auto object-contain"
-                />
-              </div>
-            </div>
-            <div class="mt-6">
-              <span class="text-lime-400 text-sm">Branding</span>
-              <h3 class="text-3xl font-bold mt-2">Brand Identity</h3>
-              <p class="text-gray-400 mt-3">
-                Sed ut perspiciatis unde omnia natus totam rem aperiam eaque
-                inventore veritatis architecto beatae
-              </p>
-              <div class="mt-6">
-                <a
-                  href="#"
-                  class="inline-block bg-neutral-800 rounded-full p-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <!-- 06 POS System -->
+        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
+          <div class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2">
+            <img
+              src="https://i.pinimg.com/736x/f0/8f/36/f08f3630b1ae43d18451dd1d329bee7f.jpg"
+              alt="Wilma POS System"
+              class="w-full h-auto object-contain rounded-md"
+            />
+          </div>
+          <div class="w-full md:w-1/2">
+            <span class="text-lime-400 text-sm">Wilma Rest</span>
+            <h3 class="text-3xl font-bold mt-2">POS System</h3>
+            <p class="text-gray-400 mt-3">
+              HTML + Bootstrap + JavaScript (AJAX) | Node.js + Express.js +
+              MongoDB.
+            </p>
+            <div class="flex gap-3 mt-6 flex-wrap">
+              <a
+                href="https://github.com/DonShanilka/wilma_Boostrap_pos_system"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Frontend (GitHub)</a
+              >
+              <a
+                href="https://github.com/DonShanilka/wilmaResturentBackEnd"
+                target="_blank"
+                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
+                >Backend (GitHub)</a
+              >
             </div>
           </div>
         </div>
@@ -782,5 +725,12 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
   </body>
 </html>
