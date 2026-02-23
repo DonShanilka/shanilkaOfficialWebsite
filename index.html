@@ -1,198 +1,361 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>N.Shanilka</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <style>
-      .bg-gray-custom {
-        background-color: #66666600;
+      :root {
+        --accent: #e11d48; /* rose-600 */
+        --accent-glow: rgba(225, 29, 72, 0.3);
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.1);
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        overflow-x: hidden;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.03;
+        mix-blend-mode: soft-light;
+      }
+
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.02);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 40px -10px var(--accent-glow);
+      }
+
+      .text-gradient {
+        background: linear-gradient(to right, #fff, var(--accent));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Ticker System */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      @keyframes marquee-reverse {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
+
+      .ticker-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 40px 0;
+        z-index: 10;
+        background: black;
+      }
+
+      .ticker-ribbon {
+        white-space: nowrap;
+        display: flex;
+        padding: 20px 0;
+        background: var(--accent);
+        color: black;
+        font-weight: 900;
+        font-size: 1.5rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transform: rotate(-3deg) scale(1.1);
+        margin: 20px -5%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .ticker-ribbon-reverse {
+        background: #111;
+        color: var(--accent);
+        transform: rotate(2deg) scale(1.1);
+        border-top: 1px solid rgba(225, 29, 72, 0.2);
+        border-bottom: 1px solid rgba(225, 29, 72, 0.2);
+      }
+
+      .ticker-content {
+        display: inline-flex;
+        animation: marquee 30s linear infinite;
+        gap: 2rem;
+        padding-right: 2rem;
+      }
+
+      .ticker-content-reverse {
+        display: inline-flex;
+        animation: marquee-reverse 40s linear infinite;
+        gap: 2rem;
+        padding-right: 2rem;
+      }
+
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .ticker-item i {
+        font-size: 1rem;
+        opacity: 0.8;
+      }
+
+      .glow-blob {
+        position: fixed;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(100px);
+        z-index: -1;
+        pointer-events: none;
       }
 
       /* Custom scrollbar styling */
       .custom-scrollbar::-webkit-scrollbar {
-        height: 6px;
+        width: 6px;
       }
 
       .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
       }
 
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
       }
 
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.5);
+      /* Background Animation Styles */
+      #bg-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+        background-color: #000;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 50px 50px;
+        display: block;
       }
     </style>
   </head>
 
-  <body class="font-sans bg-black text-white">
+  <body class="font-sans bg-black text-white selection:bg-rose-500/30">
+    <div class="grain-overlay"></div>
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Background Glow Blobs -->
+    <div class="glow-blob -top-48 -left-48 opacity-40"></div>
+    <div class="glow-blob top-1/2 -right-48 opacity-30"></div>
+    <div class="glow-blob -bottom-48 left-1/4 opacity-20"></div>
+
     <!-- Navbar -->
     <header
-      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 bg-black shadow"
+      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5"
     >
-      <div class="text-lime-400 font-bold text-2xl">{ N.S }</div>
-      <nav class="space-x-4 text-sm hidden md:block">
-        <a href="#home" class="hover:text-lime-400">Home</a>
-        <a href="#about" class="hover:text-lime-400">About</a>
-        <!-- <a href="#services" class="hover:text-lime-400">Services</a> -->
-        <a href="#skills" class="hover:text-lime-400">Skills</a>
-        <a href="#projects" class="hover:text-lime-400">Projects</a>
-        <a href="#contact" class="hover:text-lime-400">Contact</a>
+      <div
+        class="text-rose-600 font-bold text-2xl tracking-tighter hover:scale-105 transition-transform cursor-pointer"
+      >
+        { N.S }
+      </div>
+      <nav class="space-x-8 text-sm hidden md:flex items-center">
+        <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+        <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+        <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
+        <a
+          href="#contact"
+          class="bg-rose-600 text-white px-5 py-2 rounded-full font-medium hover:bg-rose-700 transition-all shadow-lg shadow-rose-600/20"
+          >Contact</a
+        >
       </nav>
 
-      <!-- In Navbar -->
-      <div class="md:hidden cursor-pointer" onclick="toggleMenu()">☰</div>
-      <nav id="mobile-menu" class="space-y-2 mt-2 text-sm md:hidden hidden">
-        <a href="#home" class="block hover:text-lime-400">Home</a>
-        <a href="#about" class="block hover:text-lime-400">About</a>
-        <a href="#skills" class="block hover:text-lime-400">Skills</a>
-        <a href="#projects" class="block hover:text-lime-400">Projects</a>
-        <a href="#contact" class="block hover:text-lime-400">Contact</a>
+      <!-- Mobile Toggle -->
+      <div class="md:hidden cursor-pointer" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </div>
+      <nav id="mobile-menu" class="fixed top-[72px] left-0 w-full glass p-6 space-y-4 text-center md:hidden hidden">
+        <a href="#home" class="block hover:text-rose-600" onclick="toggleMenu()">Home</a>
+        <a href="#about" class="block hover:text-rose-600" onclick="toggleMenu()">About</a>
+        <a href="#skills" class="block hover:text-rose-600" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" class="block hover:text-rose-600" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" class="block hover:text-rose-600" onclick="toggleMenu()">Contact</a>
       </nav>
     </header>
 
     <!-- Hero Section -->
     <section
       id="home"
-      class="min-h-screen text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-20 pt-8 relative"
+      class="min-h-screen text-white flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative text-center"
     >
-      <!-- Left Side: Text Content -->
-      <div
-        class="md:w-2/3 text-center md:text-left mb-12 md:mb-0"
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-      >
-        <h2
-          class="text-gray-400 text-2xl mb-2"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-delay="200"
-        >
-          Hello, I'm
-        </h2>
+      <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="flex flex-col items-center gap-8">
+          <!-- Profile Badge -->
+          <div class="group relative">
+            <div class="absolute -inset-1 bg-gradient-to-r from-rose-600 to-rose-400 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <img
+              src="https://i.pinimg.com/736x/21/df/f2/21dff20921a681d45dc5f238290f193f.jpg"
+              alt="Nishith Shanilka"
+              class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/20 object-cover shadow-2xl"
+            />
+          </div>
 
-        <h1
-          class="text-4xl md:text-7xl font-bold mb-4"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-delay="300"
-        >
-          <span class="text-lime-400">Nishith Shanilka</span><br />
-          software engineer
-        </h1>
+          <p class="text-rose-500 text-xs font-bold tracking-[0.3em] uppercase" data-aos="fade-up" data-aos-delay="200">
+            Digital Solution Architect
+          </p>
 
-        <p
-          class="text-gray-400 mb-6 max-w-md mx-auto md:mx-0"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          data-aos-delay="400"
-        >
-          Passionate about solving problems through code and creating delightful
-          user experiences.
-        </p>
-
-        <div
-          class="flex justify-center md:justify-start space-x-4"
-          data-aos="zoom-in"
-          data-aos-delay="500"
-        >
-          <a
-            href="#contact"
-            data-aos="fade-right"
-            class="bg-lime-400 text-black px-6 py-2 rounded-full font-semibold hover:bg-lime-500 transition"
-            >Hire Me</a
+          <h1
+            class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-[0.9]"
+            data-aos="fade-up"
           >
-          <a
-            href="#"
-            data-aos="fade-right"
-            class="border border-lime-400 text-lime-400 px-6 py-2 rounded-full font-semibold hover:bg-lime-400 hover:text-black transition"
-            >Download Resume</a
+            STILL STUCK IN THE<br />
+            <span class="text-gradient">OLD WAY</span> OF<br />
+            DOING THINGS?
+          </h1>
+
+          <p
+            class="text-gray-400 mb-10 text-xl md:text-2xl font-light"
+            data-aos="fade-up"
+            data-aos-delay="400"
           >
+            Turn digital complexity <span class="text-white font-medium">into clarity</span>.
+          </p>
+
+          <!-- Icon Grid -->
+          <div class="flex gap-12 mb-12" data-aos="fade-up" data-aos-delay="600">
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Transform</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Innovate</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Lead</span>
+            </div>
+          </div>
+
+          <a
+            href="#projects"
+            class="group relative px-8 py-4 bg-white/5 glass border border-white/10 rounded-xl font-bold text-sm tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-500 overflow-hidden"
+            data-aos="fade-up"
+            data-aos-delay="800"
+          >
+            <span class="relative z-10 text-rose-500 group-hover:text-black">Step into the digital future</span>
+            <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          </a>
         </div>
-      </div>
-
-      <!-- Right Side: Profile & Stats -->
-      <div class="md:w-1/2 flex flex-col items-center relative">
-        <!-- <div class="absolute w-52 h-80 bg-black rounded-full z-10"></div> -->
-
-        <!-- Profile Image -->
-        <img
-          src="./assets/images/myImage.JPG"
-          alt="Nishith Shanilka"
-          class="rounded-full border-4 border-lime-400 w-96 h-96 z-10 object-cover"
-        />
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="min-h-screen text-white py-36 px-6 md:px-20">
-      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
         <!-- Left Content -->
-        <div>
-          <p class="text-gray-400 text-sm mb-2" data-aos="fade-down-right">
-            About Me
+        <div class="glass-card p-8 md:p-12 rounded-3xl">
+          <p
+            class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4"
+            data-aos="fade-down-right"
+          >
+            01 — About Me
           </p>
           <h2
-            class="text-3xl md:text-5xl font-bold leading-tight mb-6"
+            class="text-4xl md:text-6xl font-black leading-tight mb-8"
             data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
           >
-            Professional
-            <span
-              class="text-lime-400"
-              data-aos="fade-up"
-              data-aos-anchor-placement="bottom-bottom"
-              >Problem Solutions</span
-            ><br />
-            For Digital Products
+            Solid Engineering<br />
+            <span class="text-gradient">Digital Impact</span>
           </h2>
           <p
-            class="text-gray-400 mb-8"
+            class="text-gray-400 mb-10 text-lg leading-relaxed"
             data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
           >
-            Nishith Shanilka is a full-stack developer with expertise in Python,
-            JavaScript, React Native, Node.js, and MySQL. He builds secure,
-            scalable applications and intuitive user interfaces. His work spans
-            personal finance, event management, and productivity systems.
+            I am a full-stack engineer and designer specialized in building
+            scaleable, high-performance applications. With a focus on clean
+            architecture and intuitive UI, I transform complex problems into
+            elegant digital experiences.
           </p>
 
           <!-- Features List -->
           <div
-            class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10"
+            class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
             data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
           >
-            <div class="flex items-center gap-3">
-              <span class="text-lime-400 text-lg">✔️</span>
-              <span>UI/UX Design</span>
+            <div class="flex items-center gap-4 group">
+              <span
+                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                >✓</span
+              >
+              <span class="font-medium text-gray-300">Full-stack Arch</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-lime-400 text-lg">✔️</span>
-              <span>Mobile Apllication</span>
+            <div class="flex items-center gap-4 group">
+              <span
+                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                >✓</span
+              >
+              <span class="font-medium text-gray-300">Mobile Native</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-lime-400 text-lg">✔️</span>
-              <span>Web Development</span>
+            <div class="flex items-center gap-4 group">
+              <span
+                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                >✓</span
+              >
+              <span class="font-medium text-gray-300">Cloud Systems</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-lime-400 text-lg">✔️</span>
-              <span>SEO</span>
+            <div class="flex items-center gap-4 group">
+              <span
+                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                >✓</span
+              >
+              <span class="font-medium text-gray-300">Perf Audit</span>
             </div>
           </div>
 
@@ -200,1082 +363,318 @@
           <div
             class="flex flex-col sm:flex-row items-start sm:items-center gap-6"
             data-aos="fade-up"
-            data-aos-anchor-placement="bottom-bottom"
           >
             <div
-              class="flex items-center gap-3 bg-[#0d0d0d] px-4 py-3 rounded-lg"
+              class="flex items-center gap-4 glass px-6 py-4 rounded-2xl w-full sm:w-auto"
             >
-              <span class="text-lime-400">📧</span>
+              <div
+                class="w-10 h-10 flex items-center justify-center bg-rose-600 rounded-full text-white"
+              >
+                <i class="fas fa-envelope"></i>
+              </div>
               <div>
-                <p class="text-xs text-gray-400">Email Us</p>
-                <p class="text-lime-400 font-semibold">shanilka799@gmail.com</p>
+                <p class="text-[10px] text-gray-500 uppercase font-bold">Email</p>
+                <p class="text-sm font-bold text-gray-300">shanilka799@gmail.com</p>
               </div>
             </div>
-            <div
-              class="flex items-center gap-3 bg-[#0d0d0d] px-4 py-3 rounded-lg"
-            >
-              <span class="text-lime-400">📞</span>
-              <div>
-                <p class="text-xs text-gray-400">Make A Call</p>
-                <p class="text-lime-400 font-semibold">+94 701094749</p>
-              </div>
-            </div>
+          </div>
           </div>
         </div>
 
         <!-- Right Image -->
         <div
           class="relative flex justify-center items-center"
-          data-aos="fade-down-left"
+          data-aos="zoom-in-left"
         >
-          <!-- Main Image -->
-          <img
-            src="./assets/images/myImage2.jpg"
-            alt="Nishith Shanilka"
-            class="w-80 h-96 object-cover shadow-lg"
-          />
-
-          <!-- Floating Tag: Top Right -->
-          <div
-            class="absolute top-62 right-12 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
-          >
+          <div class="relative max-w-sm">
+            <div
+              class="absolute -top-10 -left-10 w-40 h-40 bg-rose-600/10 rounded-full blur-3xl"
+            ></div>
+            <div
+              class="absolute -bottom-10 -right-10 w-40 h-40 bg-rose-600/10 rounded-full blur-3xl"
+            ></div>
             <img
-              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              class="w-5 h-5"
+              src="./assets/images/myImage2.jpg"
+              alt="Nishith Shanilka"
+              class="w-full h-[500px] object-cover rounded-3xl grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
             />
-            Experience Developer
-          </div>
-
-          <!-- Floating Tag: Bottom Right -->
-          <div
-            class="absolute bottom-8 right-0 bg-white text-black rounded-full px-4 py-2 shadow-md flex items-center gap-2 text-sm font-semibold"
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              class="w-6 h-5 rounded-full"
-            />
-            Nishith Shanilka
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section
-      id="skills"
-      class="min-h-screen px-4 md:px-20 py-20 bg-[#66666600]"
-    >
-      <h2
-        class="text-2xl font-bold text-center text-lime-400 mb-10"
-        data-aos="zoom-in-up"
-      >
-        Skills & Experience
-      </h2>
-      <div class="flex justify-center items-center w-full bg-[#66666600]">
-        <div
-          class="w-screen text-center bg-[#0d0d0d] backdrop-blur-md rounded-xl shadow-md my-[40px] p-10 mt-4 mb-10 relative"
-        >
-          <div class="flex flex-wrap justify-center gap-10">
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-java-100.png"
-                  alt="Java"
-                  class="w-[50px] h-[50px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Java
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-mysql-100.png"
-                  alt="MySQL"
-                  class="w-[38px] h-[38px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                MySQL
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-html-100.png"
-                  alt="HTML"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                HTML
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-css-100.png"
-                  alt="CSS"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">CSS</p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-javascript-100.png"
-                  alt="JavaScript"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                JavaScript
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-python-100.png"
-                  alt="Python"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Python
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-react-100.png"
-                  alt="React"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                React
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-flutter-100.png"
-                  alt="Flutter"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Flutter
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-bootstrap-100.png"
-                  alt="Bootstrap"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Bootstrap
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-spring-boot-100.png"
-                  alt="Spring"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Spring
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-nodejs-100.png"
-                  alt="NodeJS"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                NodeJS
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-typescript-100.png"
-                  alt="TypeScript"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                TypeScript
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-express-js-50.png"
-                  alt="Express"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Express
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-mongo-db-64.png"
-                  alt="MongoDB"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                MongoDB
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-figma-100.png"
-                  alt="Figma"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Figma
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-tailwind-css-100.png"
-                  alt="TailwindCss"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                TailwindCss
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-material-ui-100.png"
-                  alt="MUI"
-                  class="w-[44px] h-[44px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">MUI</p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-redux-100.png"
-                  alt="Redux"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Redux
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-json-web-token-100.png"
-                  alt="jwt"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">JWT</p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-expo-100.png"
-                  alt="Expo"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Expo
-              </p>
-            </div>
-            <div
-              class="flex flex-col items-center text-center m-2.5"
-              data-aos="zoom-in-up"
-            >
-              <div
-                class="flex justify-center items-center w-16 h-16 border border-[#9b9b9b5d] rounded-lg transform -rotate-45 transition-shadow duration-300"
-              >
-                <img
-                  src="./assets/icon/icons8-docker-100.png"
-                  alt="Docker"
-                  class="w-[46px] h-[46px] transform rotate-45"
-                />
-              </div>
-              <p class="mt-7 text-base text-white" data-aos="zoom-in-up">
-                Docker
-              </p>
-            </div>
+    <!-- Skills Section (High-Impact Ticker UI) -->
+    <section id="skills" class="relative overflow-hidden bg-black py-40">
+      <!-- Background Text Elements -->
+      <div class="absolute inset-0 flex flex-col justify-center items-center opacity-[0.03] select-none pointer-events-none space-y-20">
+        <h2 class="text-[20vw] font-black leading-none">INNOVATE</h2>
+        <h2 class="text-[20vw] font-black leading-none">BUILD</h2>
+        <h2 class="text-[20vw] font-black leading-none">SCALE</h2>
+      </div>
+
+      <div class="relative z-20">
+        <!-- Main Ticker Heading -->
+        <div class="max-w-7xl mx-auto px-6 mb-32 text-center" data-aos="fade-up">
+           <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-6">02 — Expertise</p>
+           <h2 class="text-6xl md:text-9xl font-black mb-4">WE DESIGN</h2>
+           <h2 class="text-6xl md:text-9xl font-black text-rose-600">WE BUILD</h2>
+        </div>
+
+        <!-- Ticker 01: High-Speed Ribbon -->
+        <div class="ticker-ribbon">
+          <div class="ticker-content">
+            <!-- First Set -->
+            <div class="ticker-item">JAVA <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">SPRING BOOT <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">REACT <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">NODE JS <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">MYSQL <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">TAILWIND CSS <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">PYTHON <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">FIGMA <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">RED_TECH <i class="fas fa-plus"></i></div>
+            <!-- Duplicate for Seamless Loop -->
+            <div class="ticker-item">JAVA <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">SPRING BOOT <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">REACT <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">NODE JS <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">MYSQL <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">TAILWIND CSS <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">PYTHON <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">FIGMA <i class="fas fa-plus"></i></div>
+            <div class="ticker-item">RED_TECH <i class="fas fa-plus"></i></div>
           </div>
+        </div>
+
+        <!-- Ticker 02: Reverse Ribbon -->
+        <div class="ticker-ribbon ticker-ribbon-reverse">
+          <div class="ticker-content-reverse">
+            <!-- First Set -->
+            <div class="ticker-item">DOCKER <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">JWT <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">REDUX <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">POSTGRESQL <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">PRISMA <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">EXPRESS <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">REST API <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">FULL_STACK <i class="fas fa-snowflake"></i></div>
+            <!-- Duplicate for Seamless Loop -->
+            <div class="ticker-item">DOCKER <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">JWT <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">REDUX <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">POSTGRESQL <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">PRISMA <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">EXPRESS <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">REST API <i class="fas fa-snowflake"></i></div>
+            <div class="ticker-item">FULL_STACK <i class="fas fa-snowflake"></i></div>
+          </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mt-32 text-center" data-aos="fade-up">
+          <h2 class="text-6xl md:text-9xl font-black">WE SCALE</h2>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section
-      id="projects"
-      class="min-h-screen py-20 px-6 md:px-12 lg:px-16 max-w-7xl mx-auto bg-[#0d0d0d]"
-    >
-      <div
-        class="mb-14"
-        data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine"
-      >
-        <span
-          class="text-gray-300 text-sm"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-          >Latest Works</span
-        >
-        <h2
-          class="text-4xl md:text-5xl font-bold mt-2"
-          data-aos="fade-right"
-          data-aos-offset="300"
-          data-aos-easing="ease-in-sine"
-        >
-          Explore My Popular
-          <span
-            class="text-lime-400"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-            >Projects</span
-          >
-        </h2>
+    <section id="projects" class="min-h-screen py-32 px-6 md:px-20 relative overflow-hidden">
+      <!-- Section Header -->
+      <div class="max-w-7xl mx-auto mb-20">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div data-aos="fade-right">
+            <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
+            <h2 class="text-5xl md:text-7xl font-black leading-tight">
+              Selected<br />
+              <span class="text-gradient">Projects</span>
+            </h2>
+          </div>
+          <p class="text-gray-400 max-w-md md:mb-4" data-aos="fade-left">
+            A curation of digital solutions focused on efficiency, scalability, and exceptional user experience.
+          </p>
+        </div>
       </div>
 
-      <div class="flex flex-col gap-20">
-        <!-- 01 Crop Monitoring System -->
-        <div class="flex flex-col md:flex-row gap-10 items-center">
-          <div
-            class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
-              alt="Crop Monitoring System"
-              class="w-full h-auto object-contain rounded-md"
-            />
+      <!-- Modern Grid Layout -->
+      <div class="max-w-7xl mx-auto space-y-40">
+        <!-- Project 01 -->
+        <div class="group flex flex-col md:flex-row gap-16 items-center">
+          <div class="w-full md:w-1/2" data-aos="fade-right">
+            <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
+              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <img
+                src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
+                alt="Crop Monitoring"
+                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              />
+            </div>
           </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">Green Shadow</span>
-            <h3 class="text-3xl font-bold mt-2">Crop Monitoring System</h3>
-            <p class="text-gray-400 mt-3">
-              Frontend with HTML, Tailwind CSS | Backend with Spring Boot.
+          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
+            <div class="flex items-center gap-4">
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Fintech</span>
+              <div class="h-px flex-1 bg-white/10"></div>
+            </div>
+            <h3 class="text-4xl font-bold">Crop Monitoring System</h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              A comprehensive digital solution for real-time agricultural management, featuring advanced monitoring and reporting capabilities.
             </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-              <a
-                href="https://github.com/DonShanilka/greenShadow-SpringBoot-BackEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Backend (GitHub)</a
-              >
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">React</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Spring Boot</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">PostgreSQL</span>
+            </div>
+            <div class="pt-4 flex gap-6">
+              <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+                <span>View Source</span>
+                <i class="fas fa-external-link-alt text-xs"></i>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- 02 Hotel Management System -->
-        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
-          <div
-            class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-left"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
-              alt="Hotel Management System"
-              class="w-full h-auto object-contain rounded-md"
-            />
+        <!-- Project 02 -->
+        <div class="group flex flex-col md:flex-row-reverse gap-16 items-center">
+          <div class="w-full md:w-1/2" data-aos="fade-left">
+            <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
+              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <img
+                src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
+                alt="Hotel Management"
+                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              />
+            </div>
           </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">Blue Beach Villa</span>
-            <h3 class="text-3xl font-bold mt-2">Hotel Management System</h3>
-            <p class="text-gray-400 mt-3">
-              React + Tailwind CSS | Express.js + Node.js + MySQL + Prisma.
+          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-right">
+            <div class="flex items-center gap-4">
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Hospitality</span>
+              <div class="h-px flex-1 bg-white/10"></div>
+            </div>
+            <h3 class="text-4xl font-bold">Hotel Management System</h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              Streamlining hospitality operations with an integrated booking and resource management engine built for scale.
             </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/hotel_management_system-frontend"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-              <a
-                href="https://github.com/DonShanilka/hotelmanager_expressjs_backend"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Backend (GitHub)</a
-              >
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">React</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">NodeJS</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Prisma</span>
+            </div>
+            <div class="pt-4 flex gap-6">
+              <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+                <span>View Source</span>
+                <i class="fas fa-external-link-alt text-xs"></i>
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- 03 Food Delivery App -->
-        <div class="flex flex-col md:flex-row gap-10 items-center">
-          <div
-            class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
-              alt="Food Delivery App"
-              class="w-full h-auto object-contain rounded-md"
-            />
+        <!-- Project 03 -->
+        <div class="group flex flex-col md:flex-row gap-16 items-center">
+          <div class="w-full md:w-1/2" data-aos="fade-right">
+            <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
+              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <img
+                src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
+                alt="Food Delivery"
+                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              />
+            </div>
           </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">Hot Plate</span>
-            <h3 class="text-3xl font-bold mt-2">Food Delivery App</h3>
-            <p class="text-gray-400 mt-3">
-              React Native + Tailwind CSS | Express.js + Node.js + MySQL +
-              TypeScript.
+          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
+            <div class="flex items-center gap-4">
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Mobile</span>
+              <div class="h-px flex-1 bg-white/10"></div>
+            </div>
+            <h3 class="text-4xl font-bold">Food Delivery App</h3>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              A high-performance mobile application delivering seamless food ordering experiences with real-time tracking.
             </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-              <a
-                href="https://github.com/DonShanilka/hotPlate_MobileApp_BackEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Backend (GitHub)</a
-              >
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">React Native</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">MySQL</span>
+              <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Express</span>
+            </div>
+            <div class="pt-4 flex gap-6">
+              <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+                <span>View Source</span>
+                <i class="fas fa-external-link-alt text-xs"></i>
+              </a>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 04 MoneyMap Expense Tracker -->
-        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
-          <div
-            class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-left"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/b6/63/f6/b663f6645a832506231c4f94d266ab63.jpg"
-              alt="MoneyMap Tracker"
-              class="w-full h-auto object-contain rounded-md"
-            />
-          </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">MoneyMap</span>
-            <h3 class="text-3xl font-bold mt-2">Expense Tracker</h3>
-            <p class="text-gray-400 mt-3">
-              React + Tailwind CSS + JavaScript | Node.js + Express.js + MySQL.
-            </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/moneyMap-personal-expense-tracker-web-frontEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-              <a
-                href="https://github.com/DonShanilka/MoneyMap-personal-expense-tracker-backEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Backend (GitHub)</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- 05 Real Estate App -->
-        <div class="flex flex-col md:flex-row gap-10 items-center">
-          <div
-            class="bg-neutral-300 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-right"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/f3/05/73/f30573ef0184d1ffd1523b1faa73dfe7.jpg"
-              alt="RoofTop Real Estate"
-              class="w-full h-auto object-contain rounded-md"
-            />
-          </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">RoofTop</span>
-            <h3 class="text-3xl font-bold mt-2">Real Estate App</h3>
-            <p class="text-gray-400 mt-3">
-              Swift + SwiftUI for iOS mobile real estate listings and
-              management.
-            </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/RoofTop--RealEstateApp--Swift-"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-            </div>
-          </div>
-        </div>
-
-        <!-- 06 POS System -->
-        <div class="flex flex-col md:flex-row-reverse gap-10 items-center">
-          <div
-            class="bg-neutral-200 p-10 rounded-lg w-full md:w-1/2"
-            data-aos="fade-left"
-            data-aos-offset="300"
-            data-aos-easing="ease-in-sine"
-          >
-            <img
-              src="https://i.pinimg.com/736x/f0/8f/36/f08f3630b1ae43d18451dd1d329bee7f.jpg"
-              alt="Wilma POS System"
-              class="w-full h-auto object-contain rounded-md"
-            />
-          </div>
-          <div
-            class="w-full md:w-1/2"
-            data-aos="fade-up"
-            data-aos-anchor-placement="center-bottom"
-            data-aos-offset="200"
-          >
-            <span class="text-lime-400 text-sm">Wilma Rest</span>
-            <h3 class="text-3xl font-bold mt-2">POS System</h3>
-            <p class="text-gray-400 mt-3">
-              HTML + Bootstrap + JavaScript (AJAX) | Node.js + Express.js +
-              MongoDB.
-            </p>
-            <div class="flex gap-3 mt-6 flex-wrap">
-              <a
-                href="https://github.com/DonShanilka/wilma_Boostrap_pos_system"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Frontend (GitHub)</a
-              >
-              <a
-                href="https://github.com/DonShanilka/wilmaResturentBackEnd"
-                target="_blank"
-                class="bg-neutral-800 text-white rounded-full px-4 py-2 text-sm"
-                >Backend (GitHub)</a
-              >
-            </div>
-          </div>
-        </div>
-        <div
-          class="flex justify-center mt-8"
-          data-aos="fade-up"
-          data-aos-anchor-placement="center-bottom"
-          data-aos-offset="200"
-        >
-          <a href="https://github.com/DonShanilka">
-            <button
-              class="bg-lime-400 text-black px-6 py-2 rounded-xl hover:bg-lime-500 transition"
-            >
-              View More Projects &gt;
-            </button>
-          </a>
-        </div>
+      <!-- Footer Project Link -->
+      <div class="max-w-7xl mx-auto mt-40 flex justify-center" data-aos="fade-up">
+        <a href="https://github.com/DonShanilka" target="_blank" class="group relative px-12 py-5 bg-white/5 glass border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500">
+          <span class="relative z-10">See all repositories on GitHub</span>
+          <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+        </a>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section
-      id="contact"
-      class="min-h-screen flex items-center bg-black py-24 px-6 md:px-16 lg:px-24"
-    >
-      <div class="container mx-auto">
-        <!-- Two column layout -->
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
-          <!-- Left Column - Text -->
-          <div class="w-full lg:w-1/2">
-            <div
-              class="mb-8"
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
-            >
-              <p class="text-gray-400">Get In Touch</p>
-              <h2
-                class="text-4xl md:text-5xl font-bold text-white mt-2"
-                data-aos="fade-up"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-duration="500"
-              >
-                Let's Talk For your <br />
-                <span class="text-lime-400">Next Projects</span>
-              </h2>
+    <section id="contact" class="py-40 px-6 md:px-20 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-start">
+        <!-- Left Side: Motivation -->
+        <div class="lg:w-1/2" data-aos="fade-right">
+          <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">
+            04 — Contact
+          </p>
+          <h2 class="text-5xl md:text-7xl font-black leading-tight mb-8">
+            Ready to start a<br />
+            <span class="text-gradient">New Project?</span>
+          </h2>
+          <p class="text-gray-400 text-xl leading-relaxed mb-12 max-w-md">
+            I'm currently available for freelance work and full-time positions. Let's create something extraordinary together.
+          </p>
+
+          <div class="space-y-6">
+            <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
+              <div class="w-14 h-14 bg-rose-600 flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-rose-600/20">
+                <i class="fas fa-paper-plane"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Email</p>
+                <p class="text-white text-lg font-bold">shanilka799@gmail.com</p>
+              </div>
             </div>
-
-            <p
-              class="text-gray-400 mb-10"
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
-              data-aos-duration="900"
-            >
-              Sed ut perspiciatis unde omnin natus totam<br />
-              rem aperiam eaque inventore veritatis
-            </p>
-
-            <!-- Features with check icons -->
-            <div class="space-y-4">
-              <div
-                class="flex items-center gap-4"
-                data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine"
-                data-aos-duration="400"
-              >
-                <span class="bg-lime-400 text-black p-1 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span class="text-gray-300">2+ Years Of Experience</span>
+            <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
+              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-rose-600 text-xl">
+                <i class="fas fa-phone"></i>
               </div>
-
-              <div
-                class="flex items-center gap-4"
-                data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine"
-                data-aos-duration="600"
-              >
-                <span class="bg-lime-400 text-black p-1 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span class="text-gray-300">Professional Web Designer</span>
-              </div>
-
-              <div
-                class="flex items-center gap-4"
-                data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine"
-                data-aos-duration="800"
-              >
-                <span class="bg-lime-400 text-black p-1 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span class="text-gray-300">Mobile Apps Design</span>
-              </div>
-
-              <div
-                class="flex items-center gap-4"
-                data-aos="fade-right"
-                data-aos-offset="300"
-                data-aos-easing="ease-in-sine"
-                data-aos-duration="1000"
-              >
-                <span class="bg-lime-400 text-black p-1 rounded-full">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </span>
-                <span class="text-gray-300">Custom Design Support</span>
+              <div>
+                <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Phone</p>
+                <p class="text-white text-lg font-bold">+94 701094749</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Right Column - Form -->
-          <div class="w-full lg:w-1/2 space-y-6">
-            <div class="grid grid-cols-1 gap-6">
-              <!-- Full Name -->
-              <div>
-                <label
-                  for="name"
-                  class="block text-sm font-medium text-gray-400 mb-1"
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  >Full Name</label
-                >
-                <div
-                  class="relative"
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                >
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Richard D. Hammond"
-                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
-                  />
-                  <div
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
+        <!-- Right Side: Contact Form -->
+        <div class="lg:w-1/2 w-full" data-aos="fade-left">
+          <div class="glass-card p-8 md:p-12 rounded-[2.5rem] relative">
+            <form action="#" class="space-y-8">
+              <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Your Name</label>
+                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
+                </div>
+                <div class="space-y-3">
+                  <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
+                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
                 </div>
               </div>
-
-              <!-- Email Address -->
-              <div>
-                <label
-                  for="email"
-                  class="block text-sm font-medium text-gray-400 mb-1"
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  >Email Address</label
-                >
-                <div
-                  class="relative"
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                >
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="support@gmail.com"
-                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
-                  />
-                  <div
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                      />
-                      <path
-                        d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                      />
-                    </svg>
-                  </div>
-                </div>
+              <div class="space-y-3">
+                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Subject</label>
+                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
               </div>
-
-              <!-- Phone Number -->
-              <div>
-                <label
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  for="phone"
-                  class="block text-sm font-medium text-gray-400 mb-1"
-                  >Phone Number</label
-                >
-                <div class="relative">
-                  <input
-                    data-aos="fade-left"
-                    data-aos-offset="100"
-                    data-aos-easing="ease-in-sine"
-                    data-aos-duration="700"
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+880 (123) 456 99"
-                    class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
-                  />
-                  <div
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-500"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                      />
-                    </svg>
-                  </div>
-                </div>
+              <div class="space-y-3">
+                <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
+                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none resize-none"></textarea>
               </div>
-
-              <!-- Subject -->
-              <div>
-                <label
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  for="subject"
-                  class="block text-sm font-medium text-gray-400 mb-1"
-                  >Subject</label
-                >
-                <input
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder="I would like to discuss..."
-                  class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
-                />
-              </div>
-
-              <!-- Message -->
-              <div>
-                <label
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  for="message"
-                  class="block text-sm font-medium text-gray-400 mb-1"
-                  >Message</label
-                >
-                <textarea
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Write message"
-                  class="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-white focus:outline-none focus:border-lime-400"
-                ></textarea>
-              </div>
-
-              <!-- Submit button -->
-              <div class="mt-4">
-                <button
-                  type="submit"
-                  class="bg-lime-400 hover:bg-lime-500 text-black font-medium py-3 px-6 rounded-md flex items-center gap-2 transition-colors"
-                  data-aos="fade-left"
-                  data-aos-offset="100"
-                  data-aos-easing="ease-in-sine"
-                  data-aos-duration="700"
-                >
-                  Send Us Message
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
+              <button class="w-full bg-rose-600 text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-rose-600/20 active:scale-95">
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -1292,7 +691,7 @@
           <!-- Logo and Description -->
           <div class="mb-8 md:mb-0">
             <div class="flex items-center">
-              <span class="text-green-400 text-2xl mr-2">•</span>
+              <span class="text-rose-600 text-2xl mr-2">•</span>
               <h2 class="text-white text-2xl font-bold">P.D.N Shanilka</h2>
             </div>
           </div>
@@ -1303,7 +702,7 @@
             <div class="flex justify-center mb-8 -mt-16">
               <a
                 href="#"
-                class="bg-lime-400 hover:bg-lime-500 text-black p-3 rounded-full transition duration-300"
+                class="bg-rose-600 hover:bg-rose-700 text-black p-3 rounded-full transition duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -1329,7 +728,7 @@
           <div class="mb-8 md:mb-0">
             <h3 class="text-white text-lg font-medium mb-4">Address</h3>
             <div class="flex items-start mb-3">
-              <span class="text-lime-400 mr-2">
+              <span class="text-rose-600 mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -1349,7 +748,7 @@
               </div>
             </div>
             <div class="flex items-center mb-3">
-              <span class="text-lime-400 mr-2">
+              <span class="text-rose-600 mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -1364,12 +763,12 @@
                   />
                 </svg>
               </span>
-              <a href="mailto:support@gmail.com" class="hover:text-green-400"
+              <a href="mailto:support@gmail.com" class="hover:text-rose-600"
                 >shanilka799@gmail.com</a
               >
             </div>
             <div class="flex items-center">
-              <span class="text-lime-400 mr-2">
+              <span class="text-rose-600 mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -1398,6 +797,9 @@
       function toggleMenu() {
         const menu = document.getElementById("mobile-menu");
         menu.classList.toggle("hidden");
+        menu.classList.toggle("animate-in");
+        menu.classList.toggle("fade-in");
+        menu.classList.toggle("slide-in-from-top-4");
       }
     </script>
 
@@ -1406,6 +808,7 @@
     <script>
       AOS.init();
     </script>
+    <script src="./javaScripts/backGroundAnimation.js"></script>
 
     <!-- <script>
       setTimeout(() => {
