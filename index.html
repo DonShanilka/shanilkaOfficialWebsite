@@ -63,73 +63,168 @@
         -webkit-text-fill-color: transparent;
       }
 
-      /* Ticker System */
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-
-      @keyframes marquee-reverse {
-        0% { transform: translateX(-50%); }
-        100% { transform: translateX(0); }
-      }
-
-      .ticker-container {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding: 40px 0;
-        z-index: 10;
-        background: black;
-      }
-
-      .ticker-ribbon {
-        white-space: nowrap;
+      /* Circuit System Expansion */
+      .core-switcher {
         display: flex;
-        padding: 20px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 4rem;
+        padding: 0 1rem;
+      }
+
+      .core-tab {
+        padding: 0.75rem 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        color: #666;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .core-tab:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .core-tab.active {
         background: var(--accent);
         color: black;
-        font-weight: 900;
+        border-color: #fff;
+        box-shadow: 0 0 30px var(--accent-glow);
+      }
+
+      .circuit-container {
+        position: relative;
+        width: 100%;
+        height: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at center, rgba(225, 29, 72, 0.05) 0%, transparent 70%);
+      }
+
+      .tech-core {
+        position: relative;
+        z-index: 30;
+        width: 180px;
+        height: 180px;
+        background: #000;
+        border: 2px solid var(--accent);
+        border-radius: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 50px var(--accent-glow);
+        transform: rotate(45deg);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .tech-core-inner {
+        transform: rotate(-45deg);
+        text-align: center;
+      }
+
+      .tech-core h3 {
         font-size: 1.5rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        transform: rotate(-3deg) scale(1.1);
-        margin: 20px -5%;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        color: #fff;
       }
 
-      .ticker-ribbon-reverse {
-        background: #111;
-        color: var(--accent);
-        transform: rotate(2deg) scale(1.1);
-        border-top: 1px solid rgba(225, 29, 72, 0.2);
-        border-bottom: 1px solid rgba(225, 29, 72, 0.2);
-      }
-
-      .ticker-content {
-        display: inline-flex;
-        animation: marquee 30s linear infinite;
-        gap: 2rem;
-        padding-right: 2rem;
-      }
-
-      .ticker-content-reverse {
-        display: inline-flex;
-        animation: marquee-reverse 40s linear infinite;
-        gap: 2rem;
-        padding-right: 2rem;
-      }
-
-      .ticker-item {
+      .tech-node {
+        position: absolute;
+        z-index: 30;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.75rem;
+        transition: all 0.4s ease;
+        cursor: pointer;
       }
 
-      .ticker-item i {
-        font-size: 1rem;
-        opacity: 0.8;
+      .tech-node:hover {
+        background: var(--accent);
+        border-color: #fff;
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 10px 30px var(--accent-glow);
       }
+
+      .tech-node:hover span {
+        color: black;
+      }
+
+      .tech-node img {
+        width: 24px;
+        height: 24px;
+        transition: filter 0.3s;
+      }
+
+      .tech-node:hover img {
+        filter: brightness(0);
+      }
+
+      .tech-node span {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #999;
+        letter-spacing: 0.05em;
+      }
+
+      /* Circuit Lines SVG */
+      .circuit-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      .circuit-line {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 1.5;
+        stroke-dasharray: 10;
+        opacity: 0.2;
+      }
+
+      .circuit-line-active {
+        fill: none;
+        stroke: var(--accent);
+        stroke-width: 2;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: circuit-flow 3s linear infinite;
+        opacity: 0.8;
+        filter: drop-shadow(0 0 5px var(--accent));
+      }
+
+      @keyframes circuit-flow {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      .node-float { animation: float 4s ease-in-out infinite; }
+      .node-float-delayed { animation: float 4s ease-in-out infinite 2s; }
 
       .glow-blob {
         position: fixed;
@@ -403,75 +498,62 @@
       </div>
     </section>
 
-    <!-- Skills Section (High-Impact Ticker UI) -->
-    <section id="skills" class="relative overflow-hidden bg-black py-40">
-      <!-- Background Text Elements -->
-      <div class="absolute inset-0 flex flex-col justify-center items-center opacity-[0.03] select-none pointer-events-none space-y-20">
-        <h2 class="text-[20vw] font-black leading-none">INNOVATE</h2>
-        <h2 class="text-[20vw] font-black leading-none">BUILD</h2>
-        <h2 class="text-[20vw] font-black leading-none">SCALE</h2>
+    <!-- Skills Section (Multi-Core Circuit UI) -->
+    <section id="skills" class="relative bg-black py-40 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-12" data-aos="fade-up">
+           <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
+           <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
+        </div>
+
+        <!-- Core Switcher Tabs -->
+        <div class="core-switcher" data-aos="fade-up" data-aos-delay="100">
+          <button class="core-tab active" onclick="switchCore('backend', this)">Backend</button>
+          <button class="core-tab" onclick="switchCore('frontend', this)">Frontend</button>
+          <button class="core-tab" onclick="switchCore('mobile', this)">Mobile</button>
+          <button class="core-tab" onclick="switchCore('aiml', this)">AI / ML</button>
+          <button class="core-tab" onclick="switchCore('cloud', this)">Cloud</button>
+        </div>
+
+        <div class="circuit-container" id="circuit-window">
+          <!-- SVG Background Connections -->
+          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
+            <!-- Dynamic paths will be injected here -->
+          </svg>
+
+          <!-- Core Node -->
+          <div class="tech-core group hover:scale-110" id="tech-core">
+            <div class="tech-core-inner" id="core-content">
+              <i class="fas fa-microchip text-rose-600 text-3xl mb-2"></i>
+              <h3 id="core-title">CORE</h3>
+              <p class="text-[10px] text-gray-500 font-bold tracking-widest leading-none" id="core-subtitle">BACKEND</p>
+            </div>
+          </div>
+
+          <!-- Skill Nodes injected dynamically -->
+          <div id="skill-nodes-container"></div>
+        </div>
       </div>
 
-      <div class="relative z-20">
-        <!-- Main Ticker Heading -->
-        <div class="max-w-7xl mx-auto px-6 mb-32 text-center" data-aos="fade-up">
-           <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-6">02 — Expertise</p>
-           <h2 class="text-6xl md:text-9xl font-black mb-4">WE DESIGN</h2>
-           <h2 class="text-6xl md:text-9xl font-black text-rose-600">WE BUILD</h2>
-        </div>
-
-        <!-- Ticker 01: High-Speed Ribbon -->
-        <div class="ticker-ribbon">
-          <div class="ticker-content">
-            <!-- First Set -->
-            <div class="ticker-item">JAVA <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">SPRING BOOT <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">REACT <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">NODE JS <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">MYSQL <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">TAILWIND CSS <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">PYTHON <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">FIGMA <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">RED_TECH <i class="fas fa-plus"></i></div>
-            <!-- Duplicate for Seamless Loop -->
-            <div class="ticker-item">JAVA <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">SPRING BOOT <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">REACT <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">NODE JS <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">MYSQL <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">TAILWIND CSS <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">PYTHON <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">FIGMA <i class="fas fa-plus"></i></div>
-            <div class="ticker-item">RED_TECH <i class="fas fa-plus"></i></div>
-          </div>
-        </div>
-
-        <!-- Ticker 02: Reverse Ribbon -->
-        <div class="ticker-ribbon ticker-ribbon-reverse">
-          <div class="ticker-content-reverse">
-            <!-- First Set -->
-            <div class="ticker-item">DOCKER <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">JWT <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">REDUX <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">POSTGRESQL <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">PRISMA <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">EXPRESS <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">REST API <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">FULL_STACK <i class="fas fa-snowflake"></i></div>
-            <!-- Duplicate for Seamless Loop -->
-            <div class="ticker-item">DOCKER <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">JWT <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">REDUX <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">POSTGRESQL <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">PRISMA <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">EXPRESS <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">REST API <i class="fas fa-snowflake"></i></div>
-            <div class="ticker-item">FULL_STACK <i class="fas fa-snowflake"></i></div>
-          </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 mt-32 text-center" data-aos="fade-up">
-          <h2 class="text-6xl md:text-9xl font-black">WE SCALE</h2>
+      <!-- Tech Stack Footer -->
+      <div class="max-w-7xl mx-auto px-6 mt-40 border-t border-white/5 pt-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+           <div class="flex flex-col items-center gap-2">
+             <span class="text-xs font-bold tracking-[0.4em] uppercase">Security</span>
+             <p class="text-sm">JWT / OAuth2</p>
+           </div>
+           <div class="flex flex-col items-center gap-2">
+             <span class="text-xs font-bold tracking-[0.4em] uppercase">Data</span>
+             <p class="text-sm">PostgreSQL / Prisma</p>
+           </div>
+           <div class="flex flex-col items-center gap-2">
+             <span class="text-xs font-bold tracking-[0.4em] uppercase">Ops</span>
+             <p class="text-sm">CI/CD / AWS</p>
+           </div>
+           <div class="flex flex-col items-center gap-2">
+             <span class="text-xs font-bold tracking-[0.4em] uppercase">Frontend</span>
+             <p class="text-sm">NextJS / React</p>
+           </div>
         </div>
       </div>
     </section>
@@ -794,6 +876,169 @@
     ></script>
 
     <script>
+      const skillData = {
+        backend: {
+          title: "CORE",
+          subtitle: "BACKEND",
+          icon: "fa-microchip",
+          nodes: [
+            { name: "JAVA", icon: "./assets/icon/icons8-java-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
+            { name: "SPRING BOOT", icon: "./assets/icon/icons8-java-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
+            { name: "NODE.JS", icon: "./assets/icon/icons8-nodejs-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
+            { name: "MYSQL", icon: "./assets/icon/icons8-mysql-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
+            { name: "DOCKER", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
+            { name: "PYTHON", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+          ],
+          paths: [
+            "M500 400 L500 150 L300 150",
+            "M500 400 L700 400 L700 150 L850 150",
+            "M500 400 L250 400 L250 300 L150 300",
+            "M500 400 L500 650 L300 650",
+            "M500 400 L750 400 L750 550 L850 550",
+            "M500 400 L500 550 L150 550"
+          ]
+        },
+        frontend: {
+          title: "PIXEL",
+          subtitle: "FRONTEND",
+          icon: "fa-layer-group",
+          nodes: [
+            { name: "REACT", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
+            { name: "NEXT.JS", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
+            { name: "TAILWIND", icon: "./assets/icon/icons8-tailwind-css-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
+            { name: "TYPESCRIPT", icon: "./assets/icon/icons8-javascript-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
+            { name: "FIGMA", icon: "./assets/icon/icons8-figma-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
+            { name: "UI/UX", icon: "./assets/icon/icons8-figma-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+          ],
+          paths: [
+            "M500 400 L500 150 L300 150",
+            "M500 400 L700 400 L700 150 L850 150",
+            "M500 400 L250 400 L250 300 L150 300",
+            "M500 400 L500 650 L300 650",
+            "M500 400 L750 400 L750 550 L850 550",
+            "M500 400 L500 550 L150 550"
+          ]
+        },
+        mobile: {
+          title: "NATIVE",
+          subtitle: "MOBILE APP",
+          icon: "fa-mobile-alt",
+          nodes: [
+            { name: "REACT NATIVE", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
+            { name: "EXPO", icon: "./assets/icon/icons8-expo-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
+            { name: "FLUTTER", icon: "./assets/icon/icons8-react-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
+            { name: "FIREBASE", icon: "./assets/icon/icons8-json-web-token-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
+            { name: "IOS SWIFT", icon: "./assets/icon/icons8-react-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
+            { name: "ANDROID", icon: "./assets/icon/icons8-react-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+          ],
+          paths: [
+            "M500 400 L500 150 L300 150",
+            "M500 400 L700 400 L700 150 L850 150",
+            "M500 400 L250 400 L250 300 L150 300",
+            "M500 400 L500 650 L300 650",
+            "M500 400 L750 400 L750 550 L850 550",
+            "M500 400 L500 550 L150 550"
+          ]
+        },
+        aiml: {
+          title: "INTELL",
+          subtitle: "AI / ML",
+          icon: "fa-brain",
+          nodes: [
+            { name: "PYTHON", icon: "./assets/icon/icons8-python-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
+            { name: "TENSORFLOW", icon: "./assets/icon/icons8-python-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
+            { name: "PYTORCH", icon: "./assets/icon/icons8-python-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
+            { name: "OPENAI", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
+            { name: "SCIKIT-LEARN", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
+            { name: "LANGCHAIN", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+          ],
+          paths: [
+            "M500 400 L500 150 L300 150",
+            "M500 400 L700 400 L700 150 L850 150",
+            "M500 400 L250 400 L250 300 L150 300",
+            "M500 400 L500 650 L300 650",
+            "M500 400 L750 400 L750 550 L850 550",
+            "M500 400 L500 550 L150 550"
+          ]
+        },
+        cloud: {
+          title: "DEVOPS",
+          subtitle: "CLOUD / INFRA",
+          icon: "fa-cloud",
+          nodes: [
+            { name: "AWS", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
+            { name: "DOCKER", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
+            { name: "KUBERNETES", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
+            { name: "CI/CD", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
+            { name: "TERRAFORM", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
+            { name: "AZURE", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+          ],
+          paths: [
+            "M500 400 L500 150 L300 150",
+            "M500 400 L700 400 L700 150 L850 150",
+            "M500 400 L250 400 L250 300 L150 300",
+            "M500 400 L500 650 L300 650",
+            "M500 400 L750 400 L750 550 L850 550",
+            "M500 400 L500 550 L150 550"
+          ]
+        }
+      };
+
+      function switchCore(type, element) {
+        // Update Tabs
+        document.querySelectorAll('.core-tab').forEach(tab => tab.classList.remove('active'));
+        element.classList.add('active');
+
+        const window = document.getElementById('circuit-window');
+        const nodesContainer = document.getElementById('skill-nodes-container');
+        const svgContainer = document.getElementById('circuit-svg');
+        const coreTitle = document.getElementById('core-title');
+        const coreSubtitle = document.getElementById('core-subtitle');
+        const coreIcon = document.querySelector('#tech-core i');
+        const data = skillData[type];
+
+        // Animate Core Out
+        document.getElementById('tech-core').classList.add('scale-0', 'opacity-0');
+        nodesContainer.style.opacity = '0';
+        svgContainer.style.opacity = '0';
+
+        setTimeout(() => {
+          // Update Content
+          coreTitle.innerText = data.title;
+          coreSubtitle.innerText = data.subtitle;
+          coreIcon.className = `fas ${data.icon} text-rose-600 text-3xl mb-2`;
+
+          // Update Nodes
+          nodesContainer.innerHTML = '';
+          data.nodes.forEach(node => {
+            const nodeDiv = document.createElement('div');
+            nodeDiv.className = `tech-node ${node.delay === 0 ? 'node-float' : 'node-float-delayed'}`;
+            nodeDiv.style = node.pos;
+            nodeDiv.innerHTML = `<img src="${node.icon}" alt="${node.name}"><span>${node.name}</span>`;
+            nodesContainer.appendChild(nodeDiv);
+          });
+
+          // Update SVG Paths
+          svgContainer.innerHTML = '';
+          data.paths.forEach(pathD => {
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("class", "circuit-line-active");
+            path.setAttribute("d", pathD);
+            svgContainer.appendChild(path);
+          });
+
+          // Animate Core In
+          document.getElementById('tech-core').classList.remove('scale-0', 'opacity-0');
+          nodesContainer.style.opacity = '1';
+          svgContainer.style.opacity = '1';
+        }, 500);
+      }
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', () => {
+        switchCore('backend', document.querySelector('.core-tab.active'));
+      });
+
       function toggleMenu() {
         const menu = document.getElementById("mobile-menu");
         menu.classList.toggle("hidden");
@@ -809,11 +1054,5 @@
       AOS.init();
     </script>
     <script src="./javaScripts/backGroundAnimation.js"></script>
-
-    <!-- <script>
-      setTimeout(() => {
-        window.location.href = "index.html"; // or your main URL
-      }, 3000); // 3 seconds
-    </script> -->
   </body>
 </html>
