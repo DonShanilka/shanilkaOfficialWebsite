@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setCanvasSize();
   window.addEventListener("resize", setCanvasSize);
 
-  const colors = ["#f43f5e", "#e11d48", "#be123c", "#9f1239"];
+  const colors = ["#ff4d00", "#ff6a00", "#ff8800", "#ffb800"];
 
   class Beam {
     constructor() {

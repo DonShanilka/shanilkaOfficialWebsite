@@ -14,10 +14,10 @@
 
     <style>
       :root {
-        --accent: #e11d48; /* rose-600 */
-        --accent-glow: rgba(225, 29, 72, 0.3);
-        --glass-bg: rgba(255, 255, 255, 0.03);
-        --glass-border: rgba(255, 255, 255, 0.1);
+        --accent: #ff4d00; /* Vibrant Orange-Red */
+        --accent-glow: rgba(255, 77, 0, 0.4);
+        --glass-bg: rgba(0, 0, 0, 0.4);
+        --glass-border: rgba(255, 255, 255, 0.08);
       }
 
       body {
@@ -57,7 +57,7 @@
       }
 
       .text-gradient {
-        background: linear-gradient(to right, #fff, var(--accent));
+        background: linear-gradient(to right, #fff, #ff4d00, #ffb800);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -107,7 +107,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: radial-gradient(circle at center, rgba(225, 29, 72, 0.05) 0%, transparent 70%);
+        background: radial-gradient(circle at center, rgba(255, 77, 0, 0.05) 0%, transparent 70%);
       }
 
       .tech-core {
@@ -221,13 +221,14 @@
 
       .glow-blob {
         position: fixed;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, var(--accent-glow) 0%, transparent 75%);
         border-radius: 50%;
-        filter: blur(100px);
+        filter: blur(120px);
         z-index: -1;
         pointer-events: none;
+        opacity: 0.6;
       }
 
       /* Custom scrollbar styling */
@@ -280,7 +281,7 @@
       class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5"
     >
       <div
-        class="text-rose-600 font-bold text-2xl tracking-tighter hover:scale-105 transition-transform cursor-pointer"
+        class="text-[#ff4d00] font-bold text-2xl tracking-tighter hover:scale-105 transition-transform cursor-pointer"
       >
         { N.S }
       </div>
@@ -291,7 +292,7 @@
         <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
         <a
           href="#contact"
-          class="bg-rose-600 text-white px-5 py-2 rounded-full font-medium hover:bg-rose-700 transition-all shadow-lg shadow-rose-600/20"
+          class="bg-[#ff4d00] text-white px-5 py-2 rounded-full font-medium hover:bg-[#e04400] transition-all shadow-lg shadow-[#ff4d00]/20"
           >Contact</a
         >
       </nav>
@@ -303,11 +304,11 @@
         </svg>
       </div>
       <nav id="mobile-menu" class="fixed top-[72px] left-0 w-full glass p-6 space-y-4 text-center md:hidden hidden">
-        <a href="#home" class="block hover:text-rose-600" onclick="toggleMenu()">Home</a>
-        <a href="#about" class="block hover:text-rose-600" onclick="toggleMenu()">About</a>
-        <a href="#skills" class="block hover:text-rose-600" onclick="toggleMenu()">Skills</a>
-        <a href="#projects" class="block hover:text-rose-600" onclick="toggleMenu()">Projects</a>
-        <a href="#contact" class="block hover:text-rose-600" onclick="toggleMenu()">Contact</a>
+        <a href="#home" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Home</a>
+        <a href="#about" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">About</a>
+        <a href="#skills" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Contact</a>
       </nav>
     </header>
 
@@ -316,11 +317,14 @@
       id="home"
       class="min-h-screen text-white flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative text-center"
     >
-      <div class="max-w-4xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
+      <div class="max-w-4xl mx-auto relative" data-aos="zoom-in" data-aos-duration="1000">
+        <!-- Hero Central Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#ff4d00]/10 blur-[150px] -z-10"></div>
+        
         <div class="flex flex-col items-center gap-8">
           <!-- Profile Badge -->
           <div class="group relative">
-            <div class="absolute -inset-1 bg-gradient-to-r from-rose-600 to-rose-400 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="absolute -inset-1 bg-gradient-to-r from-[#ff4d00] to-[#ffb800] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <img
               src="https://i.pinimg.com/736x/21/df/f2/21dff20921a681d45dc5f238290f193f.jpg"
               alt="Nishith Shanilka"
@@ -328,7 +332,7 @@
             />
           </div>
 
-          <p class="text-rose-500 text-xs font-bold tracking-[0.3em] uppercase" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-[#ff4d00] text-xs font-bold tracking-[0.3em] uppercase" data-aos="fade-up" data-aos-delay="200">
             Digital Solution Architect
           </p>
 
@@ -352,19 +356,19 @@
           <!-- Icon Grid -->
           <div class="flex gap-12 mb-12" data-aos="fade-up" data-aos-delay="600">
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
                 <i class="fas fa-layer-group"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Transform</span>
             </div>
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
                 <i class="fas fa-lightbulb"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Innovate</span>
             </div>
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-rose-500 text-xl group-hover:bg-rose-600 transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
                 <i class="fas fa-users-cog"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Lead</span>
@@ -377,7 +381,7 @@
             data-aos="fade-up"
             data-aos-delay="800"
           >
-            <span class="relative z-10 text-rose-500 group-hover:text-black">Step into the digital future</span>
+            <span class="relative z-10 text-[#ff4d00] group-hover:text-black">Step into the digital future</span>
             <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
           </a>
         </div>
@@ -390,7 +394,7 @@
         <!-- Left Content -->
         <div class="glass-card p-8 md:p-12 rounded-3xl">
           <p
-            class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4"
+            class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4"
             data-aos="fade-down-right"
           >
             01 — About Me
@@ -419,28 +423,28 @@
           >
             <div class="flex items-center gap-4 group">
               <span
-                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                class="bg-[#ff4d00]/10 p-2 rounded-lg text-[#ff4d00] group-hover:bg-[#ff4d00] group-hover:text-white transition-all"
                 >✓</span
               >
               <span class="font-medium text-gray-300">Full-stack Arch</span>
             </div>
             <div class="flex items-center gap-4 group">
               <span
-                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                class="bg-[#ff4d00]/10 p-2 rounded-lg text-[#ff4d00] group-hover:bg-[#ff4d00] group-hover:text-white transition-all"
                 >✓</span
               >
               <span class="font-medium text-gray-300">Mobile Native</span>
             </div>
             <div class="flex items-center gap-4 group">
               <span
-                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                class="bg-[#ff4d00]/10 p-2 rounded-lg text-[#ff4d00] group-hover:bg-[#ff4d00] group-hover:text-white transition-all"
                 >✓</span
               >
               <span class="font-medium text-gray-300">Cloud Systems</span>
             </div>
             <div class="flex items-center gap-4 group">
               <span
-                class="bg-rose-600/10 p-2 rounded-lg text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-all"
+                class="bg-[#ff4d00]/10 p-2 rounded-lg text-[#ff4d00] group-hover:bg-[#ff4d00] group-hover:text-white transition-all"
                 >✓</span
               >
               <span class="font-medium text-gray-300">Perf Audit</span>
@@ -492,10 +496,10 @@
     </section>
 
     <!-- Skills Section (Multi-Core Circuit UI) -->
-    <section id="skills" class="relative bg-black py-40 overflow-hidden">
+    <section id="skills" class="relative py-40 overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-12" data-aos="fade-up">
-           <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
+           <p class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
            <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
         </div>
 
@@ -517,7 +521,7 @@
           <!-- Core Node -->
           <div class="tech-core group hover:scale-110" id="tech-core">
             <div class="tech-core-inner" id="core-content">
-              <i class="fas fa-microchip text-rose-600 text-3xl mb-2"></i>
+              <i class="fas fa-microchip text-[#ff4d00] text-3xl mb-2"></i>
               <h3 id="core-title">CORE</h3>
               <p class="text-[10px] text-gray-500 font-bold tracking-widest leading-none" id="core-subtitle">BACKEND</p>
             </div>
@@ -557,7 +561,7 @@
       <div class="max-w-7xl mx-auto mb-20">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div data-aos="fade-right">
-            <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
+            <p class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
             <h2 class="text-5xl md:text-7xl font-black leading-tight">
               Selected<br />
               <span class="text-gradient">Projects</span>
@@ -575,7 +579,7 @@
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
                 alt="Crop Monitoring"
@@ -585,7 +589,7 @@
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
             <div class="flex items-center gap-4">
-              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Fintech</span>
+               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Fintech</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Crop Monitoring System</h3>
@@ -598,7 +602,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">PostgreSQL</span>
             </div>
             <div class="pt-4 flex gap-6">
-              <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+               <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -610,7 +614,7 @@
         <div class="group flex flex-col md:flex-row-reverse gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-left">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
                 alt="Hotel Management"
@@ -620,7 +624,7 @@
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-right">
             <div class="flex items-center gap-4">
-              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Hospitality</span>
+               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Hospitality</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Hotel Management System</h3>
@@ -633,7 +637,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Prisma</span>
             </div>
             <div class="pt-4 flex gap-6">
-              <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+               <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -645,7 +649,7 @@
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
                 alt="Food Delivery"
@@ -655,7 +659,7 @@
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
             <div class="flex items-center gap-4">
-              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-rose-500 tracking-widest uppercase">Mobile</span>
+               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Mobile</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Food Delivery App</h3>
@@ -668,7 +672,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Express</span>
             </div>
             <div class="pt-4 flex gap-6">
-              <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-rose-500 transition-colors">
+               <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -704,7 +708,7 @@
 
           <div class="space-y-6">
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-rose-600 flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-rose-600/20">
+              <div class="w-14 h-14 bg-[#ff4d00] flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-[#ff4d00]/20">
                 <i class="fas fa-paper-plane"></i>
               </div>
               <div>
@@ -713,7 +717,7 @@
               </div>
             </div>
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-rose-600 text-xl">
+              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-[#ff4d00] text-xl">
                 <i class="fas fa-phone"></i>
               </div>
               <div>
@@ -731,22 +735,22 @@
               <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Your Name</label>
-                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
+                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
                 </div>
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
+                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
                 </div>
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Subject</label>
-                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none" />
+                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
-                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-rose-600 transition-all outline-none resize-none"></textarea>
+                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none resize-none"></textarea>
               </div>
-              <button class="w-full bg-rose-600 text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-rose-600/20 active:scale-95">
+              <button class="w-full bg-[#ff4d00] text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-[#ff4d00]/20 active:scale-95">
                 Send Message
               </button>
             </form>
@@ -766,7 +770,7 @@
           <!-- Logo and Description -->
           <div class="mb-8 md:mb-0">
             <div class="flex items-center">
-              <span class="text-rose-600 text-2xl mr-2">•</span>
+              <span class="text-[#ff4d00] text-2xl mr-2">•</span>
               <h2 class="text-white text-2xl font-bold">P.D.N Shanilka</h2>
             </div>
           </div>
@@ -777,7 +781,7 @@
             <div class="flex justify-center mb-8 -mt-16">
               <a
                 href="#"
-                class="bg-rose-600 hover:bg-rose-700 text-black p-3 rounded-full transition duration-300"
+                class="bg-[#ff4d00] hover:bg-[#e04400] text-black p-3 rounded-full transition duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -803,7 +807,7 @@
           <div class="mb-8 md:mb-0">
             <h3 class="text-white text-lg font-medium mb-4">Address</h3>
             <div class="flex items-start mb-3">
-              <span class="text-rose-600 mr-2">
+              <span class="text-[#ff4d00] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -823,7 +827,7 @@
               </div>
             </div>
             <div class="flex items-center mb-3">
-              <span class="text-rose-600 mr-2">
+              <span class="text-[#ff4d00] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -838,12 +842,12 @@
                   />
                 </svg>
               </span>
-              <a href="mailto:support@gmail.com" class="hover:text-rose-600"
+              <a href="mailto:support@gmail.com" class="hover:text-[#ff4d00]"
                 >shanilka799@gmail.com</a
               >
             </div>
             <div class="flex items-center">
-              <span class="text-rose-600 mr-2">
+              <span class="text-[#ff4d00] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -999,7 +1003,7 @@
           // Update Content
           coreTitle.innerText = data.title;
           coreSubtitle.innerText = data.subtitle;
-          coreIcon.className = `fas ${data.icon} text-rose-600 text-3xl mb-2`;
+          coreIcon.className = `fas ${data.icon} text-[#ff4d00] text-3xl mb-2`;
 
           // Update Nodes
           nodesContainer.innerHTML = '';
