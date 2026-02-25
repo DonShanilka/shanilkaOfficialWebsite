@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setCanvasSize();
-  window.addEventListener("resize", setCanvasSize);
+  // window.addEventListener("resize", setCanvasSize);
 
-  const colors = ["#ff4d00", "#ff6a00", "#ff8800", "#ffb800"];
+  // const colors = ["#ff4d00", "#ff6a00", "#ff8800", "#ffb800"];
 
   class Beam {
     constructor() {
@@ -22,22 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     init() {
-      this.type = Math.random() > 0.5 ? "horizontal" : "vertical";
-      this.size = Math.random() * 150 + 100; // Length of the beam
-      this.speed = Math.random() * 4 + 2;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
+      // this.type = "horizontal";
+      // this.size = Math.random() * 150 + 100; // Length of the beam
+      // this.speed = Math.random() * 4 + 2;
+      // this.color = colors[Math.floor(Math.random() * colors.length)];
       
-      if (this.type === "horizontal") {
-        this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
-        this.x = -this.size;
-        this.vx = this.speed;
-        this.vy = 0;
-      } else {
-        this.x = Math.floor(Math.random() * (canvas.width / gridSize)) * gridSize;
-        this.y = -this.size;
-        this.vy = this.speed;
-        this.vx = 0;
-      }
+      // this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+      // this.x = -this.size;
+      // this.vx = this.speed;
+      // this.vy = 0;
     }
 
     draw() {
