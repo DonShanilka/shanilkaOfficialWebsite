@@ -303,23 +303,25 @@ body {
   position: absolute;
   width: 40px;
   height: 40px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 77, 0, 0.3);
+  /* background: rgba(0, 0, 0, 0); */
+  /* border: 1px solid rgba(255, 77, 0, 0.3); */
   border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--accent);
   font-size: 1.2rem;
-  box-shadow: 0 0 15px rgba(255, 77, 0, 0.2);
+  /* box-shadow: 0 0 15px rgba(255, 77, 0, 0.2); */
   backdrop-filter: blur(5px);
   transition: all 0.3s ease;
 }
 
 .orbit-icon:hover {
-  background: var(--accent);
+  /* background: var(--accent); */
   color: black;
-  border-color: #fff;
+  /* border-color: #fff; */
+  width: 45px;
+  height: 45px;
   transform: scale(1.2) !important;
   z-index: 50;
 }
