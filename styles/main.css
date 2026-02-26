@@ -276,7 +276,7 @@ body {
   width: 220px;
   height: 220px;
   animation: orbit-rotate 25s linear infinite;
-  border-color: rgba(255, 77, 0, 0.35);
+  border-color: rgba(255, 77, 0, 0.2);
   border-width: 1px;
   /* background-color: #ffb800; */
 }
@@ -286,7 +286,7 @@ body {
   width: 380px;
   height: 380px;
   animation: orbit-rotate 40s linear infinite reverse;
-  border: 1px solid rgba(255, 77, 0, 0.2);
+  border: 1px solid rgba(255, 77, 0, 0.15);
   /* background-color: #666; */
 }
 
@@ -295,7 +295,7 @@ body {
   width: 520px;
   height: 520px;
   animation: orbit-rotate 60s linear infinite;
-  /* border: 1px solid rgba(255, 77, 0, 0.1); */
+  border: 1px solid rgba(255, 77, 0, 0.06);
   /* background-color: #ff4d00; */
 }
 
@@ -370,11 +370,11 @@ body {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 2px solid var(--accent);
+  /* border: 1px solid var(--accent); */
   padding: 6px;
-  background: rgba(255, 77, 0, 0.1);
+  background: rgb(165, 50, 0);
   z-index: 10;
-  box-shadow: 0 0 40px var(--accent-glow);
+  /* box-shadow: 0 0 20px var(--accent-glow); */
   object-fit: cover;
 }
 
