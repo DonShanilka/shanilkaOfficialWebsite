@@ -206,7 +206,7 @@ body {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
   }
 }
 
@@ -332,6 +332,9 @@ body {
 }
 .pos-2 {
   bottom: -24px;
+}
+.pos-22 {
+  bottom: -35px;
 }
 .pos-3 {
   left: -24px;
