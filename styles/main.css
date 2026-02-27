@@ -5,7 +5,7 @@
   --accent-glow: rgba(0, 255, 179, 0.4);
   --bg: #063924;
   --glass-bg: rgba(0, 20, 14, 0.85);
-  --glass-border: rgba(0, 255, 179, 0.15);
+  --glass-border: rgba(0, 255, 179, 0.05);
 }
 
 body {
@@ -199,9 +199,9 @@ body {
   position: fixed;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(0, 255, 179, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 255, 179, 0.299) 0%, transparent 70%);
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(160px);
   z-index: -1;
   pointer-events: none;
   opacity: 0.6;
