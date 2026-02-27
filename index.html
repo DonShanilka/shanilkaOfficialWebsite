@@ -20,8 +20,8 @@
     <canvas id="bg-canvas"></canvas>
     
     <!-- Background Glow Blobs -->
-    <div class="glow-blob -top-48 -left-48 opacity-40"></div>
-    <div class="glow-blob top-1/2 -right-48 opacity-30"></div>
+    <div class="glow-blob -top- -left-40 opacity-40"></div>
+    <div class="glow-blob top-70 -right-48 opacity-30"></div>
     <!-- <div class="glow-blob -bottom-48 opacity-20"></div> -->
 
     <!-- Navbar -->
@@ -256,60 +256,35 @@
     <!-- Skills Section (Multi-Core Circuit UI) -->
     <section id="skills" class="relative py-40 overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center mb-12" data-aos="fade-up">
-           <p class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
-           <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
+        <div class="text-center mb-12">
+          <p style="color:var(--neon);font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">02 — Expertise</p>
+          <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
         </div>
 
-        <!-- Core Switcher Tabs -->
-        <div class="core-switcher" data-aos="fade-up" data-aos-delay="100">
-          <button class="core-tab active" onclick="switchCore('backend', this)">Backend</button>
-          <button class="core-tab" onclick="switchCore('frontend', this)">Frontend</button>
-          <button class="core-tab" onclick="switchCore('mobile', this)">Mobile</button>
-          <button class="core-tab" onclick="switchCore('aiml', this)">AI / ML</button>
-          <button class="core-tab" onclick="switchCore('cloud', this)">Cloud</button>
+        <div class="core-switcher">
+          <button class="core-tab active" onclick="switchCore('backend',this)">Backend</button>
+          <button class="core-tab" onclick="switchCore('frontend',this)">Frontend</button>
+          <button class="core-tab" onclick="switchCore('mobile',this)">Mobile</button>
+          <button class="core-tab" onclick="switchCore('aiml',this)">AI / ML</button>
+          <button class="core-tab" onclick="switchCore('cloud',this)">Cloud</button>
         </div>
 
-        <div class="circuit-container flex justify-center items-center h-[600px] mb-20" id="circuit-window">
-          <!-- SVG Background Connections -->
-          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
-            <!-- Dynamic paths will be injected here -->
-          </svg>
-
-          <!-- Core Node (Hexagon Center) -->
+        <div class="circuit-container flex justify-center items-center relative" style="height:600px;margin-bottom:80px;" id="circuit-window">
+          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
           <div class="hex hex-center" id="tech-core">
             <div class="text-center">
-              <div class="relative w-10 h-10 mx-auto mb-1">
-                <i class="fas fa-microchip text-[var(--neon)] text-2xl"></i>
-              </div>
-              <span class="font-bold text-[10px] text-[var(--neon)] tracking-[0.2em] uppercase" id="core-title">BACKEND</span>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="1.5" class="mx-auto mb-1"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg>
+              <span style="font-size:9px;font-weight:700;color:var(--neon);letter-spacing:0.2em;text-transform:uppercase;" id="core-title">BACKEND</span>
             </div>
           </div>
-
-          <!-- Skill Nodes injected dynamically -->
           <div id="skill-nodes-container" class="absolute inset-0 pointer-events-none"></div>
         </div>
-      </div>
 
-      <!-- Tech Stack Footer -->
-      <div class="max-w-7xl mx-auto px-6 mt-40 border-t border-white/5 pt-20">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-           <div class="flex flex-col items-center gap-2">
-             <span class="text-xs font-bold tracking-[0.4em] uppercase">Security</span>
-             <p class="text-sm">JWT / OAuth2</p>
-           </div>
-           <div class="flex flex-col items-center gap-2">
-             <span class="text-xs font-bold tracking-[0.4em] uppercase">Data</span>
-             <p class="text-sm">PostgreSQL / Prisma</p>
-           </div>
-           <div class="flex flex-col items-center gap-2">
-             <span class="text-xs font-bold tracking-[0.4em] uppercase">Ops</span>
-             <p class="text-sm">CI/CD / AWS</p>
-           </div>
-           <div class="flex flex-col items-center gap-2">
-             <span class="text-xs font-bold tracking-[0.4em] uppercase">Frontend</span>
-             <p class="text-sm">NextJS / React</p>
-           </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center border-t pt-20" style="border-color:rgba(0,255,179,0.08);opacity:0.5;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
+          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Security</span><p class="text-sm text-gray-400">JWT / OAuth2</p></div>
+          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Data</span><p class="text-sm text-gray-400">PostgreSQL / Prisma</p></div>
+          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Ops</span><p class="text-sm text-gray-400">CI/CD / AWS</p></div>
+          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Frontend</span><p class="text-sm text-gray-400">NextJS / React</p></div>
         </div>
       </div>
     </section>
@@ -633,138 +608,68 @@
 
     <script>
       const skillData = {
-        backend: {
-          title: "ENGINEERING",
-          nodes: [
-            { name: "JAVA", icon: "fa-java", x: 200, y: 150, color: "var(--neon2)" },
-            { name: "SPRING", icon: "fa-leaf", x: 250, y: 450, color: "var(--neon)" },
-            { name: "NODE.JS", icon: "fa-node-js", x: 750, y: 150, color: "var(--neon)" },
-            { name: "PYTHON", icon: "fa-python", x: 800, y: 450, color: "var(--neon2)" }
-          ],
-          paths: [
-            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "p1" },
-            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "p2" },
-            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "p3" },
-            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "p4" }
-          ]
-        },
-        frontend: {
-          title: "EXPERIENCE",
-          nodes: [
-            { name: "REACT", icon: "fa-react", x: 200, y: 150, color: "var(--neon)" },
-            { name: "NEXT.JS", icon: "fa-bolt", x: 250, y: 450, color: "var(--neon2)" },
-            { name: "JS", icon: "fa-js", x: 750, y: 150, color: "var(--neon2)" },
-            { name: "TAILWIND", icon: "fa-css3", x: 800, y: 450, color: "var(--neon)" }
-          ],
-          paths: [
-            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pf1" },
-            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pf2" },
-            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pf3" },
-            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pf4" }
-          ]
-        },
-        mobile: {
-          title: "MOBILITY",
-          nodes: [
-            { name: "REACT NATIVE", icon: "fa-mobile-alt", x: 200, y: 150, color: "var(--neon2)" },
-            { name: "EXPO", icon: "fa-rocket", x: 250, y: 450, color: "var(--neon)" },
-            { name: "FLUTTER", icon: "fa-mobile", x: 750, y: 150, color: "var(--neon)" },
-            { name: "SWIFT", icon: "fa-apple", x: 800, y: 450, color: "var(--neon2)" }
-          ],
-          paths: [
-            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pm1" },
-            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pm2" },
-            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pm3" },
-            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pm4" }
-          ]
-        },
-        aiml: {
-          title: "INTELL",
-          nodes: [
-            { name: "PYTHON", icon: "fa-brain", x: 200, y: 150, color: "var(--neon)" },
-            { name: "TENSORFLOW", icon: "fa-project-diagram", x: 250, y: 450, color: "var(--neon2)" },
-            { name: "PYTORCH", icon: "fa-microchip", x: 750, y: 150, color: "var(--neon2)" },
-            { name: "OPENAI", icon: "fa-robot", x: 800, y: 450, color: "var(--neon)" }
-          ],
-          paths: [
-            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pa1" },
-            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pa2" },
-            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pa3" },
-            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pa4" }
-          ]
-        },
-        cloud: {
-          title: "DEVOPS",
-          nodes: [
-            { name: "AWS", icon: "fa-aws", x: 200, y: 150, color: "var(--neon2)" },
-            { name: "DOCKER", icon: "fa-docker", x: 250, y: 450, color: "var(--neon)" },
-            { name: "KUBERNETES", icon: "fa-ship", x: 750, y: 150, color: "var(--neon)" },
-            { name: "TERRAFORM", icon: "fa-server", x: 800, y: 450, color: "var(--neon2)" }
-          ],
-          paths: [
-            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pc1" },
-            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pc2" },
-            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pc3" },
-            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pc4" }
-          ]
-        }
+        backend:  { title:"ENGINEERING", nodes:[{name:"JAVA",icon:"☕",x:200,y:150,color:"var(--neon2)"},{name:"SPRING",icon:"🌿",x:250,y:450,color:"var(--neon)"},{name:"NODE.JS",icon:"⬡",x:750,y:150,color:"var(--neon)"},{name:"PYTHON",icon:"🐍",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"p1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"p2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"p3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"p4"}]},
+        frontend: { title:"EXPERIENCE",  nodes:[{name:"REACT",icon:"⚛",x:200,y:150,color:"var(--neon)"},{name:"NEXT.JS",icon:"▲",x:250,y:450,color:"var(--neon2)"},{name:"JS",icon:"JS",x:750,y:150,color:"var(--neon2)"},{name:"TAILWIND",icon:"🎨",x:800,y:450,color:"var(--neon)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pf1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pf2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pf3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pf4"}]},
+        mobile:   { title:"MOBILITY",    nodes:[{name:"REACT NATIVE",icon:"📱",x:200,y:150,color:"var(--neon2)"},{name:"EXPO",icon:"🚀",x:250,y:450,color:"var(--neon)"},{name:"FLUTTER",icon:"💙",x:750,y:150,color:"var(--neon)"},{name:"SWIFT",icon:"🍎",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pm1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pm2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pm3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pm4"}]},
+        aiml:     { title:"INTELL",       nodes:[{name:"PYTHON",icon:"🧠",x:200,y:150,color:"var(--neon)"},{name:"TENSORFLOW",icon:"🔷",x:250,y:450,color:"var(--neon2)"},{name:"PYTORCH",icon:"🔥",x:750,y:150,color:"var(--neon2)"},{name:"OPENAI",icon:"🤖",x:800,y:450,color:"var(--neon)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pa1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pa2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pa3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pa4"}]},
+        cloud:    { title:"DEVOPS",       nodes:[{name:"AWS",icon:"☁",x:200,y:150,color:"var(--neon2)"},{name:"DOCKER",icon:"🐳",x:250,y:450,color:"var(--neon)"},{name:"KUBERNETES",icon:"⚙",x:750,y:150,color:"var(--neon)"},{name:"TERRAFORM",icon:"🏗",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pc1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pc2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pc3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pc4"}]}
       };
 
+
       function switchCore(type, element) {
-        document.querySelectorAll('.core-tab').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.core-tab').forEach(t => t.classList.remove('active'));
         if (element) element.classList.add('active');
 
-        const nodesContainer = document.getElementById('skill-nodes-container');
-        const svgContainer = document.getElementById('circuit-svg');
-        const coreTitle = document.getElementById('core-title');
-        const data = skillData[type] || skillData['backend'];
+        const nodesEl = document.getElementById('skill-nodes-container');
+        const svgEl   = document.getElementById('circuit-svg');
+        const titleEl = document.getElementById('core-title');
+        const data    = skillData[type] || skillData.backend;
 
-        nodesContainer.style.opacity = '0';
-        svgContainer.style.opacity = '0';
+        nodesEl.style.transition = 'opacity 0.3s';
+        svgEl.style.transition   = 'opacity 0.3s';
+        nodesEl.style.opacity = '0';
+        svgEl.style.opacity   = '0';
 
         setTimeout(() => {
-          coreTitle.innerText = data.title;
-          nodesContainer.innerHTML = '';
-          svgContainer.innerHTML = '';
+          titleEl.innerText = data.title;
+          nodesEl.innerHTML = '';
+          svgEl.innerHTML   = '';
 
           data.paths.forEach(p => {
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const path = document.createElementNS("http://www.w3.org/2000/svg","path");
             path.setAttribute("d", p.d);
-            path.setAttribute("class", "circuit-line animated");
+            path.setAttribute("class","circuit-line");
             path.setAttribute("id", p.id);
-            svgContainer.appendChild(path);
+            svgEl.appendChild(path);
 
-            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttribute("r", "3");
-            circle.setAttribute("class", "data-dot");
-            const animateMotion = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
-            animateMotion.setAttribute("dur", "3s");
-            animateMotion.setAttribute("repeatCount", "indefinite");
-            const mpath = document.createElementNS("http://www.w3.org/2000/svg", "mpath");
-            mpath.setAttributeNS("http://www.w3.org/1999/xlink", "href", `#${p.id}`);
-            animateMotion.appendChild(mpath);
-            circle.appendChild(animateMotion);
-            svgContainer.appendChild(circle);
+            const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
+            circle.setAttribute("r","4");
+            circle.setAttribute("class","data-dot");
+            const am = document.createElementNS("http://www.w3.org/2000/svg","animateMotion");
+            am.setAttribute("dur","3s");
+            am.setAttribute("repeatCount","indefinite");
+            const mp = document.createElementNS("http://www.w3.org/2000/svg","mpath");
+            mp.setAttributeNS("http://www.w3.org/1999/xlink","href","#"+p.id);
+            am.appendChild(mp);
+            circle.appendChild(am);
+            svgEl.appendChild(circle);
           });
 
           data.nodes.forEach(node => {
-            const nodeDiv = document.createElement('div');
-            nodeDiv.className = 'hex hex-node absolute pointer-events-auto';
-            nodeDiv.style.left = `${node.x - 35}px`;
-            nodeDiv.style.top = `${node.y - 40}px`;
-            
-            nodeDiv.innerHTML = `
+            const d = document.createElement('div');
+            d.className = 'hex hex-node absolute pointer-events-auto';
+            d.style.cssText = `left:${node.x-35}px;top:${node.y-40}px;`;
+            d.innerHTML = `
               <div class="hex-border"></div>
-              <div class="flex flex-col items-center">
-                <i class="fas ${node.icon} text-xl mb-1" style="color: ${node.color}"></i>
-                <span class="text-[8px] font-bold text-white tracking-widest">${node.name}</span>
-              </div>
-            `;
-            nodesContainer.appendChild(nodeDiv);
+              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+                <span style="font-size:20px;line-height:1;">${node.icon}</span>
+                <span style="font-size:7px;font-weight:700;color:white;letter-spacing:1.5px;text-align:center;">${node.name}</span>
+              </div>`;
+            nodesEl.appendChild(d);
           });
 
-          nodesContainer.style.opacity = '1';
-          svgContainer.style.opacity = '1';
+          nodesEl.style.opacity = '1';
+          svgEl.style.opacity   = '1';
         }, 300);
       }
 
