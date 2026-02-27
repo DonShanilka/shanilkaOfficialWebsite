@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setCanvasSize();
   // window.addEventListener("resize", setCanvasSize);
 
-  // const colors = ["#ff4d00", "#ff6a00", "#ff8800", "#ffb800"];
+  // const colors = ["#00ffb3", "#00d4ff", "#00ffa2", "#00f0ff"];
 
   class Beam {
     constructor() {
@@ -22,15 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     init() {
-      // this.type = "horizontal";
-      // this.size = Math.random() * 150 + 100; // Length of the beam
-      // this.speed = Math.random() * 4 + 2;
-      // this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.type = "horizontal";
+      this.size = Math.random() * 200 + 150; // Increased size for drama
+      this.speed = Math.random() * 3 + 1.5;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
       
-      // this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
-      // this.x = -this.size;
-      // this.vx = this.speed;
-      // this.vy = 0;
+      this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
+      this.x = -this.size;
+      this.vx = this.speed;
+      this.vy = 0;
     }
 
     draw() {

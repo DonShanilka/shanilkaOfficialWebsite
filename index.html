@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="./styles/main.css">
   </head>
 
-  <body class="font-sans bg-black text-white selection:bg-rose-500/30">
+  <body class="font-sans bg-black text-white selection:bg-accent/30">
+    <div class="scan-line"></div>
     <div class="grain-overlay"></div>
     <canvas id="bg-canvas"></canvas>
     
@@ -27,10 +28,13 @@
     <header
       class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5"
     >
-      <div
-        class="text-[#ff4d00] font-bold text-2xl tracking-tighter hover:scale-105 transition-transform cursor-pointer"
-      >
-        { N.S }
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <div style="clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%); width:36px; height:42px; background: linear-gradient(135deg,rgba(0,255,179,0.2),rgba(0,212,255,0.1)); border: 1px solid rgba(0,255,179,0.4); display:flex; align-items:center; justify-content:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00ffb3" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+        </div>
+        <span class="text-xl font-black tracking-[0.2em] text-white">N.SHANILKA</span>
       </div>
       <nav class="space-x-8 text-sm hidden md:flex items-center">
         <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
@@ -39,7 +43,7 @@
         <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
         <a
           href="#contact"
-          class="bg-[#ff4d00] text-white px-5 py-2 rounded-full font-medium hover:bg-[#e04400] transition-all shadow-lg shadow-[#ff4d00]/20"
+          class="bg-[var(--accent)] text-white px-5 py-2 rounded-full font-medium hover:bg-[#e04400] transition-all shadow-lg shadow-[var(--accent)]/20"
           >Contact</a
         >
       </nav>
@@ -51,11 +55,11 @@
         </svg>
       </div>
       <nav id="mobile-menu" class="fixed top-[72px] left-0 w-full glass p-6 space-y-4 text-center md:hidden hidden">
-        <a href="#home" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Home</a>
-        <a href="#about" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">About</a>
-        <a href="#skills" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Skills</a>
-        <a href="#projects" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Projects</a>
-        <a href="#contact" class="block hover:text-[#ff4d00]" onclick="toggleMenu()">Contact</a>
+        <a href="#home" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Home</a>
+        <a href="#about" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">About</a>
+        <a href="#skills" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Contact</a>
       </nav>
     </header>
 
@@ -66,12 +70,12 @@
     >
       <div class="max-w-4xl mx-auto relative" data-aos="zoom-in" data-aos-duration="1000">
         <!-- Hero Central Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#ff4d00]/10 blur-[150px] -z-10"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--accent)]/10 blur-[150px] -z-10"></div>
         
         <div class="flex flex-col items-center gap-8">
           <!-- Profile Badge -->
           <!-- <div class="group relative">
-            <div class="absolute -inset-1 bg-gradient-to-r from-[#ff4d00] to-[#ffb800] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+            <div class="absolute -inset-1 bg-gradient-to-r from-[var(--accent)] to-[#ffb800] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
             <img
               src="assets/images/myImage.JPG"
               alt="Nishith Shanilka"
@@ -79,7 +83,7 @@
             />
           </div> -->
 
-          <p class="text-[#ff4d00] text-xs font-bold tracking-[0.3em] " data-aos="fade-up" data-aos-delay="200">
+          <p class="text-[var(--accent)] text-xs font-bold tracking-[0.3em] " data-aos="fade-up" data-aos-delay="200">
             Hi i'm
           </p>
 
@@ -103,19 +107,19 @@
           <!-- Icon Grid -->
           <!-- <div class="flex gap-12 mb-12" data-aos="fade-up" data-aos-delay="600">
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
                 <i class="fas fa-layer-group"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Transform</span>
             </div>
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
                 <i class="fas fa-lightbulb"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Innovate</span>
             </div>
             <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[#ff4d00] text-xl group-hover:bg-[#ff4d00] group-hover:text-white transition-colors">
+              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
                 <i class="fas fa-users-cog"></i>
               </div>
               <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Lead</span>
@@ -128,7 +132,7 @@
             data-aos="fade-up"
             data-aos-delay="800"
           >
-            <span class="relative z-10 text-[#ff4d00] group-hover:text-black">Download My CV</span>
+            <span class="relative z-10 text-[var(--accent)] group-hover:text-black">Download My CV</span>
             <div class="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
           </a>
         </div>
@@ -145,7 +149,7 @@
     <!-- LEFT CONTENT -->
     <div class="w-full lg:w-1/2 glass-card p-8 md:p-12 rounded-3xl">
       <p
-        class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4"
+        class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4"
         data-aos="fade-down-right"
       >
         01 — About Me
@@ -253,7 +257,7 @@
     <section id="skills" class="relative py-40 overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-12" data-aos="fade-up">
-           <p class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
+           <p class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4">02 — Expertise</p>
            <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
         </div>
 
@@ -275,7 +279,7 @@
           <!-- Core Node -->
           <div class="tech-core group hover:scale-110" id="tech-core">
             <div class="tech-core-inner" id="core-content">
-              <i class="fas fa-microchip text-[#ff4d00] text-3xl mb-2"></i>
+              <i class="fas fa-microchip text-[var(--accent)] text-3xl mb-2"></i>
               <h3 id="core-title">CORE</h3>
               <p class="text-[10px] text-gray-500 font-bold tracking-widest leading-none" id="core-subtitle">BACKEND</p>
             </div>
@@ -315,7 +319,7 @@
       <div class="max-w-7xl mx-auto mb-20">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div data-aos="fade-right">
-            <p class="text-[#ff4d00] text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
+            <p class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
             <h2 class="text-5xl md:text-7xl font-black leading-tight">
               Selected<br />
               <span class="text-gradient">Projects</span>
@@ -333,7 +337,7 @@
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
                 alt="Crop Monitoring"
@@ -356,7 +360,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">PostgreSQL</span>
             </div>
             <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
+               <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -368,7 +372,7 @@
         <div class="group flex flex-col md:flex-row-reverse gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-left">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
                 alt="Hotel Management"
@@ -391,7 +395,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Prisma</span>
             </div>
             <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
+               <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -403,7 +407,7 @@
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[#ff4d00]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <img
                 src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
                 alt="Food Delivery"
@@ -426,7 +430,7 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Express</span>
             </div>
             <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#ff4d00] transition-colors">
+               <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -462,7 +466,7 @@
 
           <div class="space-y-6">
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-[#ff4d00] flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-[#ff4d00]/20">
+              <div class="w-14 h-14 bg-[var(--accent)] flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-[var(--accent)]/20">
                 <i class="fas fa-paper-plane"></i>
               </div>
               <div>
@@ -471,7 +475,7 @@
               </div>
             </div>
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-[#ff4d00] text-xl">
+              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-[var(--accent)] text-xl">
                 <i class="fas fa-phone"></i>
               </div>
               <div>
@@ -489,22 +493,22 @@
               <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Your Name</label>
-                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
+                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
                 </div>
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
+                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
                 </div>
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Subject</label>
-                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none" />
+                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
-                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[#ff4d00] transition-all outline-none resize-none"></textarea>
+                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none resize-none"></textarea>
               </div>
-              <button class="w-full bg-[#ff4d00] text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-[#ff4d00]/20 active:scale-95">
+              <button class="w-full bg-[var(--accent)] text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-[var(--accent)]/20 active:scale-95">
                 Send Message
               </button>
             </form>
@@ -524,7 +528,7 @@
           <!-- Logo and Description -->
           <div class="mb-8 md:mb-0">
             <div class="flex items-center">
-              <span class="text-[#ff4d00] text-2xl mr-2">•</span>
+              <span class="text-[var(--accent)] text-2xl mr-2">•</span>
               <h2 class="text-white text-2xl font-bold">P.D.N Shanilka</h2>
             </div>
           </div>
@@ -535,7 +539,7 @@
             <div class="flex justify-center mb-8 -mt-16">
               <a
                 href="#"
-                class="bg-[#ff4d00] hover:bg-[#e04400] text-black p-3 rounded-full transition duration-300"
+                class="bg-[var(--accent)] hover:bg-[#e04400] text-black p-3 rounded-full transition duration-300"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -561,7 +565,7 @@
           <div class="mb-8 md:mb-0">
             <h3 class="text-white text-lg font-medium mb-4">Address</h3>
             <div class="flex items-start mb-3">
-              <span class="text-[#ff4d00] mr-2">
+              <span class="text-[var(--accent)] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -581,7 +585,7 @@
               </div>
             </div>
             <div class="flex items-center mb-3">
-              <span class="text-[#ff4d00] mr-2">
+              <span class="text-[var(--accent)] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -596,12 +600,12 @@
                   />
                 </svg>
               </span>
-              <a href="mailto:support@gmail.com" class="hover:text-[#ff4d00]"
+              <a href="mailto:support@gmail.com" class="hover:text-[var(--accent)]"
                 >shanilka799@gmail.com</a
               >
             </div>
             <div class="flex items-center">
-              <span class="text-[#ff4d00] mr-2">
+              <span class="text-[var(--accent)] mr-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-5 w-5"
@@ -757,7 +761,7 @@
           // Update Content
           coreTitle.innerText = data.title;
           coreSubtitle.innerText = data.subtitle;
-          coreIcon.className = `fas ${data.icon} text-[#ff4d00] text-3xl mb-2`;
+          coreIcon.className = `fas ${data.icon} text-[var(--accent)] text-3xl mb-2`;
 
           // Update Nodes
           nodesContainer.innerHTML = '';
@@ -806,5 +810,38 @@
       AOS.init();
     </script>
     <script src="./javaScripts/backGroundAnimation.js"></script>
+    <script>
+      // Create floating particles
+      function createParticles() {
+        for (let i = 0; i < 30; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          p.style.left = Math.random() * 100 + 'vw';
+          p.style.animationDuration = (8 + Math.random() * 15) + 's';
+          p.style.animationDelay = (Math.random() * 10) + 's';
+          p.style.setProperty('--drift', (Math.random() * 100 - 50) + 'px');
+          p.style.width = (1 + Math.random() * 2) + 'px';
+          p.style.height = p.style.width;
+          document.body.appendChild(p);
+        }
+      }
+      createParticles();
+
+      // Cursor glow effect
+      const cursorGlow = document.createElement('div');
+      cursorGlow.style.cssText = `
+        position: fixed; pointer-events: none; z-index: 9999;
+        width: 300px; height: 300px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(0,255,179,0.04) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        transition: left 0.1s, top 0.1s;
+      `;
+      document.body.appendChild(cursorGlow);
+
+      document.addEventListener('mousemove', e => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+      });
+    </script>
   </body>
 </html>
