@@ -199,12 +199,12 @@ body {
   position: fixed;
   width: 800px;
   height: 800px;
-  background: radial-gradient(circle, rgba(0, 255, 179, 0.299) 0%, transparent 70%);
+  background: radial-gradient(circle, rgb(0, 255, 179) 0%, transparent 70%);
   border-radius: 50%;
-  filter: blur(160px);
+  /* filter: blur(0px); */
   z-index: -1;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.1;
 }
 
 /* BitForge Specific Elements */
