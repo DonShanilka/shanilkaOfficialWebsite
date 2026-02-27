@@ -270,23 +270,24 @@
           <button class="core-tab" onclick="switchCore('cloud', this)">Cloud</button>
         </div>
 
-        <div class="circuit-container" id="circuit-window">
+        <div class="circuit-container flex justify-center items-center h-[600px] mb-20" id="circuit-window">
           <!-- SVG Background Connections -->
-          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
+          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet">
             <!-- Dynamic paths will be injected here -->
           </svg>
 
-          <!-- Core Node -->
-          <div class="tech-core group hover:scale-110" id="tech-core">
-            <div class="tech-core-inner" id="core-content">
-              <i class="fas fa-microchip text-[var(--accent)] text-3xl mb-2"></i>
-              <h3 id="core-title">CORE</h3>
-              <p class="text-[10px] text-gray-500 font-bold tracking-widest leading-none" id="core-subtitle">BACKEND</p>
+          <!-- Core Node (Hexagon Center) -->
+          <div class="hex hex-center" id="tech-core">
+            <div class="text-center">
+              <div class="relative w-10 h-10 mx-auto mb-1">
+                <i class="fas fa-microchip text-[var(--neon)] text-2xl"></i>
+              </div>
+              <span class="font-bold text-[10px] text-[var(--neon)] tracking-[0.2em] uppercase" id="core-title">BACKEND</span>
             </div>
           </div>
 
           <!-- Skill Nodes injected dynamically -->
-          <div id="skill-nodes-container"></div>
+          <div id="skill-nodes-container" class="absolute inset-0 pointer-events-none"></div>
         </div>
       </div>
 
@@ -633,164 +634,140 @@
     <script>
       const skillData = {
         backend: {
-          title: "CORE",
-          subtitle: "BACKEND",
-          icon: "fa-microchip",
+          title: "ENGINEERING",
           nodes: [
-            { name: "JAVA", icon: "./assets/icon/icons8-java-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
-            { name: "SPRING BOOT", icon: "./assets/icon/icons8-java-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
-            { name: "NODE.JS", icon: "./assets/icon/icons8-nodejs-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
-            { name: "MYSQL", icon: "./assets/icon/icons8-mysql-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
-            { name: "DOCKER", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
-            { name: "PYTHON", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+            { name: "JAVA", icon: "fa-java", x: 200, y: 150, color: "var(--neon2)" },
+            { name: "SPRING", icon: "fa-leaf", x: 250, y: 450, color: "var(--neon)" },
+            { name: "NODE.JS", icon: "fa-node-js", x: 750, y: 150, color: "var(--neon)" },
+            { name: "PYTHON", icon: "fa-python", x: 800, y: 450, color: "var(--neon2)" }
           ],
           paths: [
-            "M500 400 L500 150 L300 150",
-            "M500 400 L700 400 L700 150 L850 150",
-            "M500 400 L250 400 L250 300 L150 300",
-            "M500 400 L500 650 L300 650",
-            "M500 400 L750 400 L750 550 L850 550",
-            "M500 400 L500 550 L150 550"
+            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "p1" },
+            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "p2" },
+            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "p3" },
+            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "p4" }
           ]
         },
         frontend: {
-          title: "PIXEL",
-          subtitle: "FRONTEND",
-          icon: "fa-layer-group",
+          title: "EXPERIENCE",
           nodes: [
-            { name: "REACT", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
-            { name: "NEXT.JS", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
-            { name: "TAILWIND", icon: "./assets/icon/icons8-tailwind-css-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
-            { name: "TYPESCRIPT", icon: "./assets/icon/icons8-javascript-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
-            { name: "FIGMA", icon: "./assets/icon/icons8-figma-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
-            { name: "UI/UX", icon: "./assets/icon/icons8-figma-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+            { name: "REACT", icon: "fa-react", x: 200, y: 150, color: "var(--neon)" },
+            { name: "NEXT.JS", icon: "fa-bolt", x: 250, y: 450, color: "var(--neon2)" },
+            { name: "JS", icon: "fa-js", x: 750, y: 150, color: "var(--neon2)" },
+            { name: "TAILWIND", icon: "fa-css3", x: 800, y: 450, color: "var(--neon)" }
           ],
           paths: [
-            "M500 400 L500 150 L300 150",
-            "M500 400 L700 400 L700 150 L850 150",
-            "M500 400 L250 400 L250 300 L150 300",
-            "M500 400 L500 650 L300 650",
-            "M500 400 L750 400 L750 550 L850 550",
-            "M500 400 L500 550 L150 550"
+            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pf1" },
+            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pf2" },
+            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pf3" },
+            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pf4" }
           ]
         },
         mobile: {
-          title: "NATIVE",
-          subtitle: "MOBILE APP",
-          icon: "fa-mobile-alt",
+          title: "MOBILITY",
           nodes: [
-            { name: "REACT NATIVE", icon: "./assets/icon/icons8-react-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
-            { name: "EXPO", icon: "./assets/icon/icons8-expo-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
-            { name: "FLUTTER", icon: "./assets/icon/icons8-react-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
-            { name: "FIREBASE", icon: "./assets/icon/icons8-json-web-token-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
-            { name: "IOS SWIFT", icon: "./assets/icon/icons8-react-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
-            { name: "ANDROID", icon: "./assets/icon/icons8-react-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+            { name: "REACT NATIVE", icon: "fa-mobile-alt", x: 200, y: 150, color: "var(--neon2)" },
+            { name: "EXPO", icon: "fa-rocket", x: 250, y: 450, color: "var(--neon)" },
+            { name: "FLUTTER", icon: "fa-mobile", x: 750, y: 150, color: "var(--neon)" },
+            { name: "SWIFT", icon: "fa-apple", x: 800, y: 450, color: "var(--neon2)" }
           ],
           paths: [
-            "M500 400 L500 150 L300 150",
-            "M500 400 L700 400 L700 150 L850 150",
-            "M500 400 L250 400 L250 300 L150 300",
-            "M500 400 L500 650 L300 650",
-            "M500 400 L750 400 L750 550 L850 550",
-            "M500 400 L500 550 L150 550"
+            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pm1" },
+            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pm2" },
+            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pm3" },
+            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pm4" }
           ]
         },
         aiml: {
           title: "INTELL",
-          subtitle: "AI / ML",
-          icon: "fa-brain",
           nodes: [
-            { name: "PYTHON", icon: "./assets/icon/icons8-python-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
-            { name: "TENSORFLOW", icon: "./assets/icon/icons8-python-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
-            { name: "PYTORCH", icon: "./assets/icon/icons8-python-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
-            { name: "OPENAI", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
-            { name: "SCIKIT-LEARN", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
-            { name: "LANGCHAIN", icon: "./assets/icon/icons8-python-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+            { name: "PYTHON", icon: "fa-brain", x: 200, y: 150, color: "var(--neon)" },
+            { name: "TENSORFLOW", icon: "fa-project-diagram", x: 250, y: 450, color: "var(--neon2)" },
+            { name: "PYTORCH", icon: "fa-microchip", x: 750, y: 150, color: "var(--neon2)" },
+            { name: "OPENAI", icon: "fa-robot", x: 800, y: 450, color: "var(--neon)" }
           ],
           paths: [
-            "M500 400 L500 150 L300 150",
-            "M500 400 L700 400 L700 150 L850 150",
-            "M500 400 L250 400 L250 300 L150 300",
-            "M500 400 L500 650 L300 650",
-            "M500 400 L750 400 L750 550 L850 550",
-            "M500 400 L500 550 L150 550"
+            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pa1" },
+            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pa2" },
+            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pa3" },
+            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pa4" }
           ]
         },
         cloud: {
           title: "DEVOPS",
-          subtitle: "CLOUD / INFRA",
-          icon: "fa-cloud",
           nodes: [
-            { name: "AWS", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 130px; left: 180px;", delay: 0 },
-            { name: "DOCKER", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 130px; right: 50px;", delay: 1 },
-            { name: "KUBERNETES", icon: "./assets/icon/icons8-docker-100.png", pos: "top: 280px; left: 50px;", delay: 0 },
-            { name: "CI/CD", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 130px; left: 180px;", delay: 1 },
-            { name: "TERRAFORM", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; right: 50px;", delay: 0 },
-            { name: "AZURE", icon: "./assets/icon/icons8-docker-100.png", pos: "bottom: 230px; left: 50px;", delay: 1 }
+            { name: "AWS", icon: "fa-aws", x: 200, y: 150, color: "var(--neon2)" },
+            { name: "DOCKER", icon: "fa-docker", x: 250, y: 450, color: "var(--neon)" },
+            { name: "KUBERNETES", icon: "fa-ship", x: 750, y: 150, color: "var(--neon)" },
+            { name: "TERRAFORM", icon: "fa-server", x: 800, y: 450, color: "var(--neon2)" }
           ],
           paths: [
-            "M500 400 L500 150 L300 150",
-            "M500 400 L700 400 L700 150 L850 150",
-            "M500 400 L250 400 L250 300 L150 300",
-            "M500 400 L500 650 L300 650",
-            "M500 400 L750 400 L750 550 L850 550",
-            "M500 400 L500 550 L150 550"
+            { d: "M 500 300 L 400 300 L 400 150 L 235 150", id: "pc1" },
+            { d: "M 500 300 L 400 300 L 400 450 L 285 450", id: "pc2" },
+            { d: "M 500 300 L 600 300 L 600 150 L 715 150", id: "pc3" },
+            { d: "M 500 300 L 600 300 L 600 450 L 765 450", id: "pc4" }
           ]
         }
       };
 
       function switchCore(type, element) {
-        // Update Tabs
         document.querySelectorAll('.core-tab').forEach(tab => tab.classList.remove('active'));
-        element.classList.add('active');
+        if (element) element.classList.add('active');
 
-        const window = document.getElementById('circuit-window');
         const nodesContainer = document.getElementById('skill-nodes-container');
         const svgContainer = document.getElementById('circuit-svg');
         const coreTitle = document.getElementById('core-title');
-        const coreSubtitle = document.getElementById('core-subtitle');
-        const coreIcon = document.querySelector('#tech-core i');
-        const data = skillData[type];
+        const data = skillData[type] || skillData['backend'];
 
-        // Animate Core Out
-        document.getElementById('tech-core').classList.add('scale-0', 'opacity-0');
         nodesContainer.style.opacity = '0';
         svgContainer.style.opacity = '0';
 
         setTimeout(() => {
-          // Update Content
           coreTitle.innerText = data.title;
-          coreSubtitle.innerText = data.subtitle;
-          coreIcon.className = `fas ${data.icon} text-[var(--accent)] text-3xl mb-2`;
-
-          // Update Nodes
           nodesContainer.innerHTML = '';
+          svgContainer.innerHTML = '';
+
+          data.paths.forEach(p => {
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            path.setAttribute("d", p.d);
+            path.setAttribute("class", "circuit-line animated");
+            path.setAttribute("id", p.id);
+            svgContainer.appendChild(path);
+
+            const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            circle.setAttribute("r", "3");
+            circle.setAttribute("class", "data-dot");
+            const animateMotion = document.createElementNS("http://www.w3.org/2000/svg", "animateMotion");
+            animateMotion.setAttribute("dur", "3s");
+            animateMotion.setAttribute("repeatCount", "indefinite");
+            const mpath = document.createElementNS("http://www.w3.org/2000/svg", "mpath");
+            mpath.setAttributeNS("http://www.w3.org/1999/xlink", "href", `#${p.id}`);
+            animateMotion.appendChild(mpath);
+            circle.appendChild(animateMotion);
+            svgContainer.appendChild(circle);
+          });
+
           data.nodes.forEach(node => {
             const nodeDiv = document.createElement('div');
-            nodeDiv.className = `tech-node ${node.delay === 0 ? 'node-float' : 'node-float-delayed'}`;
-            nodeDiv.style = node.pos;
-            nodeDiv.innerHTML = `<img src="${node.icon}" alt="${node.name}"><span>${node.name}</span>`;
+            nodeDiv.className = 'hex hex-node absolute pointer-events-auto';
+            nodeDiv.style.left = `${node.x - 35}px`;
+            nodeDiv.style.top = `${node.y - 40}px`;
+            
+            nodeDiv.innerHTML = `
+              <div class="hex-border"></div>
+              <div class="flex flex-col items-center">
+                <i class="fas ${node.icon} text-xl mb-1" style="color: ${node.color}"></i>
+                <span class="text-[8px] font-bold text-white tracking-widest">${node.name}</span>
+              </div>
+            `;
             nodesContainer.appendChild(nodeDiv);
           });
 
-          // Update SVG Paths
-          svgContainer.innerHTML = '';
-          data.paths.forEach(pathD => {
-            // Create the path
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("class", "circuit-line-active");
-            path.setAttribute("d", pathD);
-            svgContainer.appendChild(path);
-          });
-
-          // Animate Core In
-          document.getElementById('tech-core').classList.remove('scale-0', 'opacity-0');
           nodesContainer.style.opacity = '1';
           svgContainer.style.opacity = '1';
-        }, 500);
+        }, 300);
       }
 
-      // Initialize
       document.addEventListener('DOMContentLoaded', () => {
         switchCore('backend', document.querySelector('.core-tab.active'));
       });
