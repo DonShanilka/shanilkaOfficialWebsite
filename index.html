@@ -12,6 +12,248 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./styles/main.css">
+    <style>/* ── Tab Switcher ── */
+
+      /* ── Section ── */
+  #skills {
+    position: relative;
+    padding: 80px 0;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .max-w-7xl {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* ── Header ── */
+  .section-label {
+    color: var(--neon);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+
+  .core-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+
+  .core-tab {
+    background: transparent;
+    border: 1px solid rgba(0,255,179,0.3);
+    color: rgba(255,255,255,0.6);
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .core-tab:hover {
+    border-color: var(--neon);
+    color: var(--neon);
+  }
+
+  .core-tab.active {
+    background: var(--neon);
+    border-color: var(--neon);
+    color: #050f0a;
+  }
+
+  /* ── Circuit Container ── */
+  /*
+    KEY FIX: The SVG viewBox is "0 0 1000 600".
+    The node positions in JS are in those same SVG units.
+    We use a wrapper that is position:relative, and inside it:
+      - the SVG fills 100% width/height (via viewBox + preserveAspectRatio)
+      - the nodes overlay is also 100% width/height
+    The nodes are placed using percentage = (svgX / 1000 * 100) and (svgY / 600 * 100)
+    so they always align with SVG coordinates regardless of container size.
+  */
+  .circuit-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    /* Maintain 1000:600 aspect ratio */
+    aspect-ratio: 1000 / 600;
+  }
+
+  .circuit-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transition: opacity 0.3s;
+  }
+
+  #skill-nodes-container {
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* ── Circuit Lines ── */
+  .circuit-line {
+    fill: none;
+    stroke: rgba(0,255,179,0.25);
+    stroke-width: 1.5;
+    stroke-dasharray: 6 4;
+  }
+
+  .data-dot {
+    fill: var(--neon);
+    filter: drop-shadow(0 0 4px var(--neon));
+  }
+
+  /* ── Center Hex ── */
+  .hex-center {
+    position: absolute;
+    /* Center in SVG coords: x=500, y=300 → 50%, 50% */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    background: rgba(0,255,179,0.08);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: 10;
+  }
+
+  /* Center hex glow border via pseudo */
+  .hex-center::before {
+    content:'';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  /* ── Skill Node Hexes ── */
+  .hex-node {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(0,20,15,0.9);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+    /* 
+      IMPORTANT: translate(-50%, -50%) so the hex CENTER sits at the
+      left/top percentage that corresponds to the SVG coordinate.
+    */
+    transform: translate(-50%, -50%);
+    transition: filter 0.3s;
+    border: none;
+  }
+
+  .hex-node::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  .hex-node:hover {
+    filter: drop-shadow(0 0 12px var(--neon));
+  }
+
+  .hex-node .node-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .hex-node .node-label {
+    font-size: 6.5px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1.2px;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.2;
+    padding: 0 4px;
+  }
+
+  /* ── Bottom Stats ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    text-align: center;
+    border-top: 1px solid rgba(0,255,179,0.08);
+    padding-top: 48px;
+    opacity: 0.5;
+    transition: opacity 0.4s;
+  }
+
+  .stats-row:hover { opacity: 1; }
+
+  .stat-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--neon);
+    margin-bottom: 6px;
+  }
+
+  .stat-value {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Background Glow ── */
+  #skills::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,255,179,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+</style>
   </head>
 
   <body class="font-sans bg-black/20  text-white selection:bg-accent/30">
@@ -255,38 +497,59 @@
 
     <!-- Skills Section (Multi-Core Circuit UI) -->
     <section id="skills" class="relative py-40 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center mb-12">
-          <p style="color:var(--neon);font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:16px;">02 — Expertise</p>
-          <h2 class="text-5xl md:text-7xl font-black">TECHNICAL <span class="text-gradient">CORES</span></h2>
-        </div>
+      <div class="max-w-7xl">
 
-        <div class="core-switcher">
-          <button class="core-tab active" onclick="switchCore('backend',this)">Backend</button>
-          <button class="core-tab" onclick="switchCore('frontend',this)">Frontend</button>
-          <button class="core-tab" onclick="switchCore('mobile',this)">Mobile</button>
-          <button class="core-tab" onclick="switchCore('aiml',this)">AI / ML</button>
-          <button class="core-tab" onclick="switchCore('cloud',this)">Cloud</button>
-        </div>
+    <p class="section-label">02 — Expertise</p>
+    <h2 class="section-title">TECHNICAL <span class="text-gradient">CORES</span></h2>
 
-        <div class="circuit-container flex justify-center items-center relative" style="height:600px;margin-bottom:80px;" id="circuit-window">
-          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
-          <div class="hex hex-center" id="tech-core">
-            <div class="text-center">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--neon)" stroke-width="1.5" class="mx-auto mb-1"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg>
-              <span style="font-size:9px;font-weight:700;color:var(--neon);letter-spacing:0.2em;text-transform:uppercase;" id="core-title">BACKEND</span>
-            </div>
-          </div>
-          <div id="skill-nodes-container" class="absolute inset-0 pointer-events-none"></div>
-        </div>
+    <div class="core-switcher">
+      <button class="core-tab active" onclick="switchCore('backend',this)">Backend</button>
+      <button class="core-tab" onclick="switchCore('frontend',this)">Frontend</button>
+      <button class="core-tab" onclick="switchCore('mobile',this)">Mobile</button>
+      <button class="core-tab" onclick="switchCore('aiml',this)">AI / ML</button>
+      <button class="core-tab" onclick="switchCore('cloud',this)">Cloud</button>
+    </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center border-t pt-20" style="border-color:rgba(0,255,179,0.08);opacity:0.5;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">
-          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Security</span><p class="text-sm text-gray-400">JWT / OAuth2</p></div>
-          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Data</span><p class="text-sm text-gray-400">PostgreSQL / Prisma</p></div>
-          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Ops</span><p class="text-sm text-gray-400">CI/CD / AWS</p></div>
-          <div class="flex flex-col items-center gap-2"><span class="text-xs font-bold tracking-widest uppercase" style="color:var(--neon);">Frontend</span><p class="text-sm text-gray-400">NextJS / React</p></div>
+    <!-- Circuit Area -->
+    <div class="circuit-wrapper" id="circuit-window">
+
+      <!-- SVG for lines & dots — viewBox matches node coordinate space -->
+      <svg class="circuit-svg" id="circuit-svg"
+           viewBox="0 0 1000 600"
+           preserveAspectRatio="xMidYMid meet">
+      </svg>
+
+      <!-- Center hex (always visible) -->
+      <div class="hex-center">
+        <div style="text-align:center;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+               stroke="var(--neon)" stroke-width="1.5"
+               style="display:block;margin:0 auto 4px;">
+            <rect x="2" y="2" width="20" height="20" rx="2"/>
+            <path d="M8 8h8M8 12h6M8 16h4"/>
+          </svg>
+          <span id="core-title"
+                style="font-size:8px;font-weight:700;color:var(--neon);
+                       letter-spacing:0.18em;text-transform:uppercase;">
+            ENGINEERING
+          </span>
         </div>
       </div>
+
+      <!-- Nodes overlay — same bounding box as SVG -->
+      <div id="skill-nodes-container"></div>
+
+    </div><!-- /.circuit-wrapper -->
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div><p class="stat-label">Security</p><p class="stat-value">JWT / OAuth2</p></div>
+      <div><p class="stat-label">Data</p><p class="stat-value">PostgreSQL / Prisma</p></div>
+      <div><p class="stat-label">Ops</p><p class="stat-value">CI/CD / AWS</p></div>
+      <div><p class="stat-label">Frontend</p><p class="stat-value">NextJS / React</p></div>
+    </div>
+
+  </div>
     </section>
 
     <!-- Projects Section -->
@@ -607,84 +870,155 @@
     ></script>
 
     <script>
-      const skillData = {
-        backend:  { title:"ENGINEERING", nodes:[{name:"JAVA",icon:"☕",x:200,y:150,color:"var(--neon2)"},{name:"SPRING",icon:"🌿",x:250,y:450,color:"var(--neon)"},{name:"NODE.JS",icon:"⬡",x:750,y:150,color:"var(--neon)"},{name:"PYTHON",icon:"🐍",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"p1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"p2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"p3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"p4"}]},
-        frontend: { title:"EXPERIENCE",  nodes:[{name:"REACT",icon:"⚛",x:200,y:150,color:"var(--neon)"},{name:"NEXT.JS",icon:"▲",x:250,y:450,color:"var(--neon2)"},{name:"JS",icon:"JS",x:750,y:150,color:"var(--neon2)"},{name:"TAILWIND",icon:"🎨",x:800,y:450,color:"var(--neon)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pf1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pf2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pf3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pf4"}]},
-        mobile:   { title:"MOBILITY",    nodes:[{name:"REACT NATIVE",icon:"📱",x:200,y:150,color:"var(--neon2)"},{name:"EXPO",icon:"🚀",x:250,y:450,color:"var(--neon)"},{name:"FLUTTER",icon:"💙",x:750,y:150,color:"var(--neon)"},{name:"SWIFT",icon:"🍎",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pm1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pm2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pm3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pm4"}]},
-        aiml:     { title:"INTELL",       nodes:[{name:"PYTHON",icon:"🧠",x:200,y:150,color:"var(--neon)"},{name:"TENSORFLOW",icon:"🔷",x:250,y:450,color:"var(--neon2)"},{name:"PYTORCH",icon:"🔥",x:750,y:150,color:"var(--neon2)"},{name:"OPENAI",icon:"🤖",x:800,y:450,color:"var(--neon)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pa1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pa2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pa3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pa4"}]},
-        cloud:    { title:"DEVOPS",       nodes:[{name:"AWS",icon:"☁",x:200,y:150,color:"var(--neon2)"},{name:"DOCKER",icon:"🐳",x:250,y:450,color:"var(--neon)"},{name:"KUBERNETES",icon:"⚙",x:750,y:150,color:"var(--neon)"},{name:"TERRAFORM",icon:"🏗",x:800,y:450,color:"var(--neon2)"}], paths:[{d:"M 500 300 L 400 300 L 400 150 L 235 150",id:"pc1"},{d:"M 500 300 L 400 300 L 400 450 L 285 450",id:"pc2"},{d:"M 500 300 L 600 300 L 600 150 L 715 150",id:"pc3"},{d:"M 500 300 L 600 300 L 600 450 L 765 450",id:"pc4"}]}
-      };
+/*
+  SVG viewBox = "0 0 1000 600"
+  Center node  = (500, 300)  → 50% / 50%
 
+  Node positions are given in SVG units.
+  To place the HTML overlay hex at the same spot:
+    left = (svgX / 1000 * 100) + "%"
+    top  = (svgY / 600  * 100) + "%"
+  Combined with transform:translate(-50%,-50%) the center of each hex
+  lands exactly on (svgX, svgY) — matching the SVG path endpoints.
+*/
 
-      function switchCore(type, element) {
-        document.querySelectorAll('.core-tab').forEach(t => t.classList.remove('active'));
-        if (element) element.classList.add('active');
+const W = 1000, H = 600;   // SVG viewBox size
 
-        const nodesEl = document.getElementById('skill-nodes-container');
-        const svgEl   = document.getElementById('circuit-svg');
-        const titleEl = document.getElementById('core-title');
-        const data    = skillData[type] || skillData.backend;
+const skillData = {
+  backend: {
+    title: "ENGINEERING",
+    nodes: [
+      { name: "JAVA",    icon: "☕", x: 150, y: 150 },
+      { name: "SPRING",  icon: "🌿", x: 150, y: 450 },
+      { name: "NODE.JS", icon: "⬡", x: 850, y: 150 },
+      { name: "PYTHON",  icon: "🐍", x: 850, y: 450 }
+    ]
+  },
+  frontend: {
+    title: "EXPERIENCE",
+    nodes: [
+      { name: "REACT",    icon: "⚛",  x: 150, y: 150 },
+      { name: "NEXT.JS",  icon: "▲",  x: 150, y: 450 },
+      { name: "JS",       icon: "JS", x: 850, y: 150 },
+      { name: "TAILWIND", icon: "🎨", x: 850, y: 450 }
+    ]
+  },
+  mobile: {
+    title: "MOBILITY",
+    nodes: [
+      { name: "REACT NATIVE", icon: "📱", x: 150, y: 150 },
+      { name: "EXPO",         icon: "🚀", x: 150, y: 450 },
+      { name: "FLUTTER",      icon: "💙", x: 850, y: 150 },
+      { name: "SWIFT",        icon: "🍎", x: 850, y: 450 }
+    ]
+  },
+  aiml: {
+    title: "INTELL",
+    nodes: [
+      { name: "PYTHON",     icon: "🧠", x: 150, y: 150 },
+      { name: "TENSORFLOW", icon: "🔷", x: 150, y: 450 },
+      { name: "PYTORCH",    icon: "🔥", x: 850, y: 150 },
+      { name: "OPENAI",     icon: "🤖", x: 850, y: 450 }
+    ]
+  },
+  cloud: {
+    title: "DEVOPS",
+    nodes: [
+      { name: "AWS",        icon: "☁",  x: 150, y: 150 },
+      { name: "DOCKER",     icon: "🐳", x: 150, y: 450 },
+      { name: "KUBERNETES", icon: "⚙",  x: 850, y: 150 },
+      { name: "TERRAFORM",  icon: "🏗",  x: 850, y: 450 }
+    ]
+  }
+};
 
-        nodesEl.style.transition = 'opacity 0.3s';
-        svgEl.style.transition   = 'opacity 0.3s';
-        nodesEl.style.opacity = '0';
-        svgEl.style.opacity   = '0';
+// Centre of SVG in SVG units
+const CX = W / 2;   // 500
+const CY = H / 2;   // 300
 
-        setTimeout(() => {
-          titleEl.innerText = data.title;
-          nodesEl.innerHTML = '';
-          svgEl.innerHTML   = '';
+function makePath(x1, y1, x2, y2, id) {
+  /*
+    Draw an elbow from centre (CX,CY) to node (x2,y2).
+    The elbow goes horizontally first, then vertically.
+    Midpoint X = average of CX and x2 for a clean L-shape.
+  */
+  const mx = (CX + x2) / 2;
+  return `M${CX} ${CY} L${mx} ${CY} L${mx} ${y2} L${x2} ${y2}`;
+}
 
-          data.paths.forEach(p => {
-            const path = document.createElementNS("http://www.w3.org/2000/svg","path");
-            path.setAttribute("d", p.d);
-            path.setAttribute("class","circuit-line");
-            path.setAttribute("id", p.id);
-            svgEl.appendChild(path);
+function switchCore(type, element) {
+  document.querySelectorAll('.core-tab').forEach(t => t.classList.remove('active'));
+  if (element) element.classList.add('active');
 
-            const circle = document.createElementNS("http://www.w3.org/2000/svg","circle");
-            circle.setAttribute("r","4");
-            circle.setAttribute("class","data-dot");
-            const am = document.createElementNS("http://www.w3.org/2000/svg","animateMotion");
-            am.setAttribute("dur","3s");
-            am.setAttribute("repeatCount","indefinite");
-            const mp = document.createElementNS("http://www.w3.org/2000/svg","mpath");
-            mp.setAttributeNS("http://www.w3.org/1999/xlink","href","#"+p.id);
-            am.appendChild(mp);
-            circle.appendChild(am);
-            svgEl.appendChild(circle);
-          });
+  const nodesEl  = document.getElementById('skill-nodes-container');
+  const svgEl    = document.getElementById('circuit-svg');
+  const titleEl  = document.getElementById('core-title');
+  const data     = skillData[type] || skillData.backend;
 
-          data.nodes.forEach(node => {
-            const d = document.createElement('div');
-            d.className = 'hex hex-node absolute pointer-events-auto';
-            d.style.cssText = `left:${node.x-35}px;top:${node.y-40}px;`;
-            d.innerHTML = `
-              <div class="hex-border"></div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
-                <span style="font-size:20px;line-height:1;">${node.icon}</span>
-                <span style="font-size:7px;font-weight:700;color:white;letter-spacing:1.5px;text-align:center;">${node.name}</span>
-              </div>`;
-            nodesEl.appendChild(d);
-          });
+  nodesEl.style.opacity = '0';
+  svgEl.style.opacity   = '0';
 
-          nodesEl.style.opacity = '1';
-          svgEl.style.opacity   = '1';
-        }, 300);
-      }
+  setTimeout(() => {
 
-      document.addEventListener('DOMContentLoaded', () => {
-        switchCore('backend', document.querySelector('.core-tab.active'));
-      });
+    titleEl.textContent = data.title;
+    nodesEl.innerHTML   = '';
+    svgEl.innerHTML     = '';
 
-      function toggleMenu() {
-        const menu = document.getElementById("mobile-menu");
-        menu.classList.toggle("hidden");
-        menu.classList.toggle("animate-in");
-        menu.classList.toggle("fade-in");
-        menu.classList.toggle("slide-in-from-top-4");
-      }
-    </script>
+    data.nodes.forEach((node, i) => {
+      const pathId = `p_${type}_${i}`;
+      const d      = makePath(CX, CY, node.x, node.y, pathId);
+
+      /* ── SVG path ── */
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('class', 'circuit-line');
+      path.setAttribute('id', pathId);
+      svgEl.appendChild(path);
+
+      /* ── Animated dot ── */
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('r', '4');
+      circle.setAttribute('class', 'data-dot');
+
+      const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+      am.setAttribute('dur', (2.5 + i * 0.4) + 's');
+      am.setAttribute('repeatCount', 'indefinite');
+
+      const mp = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');
+      mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + pathId);
+
+      am.appendChild(mp);
+      circle.appendChild(am);
+      svgEl.appendChild(circle);
+
+      /* ── HTML hex node ── */
+      /*
+        KEY: place using % of the container (which matches the SVG viewBox).
+        left = node.x / W * 100 %
+        top  = node.y / H * 100 %
+        transform: translate(-50%, -50%)  ← centers the hex on that point
+      */
+      const div = document.createElement('div');
+      div.className = 'hex-node';
+      div.style.left = (node.x / W * 100) + '%';
+      div.style.top  = (node.y / H * 100) + '%';
+      div.innerHTML  = `
+        <span class="node-icon">${node.icon}</span>
+        <span class="node-label">${node.name}</span>
+      `;
+      nodesEl.appendChild(div);
+    });
+
+    nodesEl.style.opacity = '1';
+    svgEl.style.opacity   = '1';
+
+  }, 280);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  switchCore('backend', document.querySelector('.core-tab.active'));
+});
+</script>
 
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
