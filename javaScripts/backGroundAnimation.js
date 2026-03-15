@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const ctx = canvas.getContext("2d");
 
   let stars = [];
-  const starCount = 40; // Total number of active stars
+  const starCount = 60; // Total number of active stars
 
   function setCanvasSize() {
     canvas.width = window.innerWidth;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.type = Math.random() > 0.5 ? "horizontal" : "vertical";
       this.size = 4; // 4 by 4 pixels
       
-      this.speed = Math.random() * 2 + 1; // Speed variation
+      this.speed = Math.random() * 0.5; // Speed variation
       
       if (this.type === "horizontal") {
         this.y = Math.floor(Math.random() * canvas.height); // random vertical position
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     draw() {
       // Transparent 50%
-      ctx.fillStyle = "rgba(0, 158, 129, 0.15)";
+      ctx.fillStyle = "rgba(0, 158, 40, 0.15)";
       ctx.beginPath();
       // 4 by 4 square
       ctx.rect(this.x, this.y, this.size, this.size);
