@@ -94,9 +94,9 @@ body {
 }
 .circuit-line {
   fill: none;
-  stroke: rgba(0, 255, 179, 0.25);
-  stroke-width: 1.5;
-  stroke-dasharray: 6 4;
+  stroke: rgba(106, 106, 106, 0.4); /* Brighter for glass */
+  stroke-width: 3;
+  filter: drop-shadow(0 0 6px rgba(0,255,179,0.5)); /* Glass line glow */
   animation: flow-dash 2s linear infinite;
 }
 @keyframes flow-dash {
