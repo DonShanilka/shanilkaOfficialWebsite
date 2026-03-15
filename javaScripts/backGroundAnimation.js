@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const canvas = document.getElementById("bg-canvas");
   const ctx = canvas.getContext("2d");
 
-  let beams = [];
-  const gridSize = 50;
-  const beamCount = 8; // Number of active beams
+  let stars = [];
+  const starCount = 40; // Total number of active stars
 
   function setCanvasSize() {
     canvas.width = window.innerWidth;
@@ -12,53 +11,46 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setCanvasSize();
-  // window.addEventListener("resize", setCanvasSize);
+  window.addEventListener("resize", setCanvasSize);
 
-  // const colors = ["#00ffb3", "#00d4ff", "#00ffa2", "#00f0ff"];
-
-  class Beam {
+  class Star {
     constructor() {
       this.init();
+      // Randomize initial positions so the screen is full at start
+      if (this.type === "horizontal") {
+        this.x = Math.random() * canvas.width;
+      } else {
+        this.y = Math.random() * canvas.height;
+      }
     }
 
     init() {
-      this.type = "horizontal";
-      this.size = Math.random() * 200 + 150; // Increased size for drama
-      this.speed = Math.random() * 3 + 1.5;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
+      // 50% horizontal, 50% vertical
+      this.type = Math.random() > 0.5 ? "horizontal" : "vertical";
+      this.size = 4; // 4 by 4 pixels
       
-      this.y = Math.floor(Math.random() * (canvas.height / gridSize)) * gridSize;
-      this.x = -this.size;
-      this.vx = this.speed;
-      this.vy = 0;
+      this.speed = Math.random() * 2 + 1; // Speed variation
+      
+      if (this.type === "horizontal") {
+        this.y = Math.floor(Math.random() * canvas.height); // random vertical position
+        this.x = -this.size; // start off-screen to the left
+        this.vx = this.speed;
+        this.vy = 0;
+      } else {
+        this.x = Math.floor(Math.random() * canvas.width); // random horizontal position
+        this.y = -this.size; // start off-screen top
+        this.vx = 0;
+        this.vy = this.speed;
+      }
     }
 
     draw() {
-      const gradient = this.type === "horizontal" 
-        ? ctx.createLinearGradient(this.x, this.y, this.x + this.size, this.y)
-        : ctx.createLinearGradient(this.x, this.y, this.x, this.y + this.size);
-
-      gradient.addColorStop(0, "transparent");
-      gradient.addColorStop(0.8, this.color);
-      gradient.addColorStop(1, "white"); // Head of the beam
-
+      // Transparent 50%
+      ctx.fillStyle = "rgba(0, 158, 129, 0.15)";
       ctx.beginPath();
-      ctx.strokeStyle = gradient;
-      ctx.lineWidth = 2;
-      ctx.lineCap = "round";
-      
-      if (this.type === "horizontal") {
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + this.size, this.y);
-      } else {
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x, this.y + this.size);
-      }
-      
-      ctx.shadowBlur = 15;
-      ctx.shadowColor = this.color;
-      ctx.stroke();
-      ctx.shadowBlur = 0;
+      // 4 by 4 square
+      ctx.rect(this.x, this.y, this.size, this.size);
+      ctx.fill();
     }
 
     update() {
@@ -74,24 +66,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function initBeams() {
-    beams = [];
-    for (let i = 0; i < beamCount; i++) {
-      beams.push(new Beam());
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < starCount; i++) {
+      stars.push(new Star());
     }
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (let i = 0; i < beams.length; i++) {
-      beams[i].update();
-      beams[i].draw();
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].update();
+      stars[i].draw();
     }
     requestAnimationFrame(animate);
   }
 
-  initBeams();
+  initStars();
   animate();
 
   // Smooth scrolling for anchor links (preserving core functionality)
