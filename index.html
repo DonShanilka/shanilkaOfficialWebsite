@@ -965,6 +965,17 @@ function switchCore(type, element) {
     nodesEl.innerHTML   = '';
     svgEl.innerHTML     = '';
 
+    // Add gradient definition for dash
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    defs.innerHTML = `
+      <linearGradient id="dashGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="rgba(0,255,179,0)" />
+        <stop offset="50%" stop-color="rgba(0,0255,179,0.8)" />
+        <stop offset="100%" stop-color="#ffffff" />
+      </linearGradient>
+    `;
+    svgEl.appendChild(defs);
+
     data.nodes.forEach((node, i) => {
       const pathId = `p_${type}_${i}`;
       const d      = makePath(CX, CY, node.x, node.y, pathId);
@@ -976,21 +987,27 @@ function switchCore(type, element) {
       path.setAttribute('id', pathId);
       svgEl.appendChild(path);
 
-      /* ── Animated dot ── */
-      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('r', '4');
-      circle.setAttribute('class', 'data-dot');
+      /* ── Animated dash (shooting star) ── */
+      const dash = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      dash.setAttribute('width', '30');
+      dash.setAttribute('height', '3');
+      dash.setAttribute('rx', '12');
+      dash.setAttribute('class', 'data-dot');
+      dash.setAttribute('fill', 'url(#dashGradient)');
+      dash.setAttribute('x', '-12.5');
+      dash.setAttribute('y', '-2');
 
       const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
       am.setAttribute('dur', (2.5 + i * 0.4) + 's');
       am.setAttribute('repeatCount', 'indefinite');
+      am.setAttribute('rotate', 'auto');
 
       const mp = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');
       mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + pathId);
 
       am.appendChild(mp);
-      circle.appendChild(am);
-      svgEl.appendChild(circle);
+      dash.appendChild(am);
+      svgEl.appendChild(dash);
 
       /* ── HTML hex node ── */
       /*
