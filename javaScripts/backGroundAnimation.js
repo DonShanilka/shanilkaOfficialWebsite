@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     draw() {
-      // Transparent 50%
-      ctx.fillStyle = "rgba(0, 158, 40, 0.15)";
+      // Transparent #e1ff00 (neon lime)
+      ctx.fillStyle = "rgba(225, 255, 0, 0.15)";
       ctx.beginPath();
       // 4 by 4 square
       ctx.rect(this.x, this.y, this.size, this.size);
