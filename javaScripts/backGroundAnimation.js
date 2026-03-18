@@ -13,58 +13,58 @@ document.addEventListener("DOMContentLoaded", function () {
   setCanvasSize();
   window.addEventListener("resize", setCanvasSize);
 
-  class Star {
-    constructor() {
-      this.init();
-      // Randomize initial positions so the screen is full at start
-      if (this.type === "horizontal") {
-        this.x = Math.random() * canvas.width;
-      } else {
-        this.y = Math.random() * canvas.height;
-      }
-    }
+  // class Star {
+  //   constructor() {
+  //     this.init();
+  //     // Randomize initial positions so the screen is full at start
+  //     if (this.type === "horizontal") {
+  //       this.x = Math.random() * canvas.width;
+  //     } else {
+  //       this.y = Math.random() * canvas.height;
+  //     }
+  //   }
 
-    init() {
-      // 50% horizontal, 50% vertical
-      this.type = Math.random() > 0.5 ? "horizontal" : "vertical";
-      this.size = 4; // 4 by 4 pixels
+  //   init() {
+  //     // 50% horizontal, 50% vertical
+  //     this.type = Math.random() > 0.5 ? "horizontal" : "vertical";
+  //     this.size = 4; // 4 by 4 pixels
       
-      this.speed = Math.random() * 0.5; // Speed variation
+  //     this.speed = Math.random() * 0.5; // Speed variation
       
-      if (this.type === "horizontal") {
-        this.y = Math.floor(Math.random() * canvas.height); // random vertical position
-        this.x = -this.size; // start off-screen to the left
-        this.vx = this.speed;
-        this.vy = 0;
-      } else {
-        this.x = Math.floor(Math.random() * canvas.width); // random horizontal position
-        this.y = -this.size; // start off-screen top
-        this.vx = 0;
-        this.vy = this.speed;
-      }
-    }
+  //     if (this.type === "horizontal") {
+  //       this.y = Math.floor(Math.random() * canvas.height); // random vertical position
+  //       this.x = -this.size; // start off-screen to the left
+  //       this.vx = this.speed;
+  //       this.vy = 0;
+  //     } else {
+  //       this.x = Math.floor(Math.random() * canvas.width); // random horizontal position
+  //       this.y = -this.size; // start off-screen top
+  //       this.vx = 0;
+  //       this.vy = this.speed;
+  //     }
+  //   }
 
-    draw() {
-      // Transparent #e1ff00 (neon lime)
-      ctx.fillStyle = "rgba(225, 255, 0, 0.15)";
-      ctx.beginPath();
-      // 4 by 4 square
-      ctx.rect(this.x, this.y, this.size, this.size);
-      ctx.fill();
-    }
+  //   draw() {
+  //     // Transparent #e1ff00 (neon lime)
+  //     // ctx.fillStyle = "rgba(225, 255, 0, 0.15)";
+  //     ctx.beginPath();
+  //     // 4 by 4 square
+  //     ctx.rect(this.x, this.y, this.size, this.size);
+  //     ctx.fill();
+  //   }
 
-    update() {
-      this.x += this.vx;
-      this.y += this.vy;
+  //   update() {
+  //     this.x += this.vx;
+  //     this.y += this.vy;
 
-      // Reset if off screen
-      if (this.type === "horizontal" && this.x > canvas.width) {
-        this.init();
-      } else if (this.type === "vertical" && this.y > canvas.height) {
-        this.init();
-      }
-    }
-  }
+  //     // Reset if off screen
+  //     if (this.type === "horizontal" && this.x > canvas.width) {
+  //       this.init();
+  //     } else if (this.type === "vertical" && this.y > canvas.height) {
+  //       this.init();
+  //     }
+  //   }
+  // }
 
   function initStars() {
     stars = [];
