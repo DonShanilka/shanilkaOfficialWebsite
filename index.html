@@ -6,22 +6,16 @@
     <title>N.Shanilka</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="./styles/main.css">
-    <style>/* ── Tab Switcher ── */
-
-      /* ── Section ── */
+    <style>
   #skills {
     position: relative;
     padding: 80px 0;
     width: 100%;
     overflow: hidden;
   }
-
   .max-w-7xl {
     max-width: 1280px;
     margin: 0 auto;
@@ -29,10 +23,8 @@
     position: relative;
     z-index: 10;
   }
-
-  /* ── Header ── */
   .section-label {
-    color: var(--neon);
+    color: #ff6670;                          /* was: var(--neon) green → now red-pink */
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.3em;
@@ -40,7 +32,6 @@
     margin-bottom: 16px;
     text-align: center;
   }
-
   .section-title {
     font-size: clamp(40px, 6vw, 72px);
     font-weight: 900;
@@ -48,15 +39,12 @@
     margin-bottom: 48px;
     line-height: 1;
   }
-
   .text-gradient {
-    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    background: linear-gradient(135deg, #ff6670, #c0121a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-
   .core-switcher {
     display: flex;
     justify-content: center;
@@ -64,10 +52,9 @@
     flex-wrap: wrap;
     margin-bottom: 60px;
   }
-
   .core-tab {
     background: transparent;
-    border: 1px solid rgba(208, 255, 0, 0.3);
+    border: 1px solid rgba(192, 18, 26, 0.3);  /* was: lime → now red */
     color: rgba(255,255,255,0.6);
     padding: 10px 24px;
     border-radius: 999px;
@@ -78,482 +65,364 @@
     cursor: pointer;
     transition: all 0.3s;
   }
-
   .core-tab:hover {
-    border-color: var(--neon);
-    color: var(--neon);
+    border-color: #ff6670;
+    color: #ff6670;
   }
-
   .core-tab.active {
-    background: var(--neon);
-    border-color: var(--neon);
-    color: #050f0a;
+    background: #c0121a;
+    border-color: #c0121a;
+    color: #fff0f0;
   }
-
-  /* ── Circuit Container ── */
-  /*
-    KEY FIX: The SVG viewBox is "0 0 1000 600".
-    The node positions in JS are in those same SVG units.
-    We use a wrapper that is position:relative, and inside it:
-      - the SVG fills 100% width/height (via viewBox + preserveAspectRatio)
-      - the nodes overlay is also 100% width/height
-    The nodes are placed using percentage = (svgX / 1000 * 100) and (svgY / 600 * 100)
-    so they always align with SVG coordinates regardless of container size.
-  */
   .circuit-wrapper {
     position: relative;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto 60px;
-    /* Maintain 1000:600 aspect ratio */
     aspect-ratio: 1000 / 600;
   }
-
   .circuit-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
     overflow: visible;
     transition: opacity 0.3s;
   }
-
   #skill-nodes-container {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     transition: opacity 0.3s;
   }
-
-  /* ── Circuit Lines ── */
   .circuit-line {
     fill: none;
-    stroke: rgba(106, 106, 106, 0.4);
-    /* stroke-width: 1.5; */
+    stroke: rgba(192, 18, 26, 0.25);           /* was: grey → now red */
   }
-
   .data-dot {
-    fill: var(--neon);
-    filter: drop-shadow(0 0 4px var(--neon));
+    fill: #ff6670;
+    filter: drop-shadow(0 0 4px #c0121a);      /* was: lime → now red */
   }
-
-  /* ── Center Hex ── */
   .hex-center {
     position: absolute;
-    /* Center in SVG coords: x=500, y=300 → 50%, 50% */
-    left: 50%;
-    top: 50%;
+    left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
-    background: rgba(225, 255, 0, 0.05); /* Glassier background */
-    backdrop-filter: blur(12px); /* Glass effect */
+    width: 90px; height: 90px;
+    background: rgba(192, 18, 26, 0.06);       /* was: lime tint → red tint */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(225, 255, 0, 0.2); /* Subtle glass edge */
+    border: 1px solid rgba(192, 18, 26, 0.2);  /* was: lime → red */
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     z-index: 10;
   }
-
-  /* Center hex glow border via pseudo */
   .hex-center::before {
     content:'';
-    position: absolute;
-    inset: -2px;
-    background: linear-gradient(135deg, var(--neon), var(--neon2));
+    position: absolute; inset: -2px;
+    background: linear-gradient(135deg, #ff6670, #c0121a);  /* was: lime → red */
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     z-index: -1;
     opacity: 0.6;
   }
-
   .hex-node {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    background: rgba(37, 49, 0, 0.511); /* Transparent for glass */
-    backdrop-filter: blur(12px); /* Glass blur */
+    width: 80px; height: 80px;
+    background: rgba(26, 5, 5, 0.75);          /* was: dark green → dark red */
+    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 3px;
-    /* 
-      IMPORTANT: translate(-50%, -50%) so the hex CENTER sits at the
-      left/top percentage that corresponds to the SVG coordinate.
-    */
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 3px;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
-    border: 1px solid rgba(225, 255, 0, 0.15); /* Glass edge */
+    border: 1px solid rgba(192, 18, 26, 0.15); /* was: lime → red */
     z-index: 10;
   }
-
   .hex-node .node-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px;
   }
-
   .hex-node .node-label {
-    font-size: 6.5px;
-    font-weight: 700;
+    font-size: 6.5px; font-weight: 700;
     color: white;
-    letter-spacing: 1.2px;
-    text-align: center;
-    text-transform: uppercase;
-    line-height: 1.2;
+    letter-spacing: 1.2px; text-align: center;
+    text-transform: uppercase; line-height: 1.2;
     padding: 0 4px;
   }
-
-  /* ── Bottom Stats ── */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 48px;
-    text-align: center;
-    border-top: 1px solid rgba(225, 255, 0, 0.08);
+    gap: 48px; text-align: center;
+    border-top: 1px solid rgba(192, 18, 26, 0.1); /* was: lime → red */
     padding-top: 48px;
     opacity: 0.5;
     transition: opacity 0.4s;
   }
-
   .stats-row:hover { opacity: 1; }
-
   .stat-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--neon);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: #ff6670;                             /* was: lime → red-pink */
     margin-bottom: 6px;
   }
-
-  .stat-value {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-  }
-
-  /* ── Background Glow ── */
+  .stat-value { font-size: 13px; color: rgba(255,255,255,0.5); }
   #skills::before {
     content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(225, 255, 0, 0.04) 0%, transparent 70%);
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(192, 18, 26, 0.06) 0%, transparent 70%);
     pointer-events: none;
+  }
+
+  /* drift keyframes for inline blobs */
+  @keyframes drift1 {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(40px, 60px) scale(1.15); }
+  }
+  @keyframes drift2 {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(-50px, -40px) scale(1.2); }
   }
 </style>
   </head>
 
-  <body class="font-sans bg-[#4d4d4d] text-white">
-    <!-- <div class="scan-line"></div> -->
+  <body class="font-sans text-white" style="background-color: #0d0303;">
+
+    <!-- Custom cursor (Fingent style) -->
+    <div id="cursor" style="position:fixed;width:12px;height:12px;background:#c0121a;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;"></div>
+    <div id="cursor-ring" style="position:fixed;width:36px;height:36px;border:1px solid rgba(192,18,26,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;"></div>
+
     <div class="grain-overlay"></div>
     <canvas id="bg-canvas"></canvas>
-    
-    <!-- Background Glow Blobs -->
-    <div class="glow-blob -top- -left-40 opacity-40"></div>
-    <div class="glow-blob top-70 -right-48 opacity-30"></div>
-    <!-- <div class="glow-blob -bottom-48 opacity-20"></div> -->
 
-    <!-- Navbar -->
-    <header
-      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5"
-    >
+    <!-- Background Glow Blobs — vivid red like Fingent -->
+    <div class="glow-blob" style="top:-120px;left:-100px;"></div>
+    <div class="glow-blob" style="bottom:-60px;right:-100px;"></div>
+    <!-- Extra blobs for more coverage -->
+    <div style="position:fixed;width:500px;height:500px;border-radius:50%;z-index:-1;pointer-events:none;filter:blur(80px);background:radial-gradient(circle,rgba(210,15,25,0.55) 0%,rgba(160,10,20,0.2) 50%,transparent 70%);top:35%;left:-60px;opacity:0.55;animation:drift1 18s ease-in-out infinite alternate-reverse;"></div>
+    <div style="position:fixed;width:400px;height:400px;border-radius:50%;z-index:-1;pointer-events:none;filter:blur(60px);background:radial-gradient(circle,rgba(180,8,18,0.6) 0%,rgba(140,5,15,0.25) 50%,transparent 70%);top:20%;right:-40px;opacity:0.5;animation:drift2 14s ease-in-out infinite alternate;"></div>
+    <div style="position:fixed;width:350px;height:350px;border-radius:50%;z-index:-1;pointer-events:none;filter:blur(70px);background:radial-gradient(circle,rgba(200,12,22,0.45) 0%,transparent 70%);top:55%;left:35%;opacity:0.4;animation:drift1 20s ease-in-out infinite alternate;"></div>
+
+    <!-- Dot grid overlay -->
+    <div style="position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+
+    <!-- ══════════════════════════════════════════
+         NAVBAR
+    ══════════════════════════════════════════ -->
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5">
       <div class="flex items-center gap-3">
         <div class="relative">
-          <div style="clip-path: polygon(50% 0%, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%); width:36px; height:42px; background: linear-gradient(135deg,rgba(225, 255, 0, 0.2),rgba(197, 223, 0, 0.1)); border: 1px solid rgba(225, 255, 0, 0.4); display:flex; align-items:center; justify-content:center;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e1ff00" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <!-- hex logo: red instead of lime -->
+          <div style="clip-path:polygon(50% 0%,93.3% 25%,93.3% 75%,50% 100%,6.7% 75%,6.7% 25%);width:36px;height:42px;background:linear-gradient(135deg,rgba(192,18,26,0.25),rgba(138,0,9,0.1));border:1px solid rgba(192,18,26,0.45);display:flex;align-items:center;justify-content:center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6670" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
         </div>
         <span class="text-xl font-black tracking-[0.2em] text-white">N.SHANILKA</span>
       </div>
       <nav class="space-x-8 text-sm hidden md:flex items-center">
-        <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
-        <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
-        <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a>
+        <a href="#home"     class="text-gray-400 hover:text-white transition-colors">Home</a>
+        <a href="#about"    class="text-gray-400 hover:text-white transition-colors">About</a>
+        <a href="#skills"   class="text-gray-400 hover:text-white transition-colors">Skills</a>
         <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
-        <a
-          href="#contact"
-          class="bg-[var(--accent)] text-white px-5 py-2 rounded-full font-medium hover:bg-[#e04400] transition-all shadow-lg shadow-[var(--accent)]/20"
-          >Contact</a
-        >
+        <!-- Contact button: red -->
+        <a href="#contact"
+           class="text-white px-5 py-2 rounded-full font-medium transition-all"
+           style="background:#c0121a;box-shadow:0 4px 20px rgba(192,18,26,0.35);"
+           onmouseover="this.style.background='#e01520'"
+           onmouseout="this.style.background='#c0121a'">Contact</a>
       </nav>
-
-      <!-- Mobile Toggle -->
+      <!-- Mobile toggle -->
       <div class="md:hidden cursor-pointer" onclick="toggleMenu()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
         </svg>
       </div>
       <nav id="mobile-menu" class="fixed top-[72px] left-0 w-full glass p-6 space-y-4 text-center md:hidden hidden">
-        <a href="#home" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Home</a>
-        <a href="#about" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">About</a>
-        <a href="#skills" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Skills</a>
-        <a href="#projects" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Projects</a>
-        <a href="#contact" class="block hover:text-[var(--accent)]" onclick="toggleMenu()">Contact</a>
+        <a href="#home"     class="block" style="color:#ff6670" onclick="toggleMenu()">Home</a>
+        <a href="#about"    class="block" style="color:#ff6670" onclick="toggleMenu()">About</a>
+        <a href="#skills"   class="block" style="color:#ff6670" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" class="block" style="color:#ff6670" onclick="toggleMenu()">Projects</a>
+        <a href="#contact"  class="block" style="color:#ff6670" onclick="toggleMenu()">Contact</a>
       </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section
-      id="home"
-      class="min-h-screen text-white flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative text-center"
-    >
+    <!-- ══════════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════════ -->
+    <section id="home" class="min-h-screen text-white flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative text-center">
       <div class="max-w-4xl mx-auto relative" data-aos="zoom-in" data-aos-duration="1000">
-        <!-- Hero Central Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[var(--accent)]/10 blur-[150px] -z-10"></div>
-        
-        <div class="flex flex-col items-center gap-8">
-          <!-- Profile Badge -->
-          <!-- <div class="group relative">
-            <div class="absolute -inset-1 bg-gradient-to-r from-[var(--accent)] to-[#ffb800] rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-            <img
-              src="assets/images/myImage.JPG"
-              alt="Nishith Shanilka"
-              class="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/20 object-cover shadow-2xl"
-            />
-          </div> -->
+        <!-- hero central glow: vivid red -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full blur-[120px] -z-10"
+             style="background:radial-gradient(ellipse,rgba(210,15,25,0.22) 0%,transparent 70%);"></div>
 
-          <p class="text-[var(--accent)] text-xs font-bold tracking-[0.3em] " data-aos="fade-up" data-aos-delay="200">
+        <div class="flex flex-col items-center gap-8">
+          <!-- eyebrow: red -->
+          <p style="color:#ff6670;" class="text-xs font-bold tracking-[0.3em]"
+             data-aos="fade-up" data-aos-delay="200">
             Hi i'm
           </p>
 
-          <h1
-            class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-[0.9]"
-            data-aos="fade-up"
-          >
+          <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-[0.9]" data-aos="fade-up">
             NISHITH SHANILKA<br />
             <span class="text-gradient">full - stack</span> DEVELOPER<br />
-            
           </h1>
 
-          <p
-            class="text-gray-400 mb-10 text-xl md:text-2xl font-light"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            Passionate about creating clean UI, efficient backend systems, and full-stack solutions and solve <span class="text-white font-medium">real-world problems.</span>.
+          <p class="text-gray-400 mb-10 text-xl md:text-2xl font-light" data-aos="fade-up" data-aos-delay="400">
+            Passionate about creating clean UI, efficient backend systems, and full-stack solutions and solve
+            <span class="text-white font-medium">real-world problems.</span>
           </p>
 
-          <!-- Icon Grid -->
-          <!-- <div class="flex gap-12 mb-12" data-aos="fade-up" data-aos-delay="600">
-            <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
-                <i class="fas fa-layer-group"></i>
-              </div>
-              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Transform</span>
-            </div>
-            <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
-                <i class="fas fa-lightbulb"></i>
-              </div>
-              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Innovate</span>
-            </div>
-            <div class="flex flex-col items-center gap-3">
-              <div class="w-12 h-12 flex items-center justify-center glass rounded-xl text-[var(--accent)] text-xl group-hover:bg-[var(--accent)] group-hover:text-white transition-colors">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Lead</span>
-            </div>
-          </div> -->
-
-          <a
-            href="#projects"
-            class="group relative px-8 py-4 bg-white/5 glass border border-white/10 rounded-xl font-bold text-sm tracking-widest uppercase hover:text-black transition-all duration-500 overflow-hidden"
-            data-aos="fade-up"
-            data-aos-delay="800"
-          >
-            <span class="relative z-10 text-[var(--accent)] group-hover:text-black">Download My CV</span>
-            <div class="absolute inset-0 bg-[#e1ff00] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          <!-- CV button: hover fill red -->
+          <a href="#projects"
+             class="group relative px-8 py-4 bg-white/5 glass border border-white/10 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden"
+             data-aos="fade-up" data-aos-delay="800">
+            <span class="relative z-10 group-hover:text-white" style="color:#ff6670;">Download My CV</span>
+            <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+                 style="background:#c0121a;"></div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section
-  id="about"
-  class="min-h-screen text-white py-24 px-6 md:px-16 lg:px-24"
->
-  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
+    <!-- ══════════════════════════════════════════
+         ABOUT SECTION
+    ══════════════════════════════════════════ -->
+    <section id="about" class="min-h-screen text-white py-24 px-6 md:px-16 lg:px-24">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center">
 
-    <!-- LEFT CONTENT -->
-    <div class="w-full lg:w-1/2 glass-card p-8 md:p-12 rounded-3xl">
-      <p
-        class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4"
-        data-aos="fade-down-right"
-      >
-        01 — About Me
-      </p>
-
-      <h2
-        class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8"
-        data-aos="fade-up"
-      >
-        Solid Engineering<br />
-        <span class="text-gradient">Digital Impact</span>
-      </h2>
-
-      <p
-        class="text-gray-400 mb-10 text-lg leading-relaxed"
-        data-aos="fade-up"
-      >
-        I am a full-stack engineer and designer specialized in building
-        scalable, high-performance applications. With a focus on clean
-        architecture and intuitive UI, I transform complex problems into
-        elegant digital experiences.
-      </p>
-
-      <!-- FEATURES -->
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
-        data-aos="fade-up"
-      >
-        <Feature label="Full-stack Architecture" />
-        <Feature label="Mobile Native" />
-        <Feature label="Cloud Systems" />
-        <Feature label="Performance Audit" />
-      </div>
-
-      <!-- CONTACT -->
-      <div class="flex flex-col sm:flex-row gap-6" data-aos="fade-up">
-        <div class="flex items-center gap-4 glass px-6 py-4 rounded-2xl">
-          <div
-            class="w-10 h-10 flex items-center justify-center bg-rose-600 rounded-full text-white"
-          >
-            <i class="fas fa-envelope"></i>
+        <!-- LEFT CONTENT -->
+        <div class="w-full lg:w-1/2 glass-card p-8 md:p-12 rounded-3xl">
+          <p style="color:#ff6670;" class="text-sm font-bold tracking-widest uppercase mb-4" data-aos="fade-down-right">
+            01 — About Me
+          </p>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8" data-aos="fade-up">
+            Solid Engineering<br />
+            <span class="text-gradient">Digital Impact</span>
+          </h2>
+          <p class="text-gray-400 mb-10 text-lg leading-relaxed" data-aos="fade-up">
+            I am a full-stack engineer and designer specialized in building scalable, high-performance applications.
+            With a focus on clean architecture and intuitive UI, I transform complex problems into elegant digital experiences.
+          </p>
+          <!-- Features -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12" data-aos="fade-up">
+            <div class="flex items-center gap-3">
+              <span style="color:#ff6670;">✦</span>
+              <span class="text-sm text-gray-300 font-medium">Full-stack Architecture</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span style="color:#ff6670;">✦</span>
+              <span class="text-sm text-gray-300 font-medium">Mobile Native</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span style="color:#ff6670;">✦</span>
+              <span class="text-sm text-gray-300 font-medium">Cloud Systems</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span style="color:#ff6670;">✦</span>
+              <span class="text-sm text-gray-300 font-medium">Performance Audit</span>
+            </div>
           </div>
-          <div>
-            <p class="text-[10px] text-gray-500 uppercase font-bold">
-              Email
-            </p>
-            <p class="text-sm font-bold text-gray-300">
-              shanilka799@gmail.com
-            </p>
+          <!-- Contact row -->
+          <div class="flex flex-col sm:flex-row gap-6" data-aos="fade-up">
+            <div class="flex items-center gap-4 glass px-6 py-4 rounded-2xl">
+              <!-- email icon: red -->
+              <div class="w-10 h-10 flex items-center justify-center rounded-full text-white"
+                   style="background:#c0121a;">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-[10px] text-gray-500 uppercase font-bold">Email</p>
+                <p class="text-sm font-bold text-gray-300">shanilka799@gmail.com</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- RIGHT ORBIT UI -->
-    <div
-      class="w-full lg:w-1/2 flex justify-center items-center"
-      data-aos="zoom-in"
-      data-aos-duration="1500"
-    >
-      <div class="orbit-container relative">
-
-        <!-- Glow -->
-        <div
-          class="absolute z-0 w-64 h-64 bg-accent-glow blur-[100px] opacity-30"
-        ></div>
-
-        <!-- OUTER RING -->
-        <div class="orbit-ring ring-3">
-          <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/icons8-go-100.png" alt=""></i></div>
-          <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/icons8-vs-code-100.png" alt=""></i></div>
-          <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-xcode-100.png" alt=""></i></div>
-          <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/atom.png" alt=""></i></div>
-        </div>
-
-        <!-- MIDDLE RING -->
-        <div class="orbit-ring ring-2">
-          <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png" alt=""></div>
-          <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/artificial-intelligence.png" alt=""></div>
-          <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/icons8-postgresql-100.png" alt=""></div>
-          <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/icons8-chatgpt-100.png" alt=""></div>
-        </div>
-
-        <!-- INNER RING -->
-        <div class="orbit-ring ring-1">
-          <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/python.png" alt=""></div>
-          <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/programing.png" alt=""></div>
-          <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-nextjs-100.png" alt=""></div>
-          <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/icons8-intellij-100.png" alt=""></div>
-        </div>
-
-        <!-- CENTER AVATAR -->
-        <img
-          src="./assets/images/myImage2.jpg"
-          alt="Nishith Shanilka"
-          class="avatar-center relative z-10"
-        />
-      </div>
-    </div>
-
-  </div>
-</section>
-
-    <!-- Skills Section (Multi-Core Circuit UI) -->
-    <section id="skills" class="relative py-40 overflow-hidden">
-      <div class="max-w-7xl">
-
-    <p class="section-label">02 — Expertise</p>
-    <h2 class="section-title">TECHNICAL <span class="text-gradient">CORES</span></h2>
-
-    <div class="core-switcher">
-      <button class="core-tab active" onclick="switchCore('backend',this)">Backend</button>
-      <button class="core-tab" onclick="switchCore('frontend',this)">Frontend</button>
-      <button class="core-tab" onclick="switchCore('mobile',this)">Mobile</button>
-      <button class="core-tab" onclick="switchCore('aiml',this)">AI / ML</button>
-      <button class="core-tab" onclick="switchCore('cloud',this)">Cloud</button>
-    </div>
-
-    <!-- Circuit Area -->
-    <div class="circuit-wrapper" id="circuit-window">
-
-      <!-- SVG for lines & dots — viewBox matches node coordinate space -->
-      <svg class="circuit-svg" id="circuit-svg"
-           viewBox="0 0 1000 600"
-           preserveAspectRatio="xMidYMid meet">
-      </svg>
-
-      <!-- Center hex (always visible) -->
-      <div class="hex-center">
-        <div style="text-align:center;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-               stroke="var(--neon)" stroke-width="1.5"
-               style="display:block;margin:0 auto 4px;">
-            <rect x="2" y="2" width="20" height="20" rx="2"/>
-            <path d="M8 8h8M8 12h6M8 16h4"/>
-          </svg>
-          <span id="core-title"
-                style="font-size:8px;font-weight:700;color:var(--neon);
-                       letter-spacing:0.18em;text-transform:uppercase;">
-            ENGINEERING
-          </span>
+        <!-- RIGHT ORBIT UI -->
+        <div class="w-full lg:w-1/2 flex justify-center items-center" data-aos="zoom-in" data-aos-duration="1500">
+          <div class="orbit-container relative">
+            <!-- glow: vivid red -->
+            <div class="absolute z-0 w-64 h-64 blur-[80px] opacity-50"
+                 style="background:rgba(210,15,25,0.7);"></div>
+            <!-- OUTER RING -->
+            <div class="orbit-ring ring-3">
+              <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/icons8-go-100.png" alt=""></div>
+              <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/icons8-vs-code-100.png" alt=""></div>
+              <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-xcode-100.png" alt=""></div>
+              <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/atom.png" alt=""></div>
+            </div>
+            <!-- MIDDLE RING -->
+            <div class="orbit-ring ring-2">
+              <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png" alt=""></div>
+              <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/artificial-intelligence.png" alt=""></div>
+              <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/icons8-postgresql-100.png" alt=""></div>
+              <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/icons8-chatgpt-100.png" alt=""></div>
+            </div>
+            <!-- INNER RING -->
+            <div class="orbit-ring ring-1">
+              <div class="orbit-icon pos-1"><img src="./assets/aboutpageIcon/python.png" alt=""></div>
+              <div class="orbit-icon pos-2"><img src="./assets/aboutpageIcon/programing.png" alt=""></div>
+              <div class="orbit-icon pos-3"><img src="./assets/aboutpageIcon/icons8-nextjs-100.png" alt=""></div>
+              <div class="orbit-icon pos-4"><img src="./assets/aboutpageIcon/icons8-intellij-100.png" alt=""></div>
+            </div>
+            <!-- CENTER AVATAR -->
+            <img src="./assets/images/myImage2.jpg" alt="Nishith Shanilka" class="avatar-center relative z-10" />
+          </div>
         </div>
       </div>
-
-      <!-- Nodes overlay — same bounding box as SVG -->
-      <div id="skill-nodes-container"></div>
-
-    </div><!-- /.circuit-wrapper -->
-
-    <!-- Stats -->
-    <div class="stats-row">
-      <div><p class="stat-label">Security</p><p class="stat-value">JWT / OAuth2</p></div>
-      <div><p class="stat-label">Data</p><p class="stat-value">PostgreSQL / Prisma</p></div>
-      <div><p class="stat-label">Ops</p><p class="stat-value">CI/CD / AWS</p></div>
-      <div><p class="stat-label">Frontend</p><p class="stat-value">NextJS / React</p></div>
-    </div>
-
-  </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- ══════════════════════════════════════════
+         SKILLS SECTION
+    ══════════════════════════════════════════ -->
+    <section id="skills" class="relative py-40 overflow-hidden">
+      <div class="max-w-7xl">
+        <p class="section-label">02 — Expertise</p>
+        <h2 class="section-title">TECHNICAL <span class="text-gradient">CORES</span></h2>
+
+        <div class="core-switcher">
+          <button class="core-tab active" onclick="switchCore('backend',this)">Backend</button>
+          <button class="core-tab" onclick="switchCore('frontend',this)">Frontend</button>
+          <button class="core-tab" onclick="switchCore('mobile',this)">Mobile</button>
+          <button class="core-tab" onclick="switchCore('aiml',this)">AI / ML</button>
+          <button class="core-tab" onclick="switchCore('cloud',this)">Cloud</button>
+        </div>
+
+        <div class="circuit-wrapper" id="circuit-window">
+          <svg class="circuit-svg" id="circuit-svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="hex-center">
+            <div style="text-align:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                   stroke="#ff6670" stroke-width="1.5"
+                   style="display:block;margin:0 auto 4px;">
+                <rect x="2" y="2" width="20" height="20" rx="2"/>
+                <path d="M8 8h8M8 12h6M8 16h4"/>
+              </svg>
+              <span id="core-title"
+                    style="font-size:8px;font-weight:700;color:#ff6670;
+                           letter-spacing:0.18em;text-transform:uppercase;">
+                ENGINEERING
+              </span>
+            </div>
+          </div>
+          <div id="skill-nodes-container"></div>
+        </div>
+
+        <div class="stats-row">
+          <div><p class="stat-label">Security</p><p class="stat-value">JWT / OAuth2</p></div>
+          <div><p class="stat-label">Data</p><p class="stat-value">PostgreSQL / Prisma</p></div>
+          <div><p class="stat-label">Ops</p><p class="stat-value">CI/CD / AWS</p></div>
+          <div><p class="stat-label">Frontend</p><p class="stat-value">NextJS / React</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         PROJECTS SECTION
+    ══════════════════════════════════════════ -->
     <section id="projects" class="min-h-screen py-32 px-6 md:px-20 relative overflow-hidden">
-      <!-- Section Header -->
       <div class="max-w-7xl mx-auto mb-20">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div data-aos="fade-right">
-            <p class="text-[var(--accent)] text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
+            <!-- section label: red -->
+            <p style="color:#ff6670;" class="text-sm font-bold tracking-widest uppercase mb-4">03 — Portfolio</p>
             <h2 class="text-5xl md:text-7xl font-black leading-tight">
-              Selected<br />
-              <span class="text-gradient">Projects</span>
+              Selected<br /><span class="text-gradient">Projects</span>
             </h2>
           </div>
           <p class="text-gray-400 max-w-md md:mb-4" data-aos="fade-left">
@@ -562,23 +431,25 @@
         </div>
       </div>
 
-      <!-- Modern Grid Layout -->
       <div class="max-w-7xl mx-auto space-y-40">
+
         <!-- Project 01 -->
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              <img
-                src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
-                alt="Crop Monitoring"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
+              <!-- hover overlay: red tint -->
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                   style="background:rgba(192,18,26,0.1);"></div>
+              <img src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
+                   alt="Crop Monitoring"
+                   class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
             </div>
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
             <div class="flex items-center gap-4">
-               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Fintech</span>
+              <!-- tag: red -->
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
+                    style="color:#ff6670;">Fintech</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Crop Monitoring System</h3>
@@ -590,8 +461,11 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Spring Boot</span>
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">PostgreSQL</span>
             </div>
-            <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
+            <div class="pt-4">
+              <a href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
+                 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
+                 style="color:rgba(255,255,255,0.55);"
+                 onmouseover="this.style.color='#ff6670'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">
                 <span>View Source</span>
                 <i class="fas fa-external-link-alt text-xs"></i>
               </a>
@@ -603,17 +477,17 @@
         <div class="group flex flex-col md:flex-row-reverse gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-left">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              <img
-                src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
-                alt="Hotel Management"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                   style="background:rgba(192,18,26,0.1);"></div>
+              <img src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
+                   alt="Hotel Management"
+                   class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
             </div>
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-right">
             <div class="flex items-center gap-4">
-               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Hospitality</span>
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
+                    style="color:#ff6670;">Hospitality</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Hotel Management System</h3>
@@ -625,10 +499,12 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">NodeJS</span>
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Prisma</span>
             </div>
-            <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/hotel_management_system-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
-                <span>View Source</span>
-                <i class="fas fa-external-link-alt text-xs"></i>
+            <div class="pt-4">
+              <a href="https://github.com/DonShanilka/hotel_management_system-frontend"
+                 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
+                 style="color:rgba(255,255,255,0.55);"
+                 onmouseover="this.style.color='#ff6670'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">
+                <span>View Source</span><i class="fas fa-external-link-alt text-xs"></i>
               </a>
             </div>
           </div>
@@ -638,17 +514,17 @@
         <div class="group flex flex-col md:flex-row gap-16 items-center">
           <div class="w-full md:w-1/2" data-aos="fade-right">
             <div class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4">
-              <div class="absolute inset-0 bg-[var(--accent)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              <img
-                src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
-                alt="Food Delivery"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+                   style="background:rgba(192,18,26,0.1);"></div>
+              <img src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
+                   alt="Food Delivery"
+                   class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
             </div>
           </div>
           <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
             <div class="flex items-center gap-4">
-               <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold text-[#ffb800] tracking-widest uppercase">Mobile</span>
+              <span class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
+                    style="color:#ff6670;">Mobile</span>
               <div class="h-px flex-1 bg-white/10"></div>
             </div>
             <h3 class="text-4xl font-bold">Food Delivery App</h3>
@@ -660,31 +536,38 @@
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">MySQL</span>
               <span class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500">Express</span>
             </div>
-            <div class="pt-4 flex gap-6">
-               <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend" class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
-                <span>View Source</span>
-                <i class="fas fa-external-link-alt text-xs"></i>
+            <div class="pt-4">
+              <a href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
+                 class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
+                 style="color:rgba(255,255,255,0.55);"
+                 onmouseover="this.style.color='#ff6670'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">
+                <span>View Source</span><i class="fas fa-external-link-alt text-xs"></i>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Footer Project Link -->
+      <!-- GitHub link — hover fill: red -->
       <div class="max-w-7xl mx-auto mt-40 flex justify-center" data-aos="fade-up">
-        <a href="https://github.com/DonShanilka" target="_blank" class="group relative px-12 py-5 bg-white/5 glass border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest hover:text-black transition-all duration-500 overflow-hidden">
+        <a href="https://github.com/DonShanilka" target="_blank"
+           class="group relative px-12 py-5 bg-white/5 glass border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest hover:text-white transition-all duration-500 overflow-hidden">
           <span class="relative z-10">See all repositories on GitHub</span>
-          <div class="absolute inset-0 bg-[#e1ff00] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+          <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
+               style="background:#c0121a;"></div>
         </a>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ══════════════════════════════════════════
+         CONTACT SECTION
+    ══════════════════════════════════════════ -->
     <section id="contact" class="py-40 px-6 md:px-20 relative overflow-hidden">
       <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-start">
-        <!-- Left Side: Motivation -->
+
         <div class="lg:w-1/2" data-aos="fade-right">
-          <p class="text-rose-600 text-sm font-bold tracking-widest uppercase mb-4">
+          <!-- section label: red -->
+          <p style="color:#ff6670;" class="text-sm font-bold tracking-widest uppercase mb-4">
             04 — Contact
           </p>
           <h2 class="text-5xl md:text-7xl font-black leading-tight mb-8">
@@ -694,10 +577,11 @@
           <p class="text-gray-400 text-xl leading-relaxed mb-12 max-w-md">
             I'm currently available for freelance work and full-time positions. Let's create something extraordinary together.
           </p>
-
           <div class="space-y-6">
+            <!-- Email card: red icon bg -->
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-[var(--accent)] flex items-center justify-center rounded-2xl text-black text-xl shadow-lg shadow-[var(--accent)]/20">
+              <div class="w-14 h-14 flex items-center justify-center rounded-2xl text-white text-xl"
+                   style="background:#c0121a;box-shadow:0 8px 24px rgba(192,18,26,0.35);">
                 <i class="fas fa-paper-plane"></i>
               </div>
               <div>
@@ -705,8 +589,10 @@
                 <p class="text-white text-lg font-bold">shanilka799@gmail.com</p>
               </div>
             </div>
+            <!-- Phone card: red icon -->
             <div class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500">
-              <div class="w-14 h-14 bg-white/5 flex items-center justify-center rounded-2xl text-[var(--accent)] text-xl">
+              <div class="w-14 h-14 flex items-center justify-center rounded-2xl text-xl bg-white/5"
+                   style="color:#ff6670;">
                 <i class="fas fa-phone"></i>
               </div>
               <div>
@@ -717,29 +603,49 @@
           </div>
         </div>
 
-        <!-- Right Side: Contact Form -->
+        <!-- Contact Form -->
         <div class="lg:w-1/2 w-full" data-aos="fade-left">
           <div class="glass-card p-8 md:p-12 rounded-[2.5rem] relative">
             <form action="#" class="space-y-8">
               <div class="grid md:grid-cols-2 gap-8">
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Your Name</label>
-                  <input type="text" placeholder="John Doe" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
+                  <input type="text" placeholder="John Doe"
+                         class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
+                         style="border:1px solid rgba(192,18,26,0.15);"
+                         onfocus="this.style.borderColor='#c0121a';this.style.boxShadow='0 0 0 2px rgba(192,18,26,0.2)'"
+                         onblur="this.style.borderColor='rgba(192,18,26,0.15)';this.style.boxShadow='none'" />
                 </div>
                 <div class="space-y-3">
                   <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Email Address</label>
-                  <input type="email" placeholder="john@example.com" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
+                  <input type="email" placeholder="john@example.com"
+                         class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
+                         style="border:1px solid rgba(192,18,26,0.15);"
+                         onfocus="this.style.borderColor='#c0121a';this.style.boxShadow='0 0 0 2px rgba(192,18,26,0.2)'"
+                         onblur="this.style.borderColor='rgba(192,18,26,0.15)';this.style.boxShadow='none'" />
                 </div>
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Subject</label>
-                <input type="text" placeholder="Project Inquiry" class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none" />
+                <input type="text" placeholder="Project Inquiry"
+                       class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
+                       style="border:1px solid rgba(192,18,26,0.15);"
+                       onfocus="this.style.borderColor='#c0121a';this.style.boxShadow='0 0 0 2px rgba(192,18,26,0.2)'"
+                       onblur="this.style.borderColor='rgba(192,18,26,0.15)';this.style.boxShadow='none'" />
               </div>
               <div class="space-y-3">
                 <label class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1">Message</label>
-                <textarea rows="5" placeholder="Tell me about your project..." class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-[var(--accent)] transition-all outline-none resize-none"></textarea>
+                <textarea rows="5" placeholder="Tell me about your project..."
+                          class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none resize-none transition-all"
+                          style="border:1px solid rgba(192,18,26,0.15);"
+                          onfocus="this.style.borderColor='#c0121a';this.style.boxShadow='0 0 0 2px rgba(192,18,26,0.2)'"
+                          onblur="this.style.borderColor='rgba(192,18,26,0.15)';this.style.boxShadow='none'"></textarea>
               </div>
-              <button class="w-full bg-[var(--accent)] text-black py-5 rounded-2xl font-black text-lg hover:bg-white transition-all shadow-xl shadow-[var(--accent)]/20 active:scale-95">
+              <!-- Submit: red -->
+              <button class="w-full py-5 rounded-2xl font-black text-lg text-white transition-all active:scale-95"
+                      style="background:#c0121a;box-shadow:0 8px 32px rgba(192,18,26,0.4);"
+                      onmouseover="this.style.background='#e01520'"
+                      onmouseout="this.style.background='#c0121a'">
                 Send Message
               </button>
             </form>
@@ -748,134 +654,78 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer
-      class="bg-[#0d0d0d] text-gray-300 py-12"
-      data-aos="zoom-in-down"
-      data-aos-duration="3000"
-    >
+    <!-- ══════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════ -->
+    <footer class="text-gray-300 py-12" style="background:#080303;border-top:1px solid rgba(255,255,255,0.05);"
+            data-aos="zoom-in-down" data-aos-duration="3000">
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between">
-          <!-- Logo and Description -->
+
           <div class="mb-8 md:mb-0">
             <div class="flex items-center">
-              <span class="text-[var(--accent)] text-2xl mr-2">•</span>
+              <span style="color:#ff6670;" class="text-2xl mr-2">•</span>
               <h2 class="text-white text-2xl font-bold">P.D.N Shanilka</h2>
             </div>
           </div>
 
-          <!-- Copyright -->
           <div class="mt-0 text-center">
-            <!-- Back to Top Button -->
             <div class="flex justify-center mb-8 -mt-16">
-              <a
-                href="#"
-                class="bg-[var(--accent)] hover:bg-[#e04400] text-black p-3 rounded-full transition duration-300"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                    clip-rule="evenodd"
-                  />
+              <!-- Back to top: red -->
+              <a href="#" class="p-3 rounded-full transition duration-300 text-white"
+                 style="background:#c0121a;"
+                 onmouseover="this.style.background='#e01520'"
+                 onmouseout="this.style.background='#c0121a'">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>
                 </svg>
               </a>
             </div>
-            <div class="mb-2">
-              &copy; 2025 P.D.N Shanilka. All rights reserved.
-            </div>
+            <div class="mb-2">&copy; 2025 P.D.N Shanilka. All rights reserved.</div>
             <div>Designed with ❤️ using Tailwind CSS</div>
           </div>
 
-          <!-- Address -->
           <div class="mb-8 md:mb-0">
             <h3 class="text-white text-lg font-medium mb-4">Address</h3>
             <div class="flex items-start mb-3">
-              <span class="text-[var(--accent)] mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                    clip-rule="evenodd"
-                  />
+              <span style="color:#ff6670;" class="mr-2">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                 </svg>
               </span>
-              <div>
-                <p>Maharagama / Colombo</p>
-                <p>Sri Lanka</p>
-              </div>
+              <div><p>Maharagama / Colombo</p><p>Sri Lanka</p></div>
             </div>
             <div class="flex items-center mb-3">
-              <span class="text-[var(--accent)] mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                  />
-                  <path
-                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                  />
+              <span style="color:#ff6670;" class="mr-2">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                 </svg>
               </span>
-              <a href="mailto:support@gmail.com" class="hover:text-[var(--accent)]"
-                >shanilka799@gmail.com</a
-              >
+              <a href="mailto:shanilka799@gmail.com"
+                 onmouseover="this.style.color='#ff6670'" onmouseout="this.style.color='inherit'">
+                shanilka799@gmail.com
+              </a>
             </div>
             <div class="flex items-center">
-              <span class="text-[var(--accent)] mr-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  />
+              <span style="color:#ff6670;" class="mr-2">
+                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                 </svg>
               </span>
               <p>+94 701 094 749</p>
             </div>
           </div>
+
         </div>
       </div>
     </footer>
 
-    <!-- Font Awesome for Icons (Add in <head>) -->
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+    <!-- Skills circuit JS (unchanged logic, updated gradient colors) -->
     <script>
-/*
-  SVG viewBox = "0 0 1000 600"
-  Center node  = (500, 300)  → 50% / 50%
-
-  Node positions are given in SVG units.
-  To place the HTML overlay hex at the same spot:
-    left = (svgX / 1000 * 100) + "%"
-    top  = (svgY / 600  * 100) + "%"
-  Combined with transform:translate(-50%,-50%) the center of each hex
-  lands exactly on (svgX, svgY) — matching the SVG path endpoints.
-*/
-
-const W = 1000, H = 600;   // SVG viewBox size
-
+const W = 1000, H = 600;
 const skillData = {
   backend: {
     title: "ENGINEERING",
@@ -891,41 +741,41 @@ const skillData = {
   frontend: {
     title: "EXPERIENCE",
     nodes: [
-      { name: "REACT",      icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>",       x: 100, y: 100 },
-      { name: "NEXT.JS",    icon: "<img src='./assets/aboutpageIcon/icons8-nextjs-100.png' class='w-7 h-7 object-contain'>", x: 150, y: 300 },
-      { name: "HTML",       icon: "<img src='./assets/icon/icons8-html-100.png' class='w-7 h-7 object-contain'>",        x: 100, y: 500 },
-      { name: "JS",         icon: "<img src='./assets/icon/icons8-javascript-100.png' class='w-7 h-7 object-contain'>",  x: 900, y: 100 },
-      { name: "TAILWIND",   icon: "<img src='./assets/icon/icons8-tailwind-css-100.png' class='w-7 h-7 object-contain'>",x: 850, y: 300 },
-      { name: "CSS",        icon: "<img src='./assets/icon/icons8-css-100.png' class='w-7 h-7 object-contain'>",         x: 900, y: 500 }
+      { name: "REACT",    icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>",         x: 100, y: 100 },
+      { name: "NEXT.JS",  icon: "<img src='./assets/aboutpageIcon/icons8-nextjs-100.png' class='w-7 h-7 object-contain'>", x: 150, y: 300 },
+      { name: "HTML",     icon: "<img src='./assets/icon/icons8-html-100.png' class='w-7 h-7 object-contain'>",          x: 100, y: 500 },
+      { name: "JS",       icon: "<img src='./assets/icon/icons8-javascript-100.png' class='w-7 h-7 object-contain'>",    x: 900, y: 100 },
+      { name: "TAILWIND", icon: "<img src='./assets/icon/icons8-tailwind-css-100.png' class='w-7 h-7 object-contain'>",  x: 850, y: 300 },
+      { name: "CSS",      icon: "<img src='./assets/icon/icons8-css-100.png' class='w-7 h-7 object-contain'>",           x: 900, y: 500 }
     ]
   },
   mobile: {
     title: "MOBILITY",
     nodes: [
-      { name: "REACT NATIVE", icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>", x: 100, y: 100 },
-      { name: "EXPO",         icon: "<img src='./assets/icon/icons8-expo-100.png' class='w-7 h-7 object-contain'>",  x: 150, y: 300 },
-      { name: "JAVA",         icon: "<img src='./assets/icon/icons8-java-100.png' class='w-7 h-7 object-contain'>",  x: 100, y: 500 },
-      { name: "FLUTTER",      icon: "<img src='./assets/icon/icons8-flutter-100.png' class='w-7 h-7 object-contain'>",x: 900, y: 100 },
+      { name: "REACT NATIVE", icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>",    x: 100, y: 100 },
+      { name: "EXPO",         icon: "<img src='./assets/icon/icons8-expo-100.png' class='w-7 h-7 object-contain'>",     x: 150, y: 300 },
+      { name: "JAVA",         icon: "<img src='./assets/icon/icons8-java-100.png' class='w-7 h-7 object-contain'>",     x: 100, y: 500 },
+      { name: "FLUTTER",      icon: "<img src='./assets/icon/icons8-flutter-100.png' class='w-7 h-7 object-contain'>",  x: 900, y: 100 },
       { name: "SWIFT",        icon: "<img src='./assets/aboutpageIcon/icons8-xcode-100.png' class='w-7 h-7 object-contain'>", x: 850, y: 300 },
-      { name: "FIGMA",        icon: "<img src='./assets/icon/icons8-figma-100.png' class='w-7 h-7 object-contain'>",  x: 900, y: 500 }
+      { name: "FIGMA",        icon: "<img src='./assets/icon/icons8-figma-100.png' class='w-7 h-7 object-contain'>",    x: 900, y: 500 }
     ]
   },
   aiml: {
     title: "INTELL",
     nodes: [
-      { name: "PYTHON",     icon: "<img src='./assets/icon/icons8-python-100.png' class='w-7 h-7 object-contain'>", x: 100, y: 100 },
+      { name: "PYTHON",     icon: "<img src='./assets/icon/icons8-python-100.png' class='w-7 h-7 object-contain'>",     x: 100, y: 100 },
       { name: "TENSORFLOW", icon: "<img src='./assets/aboutpageIcon/artificial-intelligence.png' class='w-7 h-7 object-contain'>", x: 150, y: 300 },
       { name: "JUPYTER",    icon: "<img src='./assets/aboutpageIcon/icons8-vs-code-100.png' class='w-7 h-7 object-contain'>", x: 100, y: 500 },
       { name: "OPENAI",     icon: "<img src='./assets/aboutpageIcon/icons8-chatgpt-100.png' class='w-7 h-7 object-contain'>", x: 900, y: 100 },
       { name: "PYTORCH",    icon: "🔥", x: 850, y: 300 },
-      { name: "DATA",       icon: "<img src='./assets/icon/icons8-mongo-db-64.png' class='w-7 h-7 object-contain'>", x: 900, y: 500 }
+      { name: "DATA",       icon: "<img src='./assets/icon/icons8-mongo-db-64.png' class='w-7 h-7 object-contain'>",    x: 900, y: 500 }
     ]
   },
   cloud: {
     title: "DEVOPS",
     nodes: [
-      { name: "AWS",        icon: "<img src='./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png' class='w-7 h-7 object-contain'>",  x: 100, y: 100 },
-      { name: "DOCKER",     icon: "<img src='./assets/icon/icons8-docker-100.png' class='w-7 h-7 object-contain'>", x: 150, y: 300 },
+      { name: "AWS",        icon: "<img src='./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png' class='w-7 h-7 object-contain'>", x: 100, y: 100 },
+      { name: "DOCKER",     icon: "<img src='./assets/icon/icons8-docker-100.png' class='w-7 h-7 object-contain'>",     x: 150, y: 300 },
       { name: "LINUX",      icon: "🐧", x: 100, y: 500 },
       { name: "KUBERNETES", icon: "⚙",  x: 900, y: 100 },
       { name: "TERRAFORM",  icon: "🏗",  x: 850, y: 300 },
@@ -934,15 +784,9 @@ const skillData = {
   }
 };
 
-// Centre of SVG in SVG units
-const CX = W / 2;   // 500
-const CY = H / 2;   // 300
+const CX = W / 2, CY = H / 2;
 
-function makePath(x1, y1, x2, y2, id) {
-  /*
-    Draw a smooth bezier curve from centre (CX,CY) to node (x2,y2).
-    The curve goes horizontally first, creating a flowing network look.
-  */
+function makePath(x1,y1,x2,y2) {
   const mx = (CX + x2) / 2;
   return `M${CX} ${CY} C${mx} ${CY}, ${mx} ${y2}, ${x2} ${y2}`;
 }
@@ -950,132 +794,111 @@ function makePath(x1, y1, x2, y2, id) {
 function switchCore(type, element) {
   document.querySelectorAll('.core-tab').forEach(t => t.classList.remove('active'));
   if (element) element.classList.add('active');
-
-  const nodesEl  = document.getElementById('skill-nodes-container');
-  const svgEl    = document.getElementById('circuit-svg');
-  const titleEl  = document.getElementById('core-title');
-  const data     = skillData[type] || skillData.backend;
-
+  const nodesEl = document.getElementById('skill-nodes-container');
+  const svgEl   = document.getElementById('circuit-svg');
+  const titleEl = document.getElementById('core-title');
+  const data    = skillData[type] || skillData.backend;
   nodesEl.style.opacity = '0';
   svgEl.style.opacity   = '0';
-
   setTimeout(() => {
-
     titleEl.textContent = data.title;
     nodesEl.innerHTML   = '';
     svgEl.innerHTML     = '';
-
-    // Add gradient definition for dash
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
     defs.innerHTML = `
       <linearGradient id="dashGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="rgba(225, 255, 0, 0)" />
-        <stop offset="50%" stop-color="rgba(225, 255, 0, 0.8)" />
+        <stop offset="0%"   stop-color="rgba(192,18,26,0)" />
+        <stop offset="50%"  stop-color="rgba(255,102,112,0.9)" />
         <stop offset="100%" stop-color="#ffffff" />
-      </linearGradient>
-    `;
+      </linearGradient>`;
     svgEl.appendChild(defs);
-
     data.nodes.forEach((node, i) => {
       const pathId = `p_${type}_${i}`;
-      const d      = makePath(CX, CY, node.x, node.y, pathId);
-
-      /* ── SVG path ── */
-      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', d);
-      path.setAttribute('class', 'circuit-line');
+      const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('d', makePath(CX,CY,node.x,node.y));
+      path.setAttribute('class','circuit-line');
       path.setAttribute('id', pathId);
       svgEl.appendChild(path);
-
-      /* ── Animated dash (shooting star) ── */
-      const dash = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-      dash.setAttribute('width', '30');
-      dash.setAttribute('height', '3');
-      dash.setAttribute('rx', '12');
-      dash.setAttribute('class', 'data-dot');
-      dash.setAttribute('fill', 'url(#dashGradient)');
-      dash.setAttribute('x', '-12.5');
-      dash.setAttribute('y', '-2');
-
-      const am = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-      am.setAttribute('dur', (2.5 + i * 0.4) + 's');
-      am.setAttribute('repeatCount', 'indefinite');
-      am.setAttribute('rotate', 'auto');
-
-      const mp = document.createElementNS('http://www.w3.org/2000/svg', 'mpath');
-      mp.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#' + pathId);
-
-      am.appendChild(mp);
-      dash.appendChild(am);
-      svgEl.appendChild(dash);
-
-      /* ── HTML hex node ── */
-      /*
-        KEY: place using % of the container (which matches the SVG viewBox).
-        left = node.x / W * 100 %
-        top  = node.y / H * 100 %
-        transform: translate(-50%, -50%)  ← centers the hex on that point
-      */
+      const dash = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      dash.setAttribute('width','30'); dash.setAttribute('height','3');
+      dash.setAttribute('rx','12'); dash.setAttribute('class','data-dot');
+      dash.setAttribute('fill','url(#dashGradient)');
+      dash.setAttribute('x','-12.5'); dash.setAttribute('y','-2');
+      const am = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+      am.setAttribute('dur',(2.5+i*0.4)+'s');
+      am.setAttribute('repeatCount','indefinite');
+      am.setAttribute('rotate','auto');
+      const mp = document.createElementNS('http://www.w3.org/2000/svg','mpath');
+      mp.setAttributeNS('http://www.w3.org/1999/xlink','href','#'+pathId);
+      am.appendChild(mp); dash.appendChild(am); svgEl.appendChild(dash);
       const div = document.createElement('div');
       div.className = 'hex-node';
       div.style.left = (node.x / W * 100) + '%';
       div.style.top  = (node.y / H * 100) + '%';
-      div.innerHTML  = `
-        <span class="node-icon">${node.icon}</span>
-        <span class="node-label">${node.name}</span>
-      `;
+      div.innerHTML  = `<span class="node-icon">${node.icon}</span><span class="node-label">${node.name}</span>`;
       nodesEl.appendChild(div);
     });
-
     nodesEl.style.opacity = '1';
     svgEl.style.opacity   = '1';
-
   }, 280);
 }
-
 document.addEventListener('DOMContentLoaded', () => {
   switchCore('backend', document.querySelector('.core-tab.active'));
 });
-</script>
-
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init();</script>
     <script src="./javaScripts/backGroundAnimation.js"></script>
+
     <script>
-      // Create floating particles
+      // Floating particles: red
       function createParticles() {
         for (let i = 0; i < 30; i++) {
           const p = document.createElement('div');
           p.className = 'particle';
           p.style.left = Math.random() * 100 + 'vw';
           p.style.animationDuration = (8 + Math.random() * 15) + 's';
-          p.style.animationDelay = (Math.random() * 10) + 's';
+          p.style.animationDelay    = (Math.random() * 10) + 's';
           p.style.setProperty('--drift', (Math.random() * 100 - 50) + 'px');
-          p.style.width = (1 + Math.random() * 2) + 'px';
+          p.style.width  = (1 + Math.random() * 2) + 'px';
           p.style.height = p.style.width;
           document.body.appendChild(p);
         }
       }
       createParticles();
 
-      // Cursor glow effect
+      // Cursor glow: red
       const cursorGlow = document.createElement('div');
       cursorGlow.style.cssText = `
-        position: fixed; pointer-events: none; z-index: 9999;
-        width: 300px; height: 300px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(225, 255, 0, 0.04) 0%, transparent 70%);
-        top: 0; left: 0;
-        transform: translate3d(-50%, -50%, 0);
-        will-change: transform;
-      `;
+        position:fixed;pointer-events:none;z-index:9999;
+        width:300px;height:300px;border-radius:50%;
+        background:radial-gradient(circle,rgba(192,18,26,0.05) 0%,transparent 70%);
+        top:0;left:0;transform:translate3d(-50%,-50%,0);will-change:transform;`;
       document.body.appendChild(cursorGlow);
 
+      // Custom cursor lag ring
+      const cursor     = document.getElementById('cursor');
+      const cursorRing = document.getElementById('cursor-ring');
+      let mx=0, my=0, rx=0, ry=0;
       document.addEventListener('mousemove', e => {
-        cursorGlow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate3d(-50%, -50%, 0)`;
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + 'px';
+        cursor.style.top  = my + 'px';
+        cursorGlow.style.transform = `translate3d(${mx}px,${my}px,0) translate3d(-50%,-50%,0)`;
       });
+      function animRing() {
+        rx += (mx - rx) * 0.15;
+        ry += (my - ry) * 0.15;
+        cursorRing.style.left = rx + 'px';
+        cursorRing.style.top  = ry + 'px';
+        requestAnimationFrame(animRing);
+      }
+      animRing();
+
+      function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+      }
     </script>
   </body>
 </html>
