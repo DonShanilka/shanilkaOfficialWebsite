@@ -66,12 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
   //   }
   // }
 
-  function initStars() {
-    stars = [];
-    for (let i = 0; i < starCount; i++) {
-      stars.push(new Star());
-    }
-  }
+  // function initStars() {
+  //   stars = [];
+  //   for (let i = 0; i < starCount; i++) {
+  //     stars.push(new Star());
+  //   }
+  // }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
