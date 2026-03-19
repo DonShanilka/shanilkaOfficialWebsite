@@ -79,24 +79,6 @@
           </svg>
         </a>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hstat-num">3+</div>
-          <div class="hstat-label">Years Coding</div>
-        </div>
-        <div>
-          <div class="hstat-num">15+</div>
-          <div class="hstat-label">Projects Built</div>
-        </div>
-        <div>
-          <div class="hstat-num">8+</div>
-          <div class="hstat-label">Tech Stacks</div>
-        </div>
-        <div>
-          <div class="hstat-num">100%</div>
-          <div class="hstat-label">Dedication</div>
-        </div>
-      </div>
       <div class="hero-visual">
         <div class="ui-card">
           <div class="ui-card-label">Real-Time Status</div>
@@ -218,7 +200,11 @@
               flex-shrink: 0;
             "
           >
-            NS
+            <img
+              src="assets/images/myimage2.jpg"
+              alt="NS"
+              class="w-full h-full object-cover rounded-[inherit]"
+            />
           </div>
           <div>
             <div style="font-weight: 700; font-size: 0.9rem">
@@ -242,37 +228,13 @@
     <section id="about" class="section">
       <div class="sec-tag reveal">01 — About Me</div>
       <h2 class="sec-title reveal">
-        SOLID<br /><span class="acc">ENGINEERING.</span><br />DIGITAL IMPACT.
+        SOLID ENGINEERING.<br /><span class="acc">DIGITAL IMPACT.</span>
       </h2>
       <div class="about-grid">
-        <div class="about-img-wrap reveal">
-          <div class="about-img-frame">
-            <div class="avatar-ph">NS</div>
-            <div class="about-img-overlay">
-              <div class="about-img-tag">
-                <div
-                  style="
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background: var(--orange);
-                    animation: pdot 2s ease-in-out infinite;
-                  "
-                ></div>
-                <span>Full-Stack Engineer</span> ·
-                <span style="color: var(--muted)">Sri Lanka</span>
-              </div>
-            </div>
-          </div>
-          <div class="about-accent-box">
-            <div class="about-accent-num">3+</div>
-            <div class="about-accent-txt">Years of<br />Experience</div>
-          </div>
-        </div>
         <div>
           <p
             class="sec-desc reveal"
-            style="max-width: 100%; margin-bottom: 28px"
+            style="max-width: 100%; margin-bottom: 12px"
           >
             I'm a full-stack engineer specializing in building scalable,
             high-performance applications. With a focus on clean architecture
@@ -284,7 +246,7 @@
               font-size: 0.9rem;
               color: var(--muted);
               line-height: 1.75;
-              margin-bottom: 32px;
+              margin-bottom: 2px;
             "
             class="reveal"
           >
@@ -348,6 +310,59 @@
               </svg>
               GitHub
             </a>
+          </div>
+          <div
+            class="hero-stats reveal"
+            style="
+              margin-top: 40px;
+              border-top: 1px solid rgba(255, 255, 255, 0.05);
+              padding-top: 32px;
+            "
+          >
+            <div>
+              <div class="hstat-num">3+</div>
+              <div class="hstat-label">Years Coding</div>
+            </div>
+            <div>
+              <div class="hstat-num">15+</div>
+              <div class="hstat-label">Projects Built</div>
+            </div>
+            <div>
+              <div class="hstat-num">8+</div>
+              <div class="hstat-label">Tech Stacks</div>
+            </div>
+            <div>
+              <div class="hstat-num">100%</div>
+              <div class="hstat-label">Dedication</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-img-wrap reveal">
+          <div class="about-img-frame">
+            <img
+              src="assets/images/myimage2.jpg"
+              alt="Nishith Shanilka — Portfolio Image"
+              class="w-full h-full object-cover"
+            />
+            <div class="about-img-overlay">
+              <div class="about-img-tag">
+                <div
+                  style="
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: var(--orange);
+                    animation: pdot 2s ease-in-out infinite;
+                  "
+                ></div>
+                <span>Full-Stack Engineer</span> ·
+                <span style="color: var(--muted)">Sri Lanka</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-accent-box">
+            <div class="about-accent-num">2+</div>
+            <div class="about-accent-txt">Years of<br />Experience</div>
           </div>
         </div>
       </div>
@@ -467,20 +482,24 @@
             <div class="project-title">CROP MONITORING SYSTEM</div>
             <div class="project-desc">
               Real-time agricultural management platform — field sensor
-              integration, live dashboards, and AI-driven crop health analysis
-              for large-scale farms.
+              integration, live dashboards, and crop health analysis for large-scale farms.
             </div>
             <div class="project-tech">
               <span class="tech-chip">React</span
               ><span class="tech-chip">Spring Boot</span
-              ><span class="tech-chip">PostgreSQL</span
+              ><span class="tech-chip">MySql</span
               ><span class="tech-chip">REST API</span
               ><span class="tech-chip">JWT Auth</span>
             </div>
           </div>
           <div class="project-right">
             <div class="project-img">
-              <div class="project-img-inner">🌿</div>
+              <div class="project-img-inner">
+                <img
+                  src="https://i.pinimg.com/1200x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
+                  alt=""
+                />
+              </div>
             </div>
             <a
               href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
@@ -495,8 +514,8 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
-            ></a>
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg>
+              </a>
           </div>
         </div>
         <div class="project-row reveal">
@@ -518,10 +537,12 @@
           </div>
           <div class="project-right">
             <div class="project-img">
-              <div class="project-img-inner">🏨</div>
+              <div class="project-img-inner">
+                <img src="https://i.pinimg.com/736x/a6/01/61/a601610effa2bcd7b60ea3ce14740aa3.jpg" alt="">
+              </div>
             </div>
             <a
-              href="https://github.com/DonShanilka/hotel_management_system-frontend"
+              href="https://github.com/DonShanilka/hotel_management_system"
               target="_blank"
               class="project-arrow"
               >View Source
@@ -533,8 +554,7 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
-            ></a>
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg></a>
           </div>
         </div>
         <div class="project-row reveal">
@@ -543,7 +563,7 @@
             <div class="project-cat">Mobile · E-Commerce</div>
             <div class="project-title">FOOD DELIVERY APP</div>
             <div class="project-desc">
-              React Native mobile app with real-time GPS tracking, live order
+              React Native mobile app with live order
               updates, multi-restaurant browsing, and secure payment
               integration.
             </div>
@@ -556,10 +576,12 @@
           </div>
           <div class="project-right">
             <div class="project-img">
-              <div class="project-img-inner">🍜</div>
+              <div class="project-img-inner">
+                <img src="https://i.pinimg.com/736x/53/b4/96/53b4969f4c90668625d40aa30cf0eaab.jpg" alt="">
+              </div>
             </div>
             <a
-              href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
+              href="https://github.com/DonShanilka/food_delivery_MobileApp.git"
               target="_blank"
               class="project-arrow"
               >View Source
@@ -571,33 +593,34 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
-            ></a>
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg></a>
           </div>
         </div>
         <div class="project-row reveal">
           <div class="project-num">04</div>
           <div class="project-content">
-            <div class="project-cat">Portfolio · Personal Brand</div>
-            <div class="project-title">DEVELOPER PORTFOLIO</div>
+            <div class="project-cat">Movie . Streaming Platforms</div>
+            <div class="project-title">MOVIE STREAMING PLATFORMS</div>
             <div class="project-desc">
-              Neurotech-inspired personal portfolio with vivid red-orange
-              atmosphere, animated skill nodes, orbit UI, and production-grade
-              interactions.
+              Build a full-stack movie streaming platform with admin dashboard,
+              full crud operations, video playback, JWT auth, and role-based
+              access — built for production scale.
             </div>
             <div class="project-tech">
-              <span class="tech-chip">HTML</span
+              <span class="tech-chip">Next Js</span
               ><span class="tech-chip">Tailwind CSS</span
-              ><span class="tech-chip">JavaScript</span
-              ><span class="tech-chip">CSS Animations</span>
+              ><span class="tech-chip">GoLang</span
+              ><span class="tech-chip">MySQL</span>
             </div>
           </div>
           <div class="project-right">
             <div class="project-img">
-              <div class="project-img-inner">💻</div>
+              <div class="project-img-inner">
+                <img src="https://i.pinimg.com/1200x/48/4d/08/484d08726744007c4d6d5699fe8ac80e.jpg" alt="">
+              </div>
             </div>
             <a
-              href="https://github.com/DonShanilka"
+              href="https://github.com/DonShanilka/move-streem-platform-backend/tree/main/backend"
               target="_blank"
               class="project-arrow"
               >GitHub
@@ -608,10 +631,45 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-              >
-                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
-            ></a>
+                >
+                </svg></a>
           </div>
+        </div>
+
+        <div
+          class="projects-more reveal"
+          style="
+            display: flex;
+            justify-content: center;
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+          "
+        >
+          <a
+            href="https://github.com/DonShanilka"
+            target="_blank"
+            class="btn-ghost"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 12px;
+              padding: 14px 34px;
+              font-size: 0.9rem;
+            "
+          >
+            Explore All Projects
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -647,7 +705,7 @@
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-period">2023 — 2024</div>
+            <div class="tl-period">2023 — 2027</div>
             <div class="tl-role">SOFTWARE ENGINEERING STUDENT</div>
             <div class="tl-company">IJSE · Colombo, Sri Lanka</div>
             <div class="tl-desc">
@@ -658,7 +716,7 @@
           </div>
           <div class="tl-item">
             <div class="tl-dot"></div>
-            <div class="tl-period">2022 — 2023</div>
+            <div class="tl-period">2024 — Present</div>
             <div class="tl-role">SELF-TAUGHT DEVELOPER</div>
             <div class="tl-company">Personal Projects · Online</div>
             <div class="tl-desc">
@@ -747,7 +805,7 @@
               <div class="contact-val">Maharagama, Colombo · Sri Lanka</div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="contact-item"
             style="cursor: pointer"
             onclick="window.open('https://github.com/DonShanilka', '_blank')"
@@ -763,7 +821,7 @@
               <div class="contact-key">GitHub</div>
               <div class="contact-val">github.com/DonShanilka</div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

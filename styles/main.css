@@ -285,7 +285,7 @@
         opacity: 0;
         animation: fadeUp 0.9s 0.35s ease forwards;
       }
-      .line-grad {
+      /* .line-grad {
         background: linear-gradient(
           90deg,
           #f1743a 0%,
@@ -299,8 +299,8 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         animation: grad-shift 5s linear infinite;
-      }
-      .line-white {
+      } */
+      /* .line-white {
         background: linear-gradient(
           90deg,
           #fff 0%,
@@ -314,7 +314,7 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         animation: grad-shift 5s linear infinite;
-      }
+      } */
 
       @keyframes grad-shift {
         0% {
@@ -567,8 +567,8 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 80px;
-        align-items: center;
-        margin-top: 60px;
+        align-items: flex-start;
+        margin-top: 10px;
       }
       .about-img-frame {
         width: 100%;
@@ -623,6 +623,8 @@
       }
       .about-img-wrap {
         position: relative;
+        max-width: 440px;
+        margin: 0 auto;
       }
       .about-accent-box {
         position: absolute;
