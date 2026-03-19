@@ -3,1587 +3,836 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>N.Shanilka</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>N.Shanilka — Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./styles/main.css" />
-    <style>
-      #skills {
-        position: relative;
-        padding: 80px 0;
-        width: 100%;
-        overflow: hidden;
-      }
-      .max-w-7xl {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px;
-        position: relative;
-        z-index: 10;
-      }
-      .section-label {
-        color: #ff6670; /* was: var(--neon) green → now red-pink */
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.3em;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        text-align: center;
-      }
-      .section-title {
-        font-size: clamp(40px, 6vw, 72px);
-        font-weight: 900;
-        text-align: center;
-        margin-bottom: 48px;
-        line-height: 1;
-      }
-      .text-gradient {
-        background: linear-gradient(135deg, #ff6670, #c0121a);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .core-switcher {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-bottom: 60px;
-      }
-      .core-tab {
-        background: transparent;
-        border: 1px solid rgba(192, 18, 26, 0.3); /* was: lime → now red */
-        color: rgba(255, 255, 255, 0.6);
-        padding: 10px 24px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-      .core-tab:hover {
-        border-color: #ff6670;
-        color: #ff6670;
-      }
-      .core-tab.active {
-        background: #c0121a;
-        border-color: #c0121a;
-        color: #fff0f0;
-      }
-      .circuit-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto 60px;
-        aspect-ratio: 1000 / 600;
-      }
-      .circuit-svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-        transition: opacity 0.3s;
-      }
-      #skill-nodes-container {
-        position: absolute;
-        inset: 0;
-        transition: opacity 0.3s;
-      }
-      .circuit-line {
-        fill: none;
-        stroke: rgba(192, 18, 26, 0.25); /* was: grey → now red */
-      }
-      .data-dot {
-        fill: #ff6670;
-        filter: drop-shadow(0 0 4px #c0121a); /* was: lime → now red */
-      }
-      .hex-center {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 90px;
-        height: 90px;
-        background: rgba(192, 18, 26, 0.06); /* was: lime tint → red tint */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(192, 18, 26, 0.2); /* was: lime → red */
-        clip-path: polygon(
-          50% 0%,
-          100% 25%,
-          100% 75%,
-          50% 100%,
-          0% 75%,
-          0% 25%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-      }
-      .hex-center::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background: linear-gradient(
-          135deg,
-          #ff6670,
-          #c0121a
-        ); /* was: lime → red */
-        clip-path: polygon(
-          50% 0%,
-          100% 25%,
-          100% 75%,
-          50% 100%,
-          0% 75%,
-          0% 25%
-        );
-        z-index: -1;
-        opacity: 0.6;
-      }
-      .hex-node {
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        background: rgba(56, 8, 8, 0.75); /* was: dark green → dark red */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        clip-path: polygon(
-          50% 0%,
-          100% 25%,
-          100% 75%,
-          50% 100%,
-          0% 75%,
-          0% 25%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 3px;
-        transform: translate(-50%, -50%);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(192, 18, 26, 0.15); /* was: lime → red */
-        z-index: 10;
-      }
-      .hex-node .node-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 28px;
-        height: 28px;
-      }
-      .hex-node .node-label {
-        font-size: 6.5px;
-        font-weight: 700;
-        color: white;
-        letter-spacing: 1.2px;
-        text-align: center;
-        text-transform: uppercase;
-        line-height: 1.2;
-        padding: 0 4px;
-      }
-      .stats-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 48px;
-        text-align: center;
-        border-top: 1px solid rgba(192, 18, 26, 0.1); /* was: lime → red */
-        padding-top: 48px;
-        opacity: 0.5;
-        transition: opacity 0.4s;
-      }
-      .stats-row:hover {
-        opacity: 1;
-      }
-      .stat-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.25em;
-        text-transform: uppercase;
-        color: #ff6670; /* was: lime → red-pink */
-        margin-bottom: 6px;
-      }
-      .stat-value {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.5);
-      }
-      #skills::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          ellipse 60% 60% at 50% 50%,
-          rgba(192, 18, 26, 0.06) 0%,
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-
-      /* drift keyframes for inline blobs */
-      @keyframes drift1 {
-        from {
-          transform: translate(0, 0) scale(1);
-        }
-        to {
-          transform: translate(40px, 60px) scale(1.15);
-        }
-      }
-      @keyframes drift2 {
-        from {
-          transform: translate(0, 0) scale(1);
-        }
-        to {
-          transform: translate(-50px, -40px) scale(1.2);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
+  <body>
+    <div id="cur"></div>
+    <div id="cur-ring"></div>
+    <div class="grain"></div>
+    <div class="bg-base"></div>
+    <div class="bg-blob blob-a"></div>
+    <div class="bg-blob blob-b"></div>
+    <div class="bg-blob blob-c"></div>
+    <div class="bg-blob blob-d"></div>
+    <div class="dot-grid"></div>
 
-  <body class="font-sans text-white" style="background-color: #0d0303">
-    <!-- Custom cursor (Fingent style) -->
-    <div
-      id="cursor"
-      style="
-        position: fixed;
-        width: 12px;
-        height: 12px;
-        background: #c0121a;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.2s,
-          height 0.2s;
-      "
-    ></div>
-    <div
-      id="cursor-ring"
-      style="
-        position: fixed;
-        width: 36px;
-        height: 36px;
-        border: 1px solid rgba(192, 18, 26, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: all 0.12s ease;
-      "
-    ></div>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-dot"></div>
+        N.SHANILKA
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#skills">Skills</a>
+        <a href="#projects">Projects</a><a href="#experience">Experience</a>
+        <a href="#contact" class="nav-btn">Let's Connect</a>
+      </div>
+    </nav>
 
-    <div class="grain-overlay"></div>
-    <canvas id="bg-canvas"></canvas>
-
-    <!-- Dot grid overlay -->
-    <div
-      style="
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background-image: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.065) 1px,
-          transparent 1px
-        );
-        background-size: 28px 28px;
-        pointer-events: none;
-      "
-    ></div>
-
-    <!-- ══════════════════════════════════════════
-         NAVBAR
-    ══════════════════════════════════════════ -->
-    <header
-      class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-4 md:px-20 glass border-b border-white/5"
-    >
-      <div class="flex items-center gap-3">
-        <div class="relative">
-          <!-- hex logo: red instead of lime -->
+    <section id="home" class="hero">
+      <div class="hero-wash"></div>
+      <div class="hero-tag">Software Engineer · Full Stack · Sri Lanka</div>
+      <h1 class="hero-title">
+        <span class="line-grad">NISHITH</span><br />
+        <span class="line-white">SHANILKA</span><br />
+        <span class="line-outline">DEVELOPER</span>
+      </h1>
+      <p class="hero-sub">
+        Building scalable full-stack applications with precision. From elegant
+        frontends to robust backend systems — engineering solutions that matter.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn-ghost">
+          Download CV
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hstat-num">3+</div>
+          <div class="hstat-label">Years Coding</div>
+        </div>
+        <div>
+          <div class="hstat-num">15+</div>
+          <div class="hstat-label">Projects Built</div>
+        </div>
+        <div>
+          <div class="hstat-num">8+</div>
+          <div class="hstat-label">Tech Stacks</div>
+        </div>
+        <div>
+          <div class="hstat-num">100%</div>
+          <div class="hstat-label">Dedication</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="ui-card">
+          <div class="ui-card-label">Real-Time Status</div>
+          <div class="ui-card-title">Currently Available</div>
+          <div class="ui-card-desc">
+            Open to freelance work and full-time positions worldwide.
+          </div>
+        </div>
+        <div class="ui-card">
+          <div class="ui-card-label">Stack Activity</div>
+          <div class="ui-card-title">Tech Proficiency</div>
+          <div style="margin-top: 10px">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.72rem;
+                color: var(--muted);
+                margin-bottom: 4px;
+              "
+            >
+              <span>React / Next.js</span
+              ><span style="color: var(--orange)">92%</span>
+            </div>
+            <div
+              style="
+                height: 4px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 2px;
+                overflow: hidden;
+                margin-bottom: 10px;
+              "
+            >
+              <div
+                style="
+                  height: 100%;
+                  width: 92%;
+                  background: linear-gradient(90deg, var(--red), var(--orange));
+                  border-radius: 2px;
+                "
+              ></div>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.72rem;
+                color: var(--muted);
+                margin-bottom: 4px;
+              "
+            >
+              <span>Spring Boot</span
+              ><span style="color: var(--orange)">85%</span>
+            </div>
+            <div
+              style="
+                height: 4px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 2px;
+                overflow: hidden;
+                margin-bottom: 10px;
+              "
+            >
+              <div
+                style="
+                  height: 100%;
+                  width: 85%;
+                  background: linear-gradient(90deg, var(--red), var(--orange));
+                  border-radius: 2px;
+                "
+              ></div>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.72rem;
+                color: var(--muted);
+                margin-bottom: 4px;
+              "
+            >
+              <span>Node.js / Express</span
+              ><span style="color: var(--orange)">88%</span>
+            </div>
+            <div
+              style="
+                height: 4px;
+                background: rgba(255, 255, 255, 0.06);
+                border-radius: 2px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="
+                  height: 100%;
+                  width: 88%;
+                  background: linear-gradient(90deg, var(--red), var(--orange));
+                  border-radius: 2px;
+                "
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="ui-card"
+          style="display: flex; align-items: center; gap: 14px"
+        >
           <div
             style="
-              clip-path: polygon(
-                50% 0%,
-                93.3% 25%,
-                93.3% 75%,
-                50% 100%,
-                6.7% 75%,
-                6.7% 25%
-              );
-              width: 36px;
+              width: 42px;
               height: 42px;
-              background: linear-gradient(
-                135deg,
-                rgba(192, 18, 26, 0.25),
-                rgba(138, 0, 9, 0.1)
-              );
-              border: 1px solid rgba(192, 18, 26, 0.45);
+              border-radius: 10px;
+              background: linear-gradient(135deg, var(--red2), var(--orange2));
               display: flex;
               align-items: center;
               justify-content: center;
+              font-weight: 900;
+              font-size: 0.9rem;
+              flex-shrink: 0;
             "
           >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#ff6670"
-              stroke-width="2"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5z" />
-              <path d="M2 17l10 5 10-5" />
-              <path d="M2 12l10 5 10-5" />
-            </svg>
+            NS
           </div>
-        </div>
-        <span class="text-xl font-black tracking-[0.2em] text-white"
-          >N.SHANILKA</span
-        >
-      </div>
-      <nav class="space-x-8 text-sm hidden md:flex items-center">
-        <a href="#home" class="text-gray-400 hover:text-white transition-colors"
-          >Home</a
-        >
-        <a
-          href="#about"
-          class="text-gray-400 hover:text-white transition-colors"
-          >About</a
-        >
-        <a
-          href="#skills"
-          class="text-gray-400 hover:text-white transition-colors"
-          >Skills</a
-        >
-        <a
-          href="#projects"
-          class="text-gray-400 hover:text-white transition-colors"
-          >Projects</a
-        >
-        <!-- Contact button: red -->
-        <a
-          href="#contact"
-          class="text-white px-5 py-2 rounded-full font-medium transition-all"
-          style="
-            background: #c0121a;
-            box-shadow: 0 4px 20px rgba(192, 18, 26, 0.35);
-          "
-          onmouseover="this.style.background = '#e01520'"
-          onmouseout="this.style.background = '#c0121a'"
-          >Contact</a
-        >
-      </nav>
-      <!-- Mobile toggle -->
-      <div class="md:hidden cursor-pointer" onclick="toggleMenu()">
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </div>
-      <nav
-        id="mobile-menu"
-        class="fixed top-[72px] left-0 w-full glass p-6 space-y-4 text-center md:hidden hidden"
-      >
-        <a
-          href="#home"
-          class="block"
-          style="color: #ff6670"
-          onclick="toggleMenu()"
-          >Home</a
-        >
-        <a
-          href="#about"
-          class="block"
-          style="color: #ff6670"
-          onclick="toggleMenu()"
-          >About</a
-        >
-        <a
-          href="#skills"
-          class="block"
-          style="color: #ff6670"
-          onclick="toggleMenu()"
-          >Skills</a
-        >
-        <a
-          href="#projects"
-          class="block"
-          style="color: #ff6670"
-          onclick="toggleMenu()"
-          >Projects</a
-        >
-        <a
-          href="#contact"
-          class="block"
-          style="color: #ff6670"
-          onclick="toggleMenu()"
-          >Contact</a
-        >
-      </nav>
-    </header>
-
-    <!-- ══════════════════════════════════════════
-         HERO SECTION
-    ══════════════════════════════════════════ -->
-    <section
-      id="home"
-      class="min-h-screen text-white flex flex-col items-center justify-center px-6 md:px-20 pt-20 relative text-center"
-    >
-      <div
-        class="max-w-4xl mx-auto relative"
-        data-aos="zoom-in"
-        data-aos-duration="1000"
-      >
-        <div class="flex flex-col items-center gap-8">
-          <!-- eyebrow: red -->
-          <p
-            style="color: #ff6670"
-            class="text-xs font-bold tracking-[0.3em]"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            Hi i'm
-          </p>
-
-          <h1
-            class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-[0.9]"
-            data-aos="fade-up"
-          >
-            NISHITH SHANILKA<br />
-            <span class="text-gradient">full - stack</span> DEVELOPER<br />
-          </h1>
-
-          <p
-            class="text-gray-400 mb-10 text-xl md:text-2xl font-light"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            Passionate about creating clean UI, efficient backend systems, and
-            full-stack solutions and solve
-            <span class="text-white font-medium">real-world problems.</span>
-          </p>
-
-          <!-- CV button: hover fill red -->
-          <a
-            href="#projects"
-            class="group relative px-8 py-4 bg-white/5 glass border border-white/10 rounded-xl font-bold text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden"
-            data-aos="fade-up"
-            data-aos-delay="800"
-          >
-            <span
-              class="relative z-10 group-hover:text-white"
-              style="color: #ff6670"
-              >Download My CV</span
-            >
+          <div>
+            <div style="font-weight: 700; font-size: 0.9rem">
+              Nishith Shanilka
+            </div>
+            <div style="font-size: 0.72rem; color: var(--muted)">
+              shanilka799@gmail.com
+            </div>
             <div
-              class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-              style="background: #c0121a"
-            ></div>
-          </a>
+              style="font-size: 0.68rem; color: var(--orange); margin-top: 3px"
+            >
+              ● Available for hire
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         ABOUT SECTION
-    ══════════════════════════════════════════ -->
-    <section
-      id="about"
-      class="min-h-screen text-white py-24 px-6 md:px-16 lg:px-24"
-    >
-      <div
-        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="w-full lg:w-1/2 glass-card p-8 md:p-12 rounded-3xl">
-          <p
-            style="color: #ff6670"
-            class="text-sm font-bold tracking-widest uppercase mb-4"
-            data-aos="fade-down-right"
-          >
-            01 — About Me
-          </p>
-          <h2
-            class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-8"
-            data-aos="fade-up"
-          >
-            Solid Engineering<br />
-            <span class="text-gradient">Digital Impact</span>
-          </h2>
-          <p
-            class="text-gray-400 mb-10 text-lg leading-relaxed"
-            data-aos="fade-up"
-          >
-            I am a full-stack engineer and designer specialized in building
-            scalable, high-performance applications. With a focus on clean
-            architecture and intuitive UI, I transform complex problems into
-            elegant digital experiences.
-          </p>
-          <!-- Features -->
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12"
-            data-aos="fade-up"
-          >
-            <div class="flex items-center gap-3">
-              <span style="color: #ff6670">✦</span>
-              <span class="text-sm text-gray-300 font-medium"
-                >Full-stack Architecture</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <span style="color: #ff6670">✦</span>
-              <span class="text-sm text-gray-300 font-medium"
-                >Mobile Native</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <span style="color: #ff6670">✦</span>
-              <span class="text-sm text-gray-300 font-medium"
-                >Cloud Systems</span
-              >
-            </div>
-            <div class="flex items-center gap-3">
-              <span style="color: #ff6670">✦</span>
-              <span class="text-sm text-gray-300 font-medium"
-                >Performance Audit</span
-              >
+    <div class="divider"></div>
+
+    <section id="about" class="section">
+      <div class="sec-tag reveal">01 — About Me</div>
+      <h2 class="sec-title reveal">
+        SOLID<br /><span class="acc">ENGINEERING.</span><br />DIGITAL IMPACT.
+      </h2>
+      <div class="about-grid">
+        <div class="about-img-wrap reveal">
+          <div class="about-img-frame">
+            <div class="avatar-ph">NS</div>
+            <div class="about-img-overlay">
+              <div class="about-img-tag">
+                <div
+                  style="
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: var(--orange);
+                    animation: pdot 2s ease-in-out infinite;
+                  "
+                ></div>
+                <span>Full-Stack Engineer</span> ·
+                <span style="color: var(--muted)">Sri Lanka</span>
+              </div>
             </div>
           </div>
-          <!-- Contact row -->
-          <div class="flex flex-col sm:flex-row gap-6" data-aos="fade-up">
-            <div class="flex items-center gap-4 glass px-6 py-4 rounded-2xl">
-              <!-- email icon: red -->
-              <div
-                class="w-10 h-10 flex items-center justify-center rounded-full text-white"
-                style="background: #c0121a"
-              >
-                <i class="fas fa-envelope"></i>
-              </div>
+          <div class="about-accent-box">
+            <div class="about-accent-num">3+</div>
+            <div class="about-accent-txt">Years of<br />Experience</div>
+          </div>
+        </div>
+        <div>
+          <p
+            class="sec-desc reveal"
+            style="max-width: 100%; margin-bottom: 28px"
+          >
+            I'm a full-stack engineer specializing in building scalable,
+            high-performance applications. With a focus on clean architecture
+            and intuitive UI, I transform complex problems into elegant digital
+            experiences.
+          </p>
+          <p
+            style="
+              font-size: 0.9rem;
+              color: var(--muted);
+              line-height: 1.75;
+              margin-bottom: 32px;
+            "
+            class="reveal"
+          >
+            Currently based in Maharagama, Colombo, Sri Lanka — working across
+            React ecosystems, Spring Boot backends, and mobile platforms. I
+            believe great software is technically excellent and genuinely
+            useful.
+          </p>
+          <div class="about-features reveal">
+            <div class="about-feat">
+              <div class="about-feat-icon">⚡</div>
               <div>
-                <p class="text-[10px] text-gray-500 uppercase font-bold">
-                  Email
-                </p>
-                <p class="text-sm font-bold text-gray-300">
-                  shanilka799@gmail.com
-                </p>
+                <div class="about-feat-text">Full-Stack</div>
+                <div class="about-feat-sub">Architecture</div>
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">📱</div>
+              <div>
+                <div class="about-feat-text">Mobile</div>
+                <div class="about-feat-sub">React Native</div>
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">☁️</div>
+              <div>
+                <div class="about-feat-text">Cloud</div>
+                <div class="about-feat-sub">AWS / DevOps</div>
+              </div>
+            </div>
+            <div class="about-feat">
+              <div class="about-feat-icon">🧠</div>
+              <div>
+                <div class="about-feat-text">AI / ML</div>
+                <div class="about-feat-sub">Integration</div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- RIGHT ORBIT UI -->
-        <div
-          class="w-full lg:w-1/2 flex justify-center items-center"
-          data-aos="zoom-in"
-          data-aos-duration="1500"
-        >
-          <div class="orbit-container relative">
-            <!-- OUTER RING -->
-            <div class="orbit-ring ring-3">
-              <div class="orbit-icon pos-1">
-                <img src="./assets/aboutpageIcon/icons8-go-100.png" alt="" />
-              </div>
-              <div class="orbit-icon pos-2">
-                <img
-                  src="./assets/aboutpageIcon/icons8-vs-code-100.png"
-                  alt=""
+          <div style="display: flex; gap: 16px; flex-wrap: wrap" class="reveal">
+            <a
+              href="#contact"
+              class="btn-primary"
+              style="font-size: 0.82rem; padding: 12px 28px"
+              >Get In Touch</a
+            >
+            <a
+              href="https://github.com/DonShanilka"
+              target="_blank"
+              class="btn-ghost"
+              style="font-size: 0.82rem; padding: 12px 24px"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
                 />
-              </div>
-              <div class="orbit-icon pos-3">
-                <img src="./assets/aboutpageIcon/icons8-xcode-100.png" alt="" />
-              </div>
-              <div class="orbit-icon pos-4">
-                <img src="./assets/aboutpageIcon/atom.png" alt="" />
-              </div>
-            </div>
-            <!-- MIDDLE RING -->
-            <div class="orbit-ring ring-2">
-              <div class="orbit-icon pos-3">
-                <img
-                  src="./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png"
-                  alt=""
-                />
-              </div>
-              <div class="orbit-icon pos-4">
-                <img
-                  src="./assets/aboutpageIcon/artificial-intelligence.png"
-                  alt=""
-                />
-              </div>
-              <div class="orbit-icon pos-2">
-                <img
-                  src="./assets/aboutpageIcon/icons8-postgresql-100.png"
-                  alt=""
-                />
-              </div>
-              <div class="orbit-icon pos-1">
-                <img
-                  src="./assets/aboutpageIcon/icons8-chatgpt-100.png"
-                  alt=""
-                />
-              </div>
-            </div>
-            <!-- INNER RING -->
-            <div class="orbit-ring ring-1">
-              <div class="orbit-icon pos-1">
-                <img src="./assets/aboutpageIcon/python.png" alt="" />
-              </div>
-              <div class="orbit-icon pos-2">
-                <img src="./assets/aboutpageIcon/programing.png" alt="" />
-              </div>
-              <div class="orbit-icon pos-3">
-                <img
-                  src="./assets/aboutpageIcon/icons8-nextjs-100.png"
-                  alt=""
-                />
-              </div>
-              <div class="orbit-icon pos-4">
-                <img
-                  src="./assets/aboutpageIcon/icons8-intellij-100.png"
-                  alt=""
-                />
-              </div>
-            </div>
-            <!-- CENTER AVATAR -->
-            <img
-              src="./assets/images/myImage2.jpg"
-              alt="Nishith Shanilka"
-              class="avatar-center relative z-10"
-            />
+              </svg>
+              GitHub
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         SKILLS SECTION
-    ══════════════════════════════════════════ -->
-    <section id="skills" class="relative py-40 overflow-hidden">
-      <div class="max-w-7xl">
-        <p class="section-label">02 — Expertise</p>
-        <h2 class="section-title">
-          TECHNICAL <span class="text-gradient">CORES</span>
-        </h2>
+    <div class="divider"></div>
 
-        <div class="core-switcher">
-          <button class="core-tab active" onclick="switchCore('backend', this)">
-            Backend
-          </button>
-          <button class="core-tab" onclick="switchCore('frontend', this)">
-            Frontend
-          </button>
-          <button class="core-tab" onclick="switchCore('mobile', this)">
-            Mobile
-          </button>
-          <button class="core-tab" onclick="switchCore('aiml', this)">
-            AI / ML
-          </button>
-          <button class="core-tab" onclick="switchCore('cloud', this)">
-            Cloud
-          </button>
+    <section id="skills" class="section">
+      <div class="sec-tag reveal">02 — Expertise</div>
+      <h2 class="sec-title reveal">
+        TECHNICAL<br /><span class="acc">ARSENAL.</span>
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal reveal-d1">
+          <div class="skill-card-num">01</div>
+          <div class="skill-card-icon">⚛️</div>
+          <div class="skill-card-title">Frontend Development</div>
+          <div class="skill-card-desc">
+            Pixel-perfect, performant UIs with modern React — hooks, SSR, state
+            management, and animations.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">React</span
+            ><span class="skill-pill">Next.js</span
+            ><span class="skill-pill">Tailwind</span
+            ><span class="skill-pill">TypeScript</span>
+          </div>
         </div>
+        <div class="skill-card reveal reveal-d2">
+          <div class="skill-card-num">02</div>
+          <div class="skill-card-icon">🛠</div>
+          <div class="skill-card-title">Backend Engineering</div>
+          <div class="skill-card-desc">
+            Scalable REST APIs, microservices, and server-side systems designed
+            for production load.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Spring Boot</span
+            ><span class="skill-pill">Node.js</span
+            ><span class="skill-pill">Express</span
+            ><span class="skill-pill">Java</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-d3">
+          <div class="skill-card-num">03</div>
+          <div class="skill-card-icon">🗄️</div>
+          <div class="skill-card-title">Database & Data</div>
+          <div class="skill-card-desc">
+            Efficient schemas, query optimization, and data pipelines across SQL
+            and NoSQL systems.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">PostgreSQL</span
+            ><span class="skill-pill">MySQL</span
+            ><span class="skill-pill">MongoDB</span
+            ><span class="skill-pill">Prisma</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-d1">
+          <div class="skill-card-num">04</div>
+          <div class="skill-card-icon">📱</div>
+          <div class="skill-card-title">Mobile Development</div>
+          <div class="skill-card-desc">
+            Cross-platform mobile apps for iOS and Android with smooth
+            native-like experiences.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">React Native</span
+            ><span class="skill-pill">Expo</span
+            ><span class="skill-pill">Flutter</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-d2">
+          <div class="skill-card-num">05</div>
+          <div class="skill-card-icon">☁️</div>
+          <div class="skill-card-title">Cloud & DevOps</div>
+          <div class="skill-card-desc">
+            Infrastructure, CI/CD pipelines, container orchestration and cloud
+            deployment at scale.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">AWS</span
+            ><span class="skill-pill">Docker</span
+            ><span class="skill-pill">CI/CD</span
+            ><span class="skill-pill">Linux</span>
+          </div>
+        </div>
+        <div class="skill-card reveal reveal-d3">
+          <div class="skill-card-num">06</div>
+          <div class="skill-card-icon">🧠</div>
+          <div class="skill-card-title">AI & ML</div>
+          <div class="skill-card-desc">
+            Integrating intelligent features — LLM APIs to custom ML model
+            deployment in production.
+          </div>
+          <div class="skill-tags">
+            <span class="skill-pill">Python</span
+            ><span class="skill-pill">TensorFlow</span
+            ><span class="skill-pill">OpenAI</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="circuit-wrapper" id="circuit-window">
-          <svg
-            class="circuit-svg"
-            id="circuit-svg"
-            viewBox="0 0 1000 600"
-            preserveAspectRatio="xMidYMid meet"
-          ></svg>
-          <div class="hex-center">
-            <div style="text-align: center">
+    <div class="divider"></div>
+
+    <section id="projects" class="section">
+      <div class="sec-tag reveal">03 — Portfolio</div>
+      <h2 class="sec-title reveal">
+        SELECTED<br /><span class="acc">WORKS.</span>
+      </h2>
+      <div class="projects-list">
+        <div class="project-row reveal">
+          <div class="project-num">01</div>
+          <div class="project-content">
+            <div class="project-cat">Agri-Tech · Full Stack</div>
+            <div class="project-title">CROP MONITORING SYSTEM</div>
+            <div class="project-desc">
+              Real-time agricultural management platform — field sensor
+              integration, live dashboards, and AI-driven crop health analysis
+              for large-scale farms.
+            </div>
+            <div class="project-tech">
+              <span class="tech-chip">React</span
+              ><span class="tech-chip">Spring Boot</span
+              ><span class="tech-chip">PostgreSQL</span
+              ><span class="tech-chip">REST API</span
+              ><span class="tech-chip">JWT Auth</span>
+            </div>
+          </div>
+          <div class="project-right">
+            <div class="project-img">
+              <div class="project-img-inner">🌿</div>
+            </div>
+            <a
+              href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
+              target="_blank"
+              class="project-arrow"
+              >View Source
               <svg
-                width="24"
-                height="24"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#ff6670"
-                stroke-width="1.5"
-                style="display: block; margin: 0 auto 4px"
+                stroke="currentColor"
+                stroke-width="2"
               >
-                <rect x="2" y="2" width="20" height="20" rx="2" />
-                <path d="M8 8h8M8 12h6M8 16h4" />
-              </svg>
-              <span
-                id="core-title"
-                style="
-                  font-size: 8px;
-                  font-weight: 700;
-                  color: #ff6670;
-                  letter-spacing: 0.18em;
-                  text-transform: uppercase;
-                "
-              >
-                ENGINEERING
-              </span>
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+            ></a>
+          </div>
+        </div>
+        <div class="project-row reveal">
+          <div class="project-num">02</div>
+          <div class="project-content">
+            <div class="project-cat">Hospitality · Full Stack</div>
+            <div class="project-title">HOTEL MANAGEMENT SYSTEM</div>
+            <div class="project-desc">
+              Integrated booking engine, real-time room management, and
+              multi-role staff portals built for enterprise hospitality
+              operations.
+            </div>
+            <div class="project-tech">
+              <span class="tech-chip">React</span
+              ><span class="tech-chip">Node.js</span
+              ><span class="tech-chip">Prisma</span
+              ><span class="tech-chip">MySQL</span>
             </div>
           </div>
-          <div id="skill-nodes-container"></div>
+          <div class="project-right">
+            <div class="project-img">
+              <div class="project-img-inner">🏨</div>
+            </div>
+            <a
+              href="https://github.com/DonShanilka/hotel_management_system-frontend"
+              target="_blank"
+              class="project-arrow"
+              >View Source
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+            ></a>
+          </div>
         </div>
-
-        <div class="stats-row">
-          <div>
-            <p class="stat-label">Security</p>
-            <p class="stat-value">JWT / OAuth2</p>
+        <div class="project-row reveal">
+          <div class="project-num">03</div>
+          <div class="project-content">
+            <div class="project-cat">Mobile · E-Commerce</div>
+            <div class="project-title">FOOD DELIVERY APP</div>
+            <div class="project-desc">
+              React Native mobile app with real-time GPS tracking, live order
+              updates, multi-restaurant browsing, and secure payment
+              integration.
+            </div>
+            <div class="project-tech">
+              <span class="tech-chip">React Native</span
+              ><span class="tech-chip">Expo</span
+              ><span class="tech-chip">Express</span
+              ><span class="tech-chip">MySQL</span>
+            </div>
           </div>
-          <div>
-            <p class="stat-label">Data</p>
-            <p class="stat-value">PostgreSQL / Prisma</p>
+          <div class="project-right">
+            <div class="project-img">
+              <div class="project-img-inner">🍜</div>
+            </div>
+            <a
+              href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
+              target="_blank"
+              class="project-arrow"
+              >View Source
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+            ></a>
           </div>
-          <div>
-            <p class="stat-label">Ops</p>
-            <p class="stat-value">CI/CD / AWS</p>
+        </div>
+        <div class="project-row reveal">
+          <div class="project-num">04</div>
+          <div class="project-content">
+            <div class="project-cat">Portfolio · Personal Brand</div>
+            <div class="project-title">DEVELOPER PORTFOLIO</div>
+            <div class="project-desc">
+              Neurotech-inspired personal portfolio with vivid red-orange
+              atmosphere, animated skill nodes, orbit UI, and production-grade
+              interactions.
+            </div>
+            <div class="project-tech">
+              <span class="tech-chip">HTML</span
+              ><span class="tech-chip">Tailwind CSS</span
+              ><span class="tech-chip">JavaScript</span
+              ><span class="tech-chip">CSS Animations</span>
+            </div>
           </div>
-          <div>
-            <p class="stat-label">Frontend</p>
-            <p class="stat-value">NextJS / React</p>
+          <div class="project-right">
+            <div class="project-img">
+              <div class="project-img-inner">💻</div>
+            </div>
+            <a
+              href="https://github.com/DonShanilka"
+              target="_blank"
+              class="project-arrow"
+              >GitHub
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M7 17L17 7M17 7H7M17 7v10" /></svg
+            ></a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         PROJECTS SECTION
-    ══════════════════════════════════════════ -->
-    <section
-      id="projects"
-      class="min-h-screen py-32 px-6 md:px-20 relative overflow-hidden"
-    >
-      <div class="max-w-7xl mx-auto mb-20">
-        <div
-          class="flex flex-col md:flex-row md:items-end justify-between gap-8"
-        >
-          <div data-aos="fade-right">
-            <!-- section label: red -->
-            <p
-              style="color: #ff6670"
-              class="text-sm font-bold tracking-widest uppercase mb-4"
-            >
-              03 — Portfolio
-            </p>
-            <h2 class="text-5xl md:text-7xl font-black leading-tight">
-              Selected<br /><span class="text-gradient">Projects</span>
-            </h2>
-          </div>
-          <p class="text-gray-400 max-w-md md:mb-4" data-aos="fade-left">
-            A curation of digital solutions focused on efficiency, scalability,
-            and exceptional user experience.
-          </p>
-        </div>
-      </div>
+    <div class="divider"></div>
 
-      <div class="max-w-7xl mx-auto space-y-40">
-        <!-- Project 01 -->
-        <div class="group flex flex-col md:flex-row gap-16 items-center">
-          <div class="w-full md:w-1/2" data-aos="fade-right">
-            <div
-              class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4"
-            >
-              <!-- hover overlay: red tint -->
-              <div
-                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-                style="background: rgba(192, 18, 26, 0.1)"
-              ></div>
-              <img
-                src="https://i.pinimg.com/736x/11/16/8a/11168a898ae03b2394c11f2bde474926.jpg"
-                alt="Crop Monitoring"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
-            <div class="flex items-center gap-4">
-              <!-- tag: red -->
-              <span
-                class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
-                style="color: #ff6670"
-                >Fintech</span
-              >
-              <div class="h-px flex-1 bg-white/10"></div>
-            </div>
-            <h3 class="text-4xl font-bold">Crop Monitoring System</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">
-              A comprehensive digital solution for real-time agricultural
-              management, featuring advanced monitoring and reporting
-              capabilities.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >React</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >Spring Boot</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >PostgreSQL</span
-              >
-            </div>
-            <div class="pt-4">
-              <a
-                href="https://github.com/DonShanilka/greenShow-cropMonitoring-System-FrontEnd"
-                class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
-                style="color: rgba(255, 255, 255, 0.55)"
-                onmouseover="this.style.color = '#ff6670'"
-                onmouseout="this.style.color = 'rgba(255,255,255,0.55)'"
-              >
-                <span>View Source</span>
-                <i class="fas fa-external-link-alt text-xs"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 02 -->
-        <div
-          class="group flex flex-col md:flex-row-reverse gap-16 items-center"
-        >
-          <div class="w-full md:w-1/2" data-aos="fade-left">
-            <div
-              class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4"
-            >
-              <div
-                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-                style="background: rgba(192, 18, 26, 0.1)"
-              ></div>
-              <img
-                src="https://i.pinimg.com/736x/61/7c/1e/617c1e3f41574405baf89dde5abb2d34.jpg"
-                alt="Hotel Management"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-right">
-            <div class="flex items-center gap-4">
-              <span
-                class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
-                style="color: #ff6670"
-                >Hospitality</span
-              >
-              <div class="h-px flex-1 bg-white/10"></div>
-            </div>
-            <h3 class="text-4xl font-bold">Hotel Management System</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">
-              Streamlining hospitality operations with an integrated booking and
-              resource management engine built for scale.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >React</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >NodeJS</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >Prisma</span
-              >
-            </div>
-            <div class="pt-4">
-              <a
-                href="https://github.com/DonShanilka/hotel_management_system-frontend"
-                class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
-                style="color: rgba(255, 255, 255, 0.55)"
-                onmouseover="this.style.color = '#ff6670'"
-                onmouseout="this.style.color = 'rgba(255,255,255,0.55)'"
-              >
-                <span>View Source</span
-                ><i class="fas fa-external-link-alt text-xs"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 03 -->
-        <div class="group flex flex-col md:flex-row gap-16 items-center">
-          <div class="w-full md:w-1/2" data-aos="fade-right">
-            <div
-              class="relative group cursor-pointer overflow-hidden rounded-[2rem] glass border border-white/10 p-4"
-            >
-              <div
-                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
-                style="background: rgba(192, 18, 26, 0.1)"
-              ></div>
-              <img
-                src="https://i.pinimg.com/736x/a6/43/61/a64361ab440b8e790cf9506eed369dd9.jpg"
-                alt="Food Delivery"
-                class="w-full h-auto object-cover rounded-[1.5rem] grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-          <div class="w-full md:w-1/2 space-y-8" data-aos="fade-left">
-            <div class="flex items-center gap-4">
-              <span
-                class="px-4 py-1.5 rounded-full glass border border-white/10 text-xs font-bold tracking-widest uppercase"
-                style="color: #ff6670"
-                >Mobile</span
-              >
-              <div class="h-px flex-1 bg-white/10"></div>
-            </div>
-            <h3 class="text-4xl font-bold">Food Delivery App</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">
-              A high-performance mobile application delivering seamless food
-              ordering experiences with real-time tracking.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >React Native</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >MySQL</span
-              >
-              <span
-                class="px-3 py-1 bg-white/5 border border-white/5 rounded-lg text-xs font-medium text-gray-500"
-                >Express</span
-              >
-            </div>
-            <div class="pt-4">
-              <a
-                href="https://github.com/DonShanilka/food_delivery_MobileApp-frontend"
-                class="flex items-center gap-2 text-sm font-bold uppercase tracking-widest transition-colors"
-                style="color: rgba(255, 255, 255, 0.55)"
-                onmouseover="this.style.color = '#ff6670'"
-                onmouseout="this.style.color = 'rgba(255,255,255,0.55)'"
-              >
-                <span>View Source</span
-                ><i class="fas fa-external-link-alt text-xs"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- GitHub link — hover fill: red -->
-      <div
-        class="max-w-7xl mx-auto mt-40 flex justify-center"
-        data-aos="fade-up"
-      >
-        <a
-          href="https://github.com/DonShanilka"
-          target="_blank"
-          class="group relative px-12 py-5 bg-white/5 glass border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest hover:text-white transition-all duration-500 overflow-hidden"
-        >
-          <span class="relative z-10">See all repositories on GitHub</span>
-          <div
-            class="absolute inset-0 translate-y-full group-hover:translate-y-0 transition-transform duration-500"
-            style="background: #c0121a"
-          ></div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════
-         CONTACT SECTION
-    ══════════════════════════════════════════ -->
-    <section id="contact" class="py-24 px-6 md:px-20 relative overflow-hidden">
-      <div
-        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 items-start"
-      >
-        <div class="lg:w-1/2" data-aos="fade-right">
-          <!-- section label: red -->
-          <p
-            style="color: #ff6670"
-            class="text-sm font-bold tracking-widest uppercase mb-4"
+    <section id="experience" class="section">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px">
+        <div>
+          <div class="sec-tag reveal">04 — Journey</div>
+          <h2
+            class="sec-title reveal"
+            style="font-size: clamp(2.5rem, 4vw, 4rem)"
           >
-            04 — Contact
-          </p>
-          <h2 class="text-4xl md:text-5xl font-black leading-tight mb-4">
-            Ready to start a<br />
-            <span class="text-gradient">New Project?</span>
+            EXPERIENCE<br /><span class="acc">TIMELINE.</span>
           </h2>
-          <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-md">
-            I'm currently available for freelance work and full-time positions.
-            Let's create something extraordinary together.
+          <p class="sec-desc reveal" style="margin-top: 16px">
+            Every role shaped a sharper engineer — blending academic depth with
+            real-world engineering challenges.
           </p>
-          <div class="space-y-4">
-            <!-- Email card: red icon bg -->
-            <div
-              class="glass p-4 rounded-2xl flex items-center gap-4 group hover:translate-x-2 transition-transform duration-500"
-            >
-              <div
-                class="w-11 h-11 flex items-center justify-center rounded-xl text-white text-lg"
-                style="
-                  background: #c0121a;
-                  box-shadow: 0 8px 24px rgba(192, 18, 26, 0.35);
-                "
-              >
-                <i class="fas fa-paper-plane"></i>
-              </div>
-              <div>
-                <p
-                  class="text-[10px] text-gray-500 font-bold uppercase tracking-widest"
-                >
-                  Email
-                </p>
-                <p class="text-white text-lg font-bold">
-                  shanilka799@gmail.com
-                </p>
-              </div>
-            </div>
-            <!-- Phone card: red icon -->
-            <div
-              class="glass p-6 rounded-3xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-500"
-            >
-              <div
-                class="w-14 h-14 flex items-center justify-center rounded-2xl text-xl bg-white/5"
-                style="color: #ff6670"
-              >
-                <i class="fas fa-phone"></i>
-              </div>
-              <div>
-                <p
-                  class="text-[10px] text-gray-500 font-bold uppercase tracking-widest"
-                >
-                  Phone
-                </p>
-                <p class="text-white text-lg font-bold">+94 701094749</p>
-              </div>
+        </div>
+        <div class="timeline reveal">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">2024 — Present</div>
+            <div class="tl-role">FULL-STACK DEVELOPER</div>
+            <div class="tl-company">Freelance · Remote</div>
+            <div class="tl-desc">
+              Building custom web and mobile applications for clients across
+              hospitality, agritech, and e-commerce. End-to-end ownership from
+              architecture to deployment.
             </div>
           </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="lg:w-1/2 w-full" data-aos="fade-left">
-          <div class="glass-card p-6 md:p-10 rounded-3xl relative">
-            <form action="#" class="space-y-6">
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-3">
-                  <label
-                    class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1"
-                    >Your Name</label
-                  >
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
-                    style="border: 1px solid rgba(192, 18, 26, 0.15)"
-                    onfocus="
-                      this.style.borderColor = '#c0121a';
-                      this.style.boxShadow = '0 0 0 2px rgba(192,18,26,0.2)';
-                    "
-                    onblur="
-                      this.style.borderColor = 'rgba(192,18,26,0.15)';
-                      this.style.boxShadow = 'none';
-                    "
-                  />
-                </div>
-                <div class="space-y-3">
-                  <label
-                    class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1"
-                    >Email Address</label
-                  >
-                  <input
-                    type="email"
-                    placeholder="john@example.com"
-                    class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
-                    style="border: 1px solid rgba(192, 18, 26, 0.15)"
-                    onfocus="
-                      this.style.borderColor = '#c0121a';
-                      this.style.boxShadow = '0 0 0 2px rgba(192,18,26,0.2)';
-                    "
-                    onblur="
-                      this.style.borderColor = 'rgba(192,18,26,0.15)';
-                      this.style.boxShadow = 'none';
-                    "
-                  />
-                </div>
-              </div>
-              <div class="space-y-3">
-                <label
-                  class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1"
-                  >Subject</label
-                >
-                <input
-                  type="text"
-                  placeholder="Project Inquiry"
-                  class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none transition-all"
-                  style="border: 1px solid rgba(192, 18, 26, 0.15)"
-                  onfocus="
-                    this.style.borderColor = '#c0121a';
-                    this.style.boxShadow = '0 0 0 2px rgba(192,18,26,0.2)';
-                  "
-                  onblur="
-                    this.style.borderColor = 'rgba(192,18,26,0.15)';
-                    this.style.boxShadow = 'none';
-                  "
-                />
-              </div>
-              <div class="space-y-3">
-                <label
-                  class="text-xs font-bold text-gray-500 uppercase tracking-widest ml-1"
-                  >Message</label
-                >
-                <textarea
-                  rows="5"
-                  placeholder="Tell me about your project..."
-                  class="w-full glass bg-white/5 border-none rounded-2xl px-6 py-4 text-white outline-none resize-none transition-all"
-                  style="border: 1px solid rgba(192, 18, 26, 0.15)"
-                  onfocus="
-                    this.style.borderColor = '#c0121a';
-                    this.style.boxShadow = '0 0 0 2px rgba(192,18,26,0.2)';
-                  "
-                  onblur="
-                    this.style.borderColor = 'rgba(192,18,26,0.15)';
-                    this.style.boxShadow = 'none';
-                  "
-                ></textarea>
-              </div>
-              <!-- Submit: red -->
-              <button
-                class="w-full py-5 rounded-2xl font-black text-lg text-white transition-all active:scale-95"
-                style="
-                  background: #c0121a;
-                  box-shadow: 0 8px 32px rgba(192, 18, 26, 0.4);
-                "
-                onmouseover="this.style.background = '#e01520'"
-                onmouseout="this.style.background = '#c0121a'"
-              >
-                Send Message
-              </button>
-            </form>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">2023 — 2024</div>
+            <div class="tl-role">SOFTWARE ENGINEERING STUDENT</div>
+            <div class="tl-company">IJSE · Colombo, Sri Lanka</div>
+            <div class="tl-desc">
+              Intensive full-stack training — Java, Spring Boot, React,
+              databases, and cloud. Built enterprise-scale group projects under
+              industry mentors.
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-period">2022 — 2023</div>
+            <div class="tl-role">SELF-TAUGHT DEVELOPER</div>
+            <div class="tl-company">Personal Projects · Online</div>
+            <div class="tl-desc">
+              Learned web development through building — HTML/CSS to JavaScript,
+              then React and Node. Shipped multiple personal projects that
+              sharpened problem-solving instincts.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         FOOTER
-    ══════════════════════════════════════════ -->
-    <footer
-      class="text-gray-300 py-12"
-      style="
-        background: #080303;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-      "
-      data-aos="zoom-in-down"
-      data-aos-duration="3000"
-    >
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col md:flex-row justify-between">
-          <div class="mb-8 md:mb-0">
-            <div class="flex items-center">
-              <span style="color: #ff6670" class="text-2xl mr-2">•</span>
-              <h2 class="text-white text-2xl font-bold">P.D.N Shanilka</h2>
+    <div class="divider"></div>
+
+    <section id="contact" class="section">
+      <div class="sec-tag reveal">05 — Let's Talk</div>
+      <h2 class="sec-title reveal">
+        START A<br /><span class="acc">PROJECT.</span>
+      </h2>
+      <div class="contact-wrap">
+        <div class="contact-form reveal">
+          <div class="form-field">
+            <label class="form-label">Your Name</label
+            ><input class="form-input" type="text" placeholder="John Doe" />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email Address</label
+            ><input
+              class="form-input"
+              type="email"
+              placeholder="john@example.com"
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Subject</label
+            ><input
+              class="form-input"
+              type="text"
+              placeholder="Project Inquiry"
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-label">Message</label
+            ><textarea
+              class="form-input form-textarea"
+              placeholder="Tell me about your project..."
+            ></textarea>
+          </div>
+          <button class="btn-submit">Send Message →</button>
+        </div>
+        <div class="contact-info reveal">
+          <div>
+            <div class="sec-tag" style="margin-bottom: 12px">
+              Direct Contact
+            </div>
+            <p
+              style="
+                font-size: 0.9rem;
+                color: var(--muted);
+                line-height: 1.75;
+                margin-bottom: 28px;
+              "
+            >
+              Available for freelance work and full-time positions. Let's build
+              something extraordinary — I respond within 24 hours.
+            </p>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-key">Email</div>
+              <div class="contact-val">shanilka799@gmail.com</div>
             </div>
           </div>
-
-          <div class="mt-0 text-center">
-            <div class="flex justify-center mb-8 -mt-16">
-              <!-- Back to top: red -->
-              <a
-                href="#"
-                class="p-3 rounded-full transition duration-300 text-white"
-                style="background: #c0121a"
-                onmouseover="this.style.background = '#e01520'"
-                onmouseout="this.style.background = '#c0121a'"
-              >
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fill-rule="evenodd"
-                    d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </a>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-key">Phone</div>
+              <div class="contact-val">+94 701 094 749</div>
             </div>
-            <div class="mb-2">
-              &copy; 2025 P.D.N Shanilka. All rights reserved.
-            </div>
-            <div>Designed with ❤️ using Tailwind CSS</div>
           </div>
-
-          <div class="mb-8 md:mb-0">
-            <h3 class="text-white text-lg font-medium mb-4">Address</h3>
-            <div class="flex items-start mb-3">
-              <span style="color: #ff6670" class="mr-2">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </span>
-              <div>
-                <p>Maharagama / Colombo</p>
-                <p>Sri Lanka</p>
-              </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-key">Location</div>
+              <div class="contact-val">Maharagama, Colombo · Sri Lanka</div>
             </div>
-            <div class="flex items-center mb-3">
-              <span style="color: #ff6670" class="mr-2">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                  />
-                  <path
-                    d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                  />
-                </svg>
-              </span>
-              <a
-                href="mailto:shanilka799@gmail.com"
-                onmouseover="this.style.color = '#ff6670'"
-                onmouseout="this.style.color = 'inherit'"
-              >
-                shanilka799@gmail.com
-              </a>
+          </div>
+          <div
+            class="contact-item"
+            style="cursor: pointer"
+            onclick="window.open('https://github.com/DonShanilka', '_blank')"
+          >
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
             </div>
-            <div class="flex items-center">
-              <span style="color: #ff6670" class="mr-2">
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                  />
-                </svg>
-              </span>
-              <p>+94 701 094 749</p>
+            <div>
+              <div class="contact-key">GitHub</div>
+              <div class="contact-val">github.com/DonShanilka</div>
             </div>
           </div>
         </div>
       </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo">
+        <div class="nav-logo-dot"></div>
+        N.SHANILKA
+      </div>
+      <div class="social-row">
+        <div
+          class="soc"
+          onclick="window.open('https://github.com/DonShanilka', '_blank')"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+            />
+          </svg>
+        </div>
+        <div class="soc">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+            />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </div>
+        <div class="soc">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="1"
+              fill="currentColor"
+              stroke="none"
+            />
+          </svg>
+        </div>
+        <div
+          class="soc"
+          onclick="window.location = 'mailto:shanilka799@gmail.com'"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+      </div>
+      <div class="footer-copy">© 2025 P.D.N Shanilka · All rights reserved</div>
     </footer>
 
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Skills circuit JS (unchanged logic, updated gradient colors) -->
     <script>
-      const W = 1000,
-        H = 600;
-      const skillData = {
-        backend: {
-          title: "ENGINEERING",
-          nodes: [
-            {
-              name: "JAVA",
-              icon: "<img src='./assets/icon/icons8-java-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 100,
-            },
-            {
-              name: "SPRING",
-              icon: "<img src='./assets/icon/icons8-spring-boot-100.png' class='w-7 h-7 object-contain'>",
-              x: 150,
-              y: 300,
-            },
-            {
-              name: "EXPRESS",
-              icon: "<img src='./assets/icon/icons8-express.js-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 500,
-            },
-            {
-              name: "NODE.JS",
-              icon: "<img src='./assets/icon/icons8-nodejs-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 100,
-            },
-            {
-              name: "PYTHON",
-              icon: "<img src='./assets/icon/icons8-python-100.png' class='w-7 h-7 object-contain'>",
-              x: 850,
-              y: 300,
-            },
-            {
-              name: "POSTGRES",
-              icon: "<img src='./assets/aboutpageIcon/icons8-postgresql-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 500,
-            },
-          ],
-        },
-        frontend: {
-          title: "EXPERIENCE",
-          nodes: [
-            {
-              name: "REACT",
-              icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 100,
-            },
-            {
-              name: "NEXT.JS",
-              icon: "<img src='./assets/aboutpageIcon/icons8-nextjs-100.png' class='w-7 h-7 object-contain'>",
-              x: 150,
-              y: 300,
-            },
-            {
-              name: "HTML",
-              icon: "<img src='./assets/icon/icons8-html-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 500,
-            },
-            {
-              name: "JS",
-              icon: "<img src='./assets/icon/icons8-javascript-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 100,
-            },
-            {
-              name: "TAILWIND",
-              icon: "<img src='./assets/icon/icons8-tailwind-css-100.png' class='w-7 h-7 object-contain'>",
-              x: 850,
-              y: 300,
-            },
-            {
-              name: "CSS",
-              icon: "<img src='./assets/icon/icons8-css-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 500,
-            },
-          ],
-        },
-        mobile: {
-          title: "MOBILITY",
-          nodes: [
-            {
-              name: "REACT NATIVE",
-              icon: "<img src='./assets/icon/icons8-react-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 100,
-            },
-            {
-              name: "EXPO",
-              icon: "<img src='./assets/icon/icons8-expo-100.png' class='w-7 h-7 object-contain'>",
-              x: 150,
-              y: 300,
-            },
-            {
-              name: "JAVA",
-              icon: "<img src='./assets/icon/icons8-java-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 500,
-            },
-            {
-              name: "FLUTTER",
-              icon: "<img src='./assets/icon/icons8-flutter-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 100,
-            },
-            {
-              name: "SWIFT",
-              icon: "<img src='./assets/aboutpageIcon/icons8-xcode-100.png' class='w-7 h-7 object-contain'>",
-              x: 850,
-              y: 300,
-            },
-            {
-              name: "FIGMA",
-              icon: "<img src='./assets/icon/icons8-figma-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 500,
-            },
-          ],
-        },
-        aiml: {
-          title: "INTELL",
-          nodes: [
-            {
-              name: "PYTHON",
-              icon: "<img src='./assets/icon/icons8-python-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 100,
-            },
-            {
-              name: "TENSORFLOW",
-              icon: "<img src='./assets/aboutpageIcon/artificial-intelligence.png' class='w-7 h-7 object-contain'>",
-              x: 150,
-              y: 300,
-            },
-            {
-              name: "JUPYTER",
-              icon: "<img src='./assets/aboutpageIcon/icons8-vs-code-100.png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 500,
-            },
-            {
-              name: "OPENAI",
-              icon: "<img src='./assets/aboutpageIcon/icons8-chatgpt-100.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 100,
-            },
-            { name: "PYTORCH", icon: "🔥", x: 850, y: 300 },
-            {
-              name: "DATA",
-              icon: "<img src='./assets/icon/icons8-mongo-db-64.png' class='w-7 h-7 object-contain'>",
-              x: 900,
-              y: 500,
-            },
-          ],
-        },
-        cloud: {
-          title: "DEVOPS",
-          nodes: [
-            {
-              name: "AWS",
-              icon: "<img src='./assets/aboutpageIcon/icons8-amazon-aws-100 (2).png' class='w-7 h-7 object-contain'>",
-              x: 100,
-              y: 100,
-            },
-            {
-              name: "DOCKER",
-              icon: "<img src='./assets/icon/icons8-docker-100.png' class='w-7 h-7 object-contain'>",
-              x: 150,
-              y: 300,
-            },
-            { name: "LINUX", icon: "🐧", x: 100, y: 500 },
-            { name: "KUBERNETES", icon: "⚙", x: 900, y: 100 },
-            { name: "TERRAFORM", icon: "🏗", x: 850, y: 300 },
-            { name: "CI/CD", icon: "⚡", x: 900, y: 500 },
-          ],
-        },
-      };
-
-      const CX = W / 2,
-        CY = H / 2;
-
-      function makePath(x1, y1, x2, y2) {
-        const mx = (CX + x2) / 2;
-        return `M${CX} ${CY} C${mx} ${CY}, ${mx} ${y2}, ${x2} ${y2}`;
-      }
-
-      function switchCore(type, element) {
-        document
-          .querySelectorAll(".core-tab")
-          .forEach((t) => t.classList.remove("active"));
-        if (element) element.classList.add("active");
-        const nodesEl = document.getElementById("skill-nodes-container");
-        const svgEl = document.getElementById("circuit-svg");
-        const titleEl = document.getElementById("core-title");
-        const data = skillData[type] || skillData.backend;
-        nodesEl.style.opacity = "0";
-        svgEl.style.opacity = "0";
-        setTimeout(() => {
-          titleEl.textContent = data.title;
-          nodesEl.innerHTML = "";
-          svgEl.innerHTML = "";
-          const defs = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "defs",
-          );
-          defs.innerHTML = `
-      <linearGradient id="dashGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%"   stop-color="rgba(192,18,26,0)" />
-        <stop offset="50%"  stop-color="rgba(255,102,112,0.9)" />
-        <stop offset="100%" stop-color="#ffffff" />
-      </linearGradient>`;
-          svgEl.appendChild(defs);
-          data.nodes.forEach((node, i) => {
-            const pathId = `p_${type}_${i}`;
-            const path = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "path",
-            );
-            path.setAttribute("d", makePath(CX, CY, node.x, node.y));
-            path.setAttribute("class", "circuit-line");
-            path.setAttribute("id", pathId);
-            svgEl.appendChild(path);
-            const dash = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "rect",
-            );
-            dash.setAttribute("width", "30");
-            dash.setAttribute("height", "3");
-            dash.setAttribute("rx", "12");
-            dash.setAttribute("class", "data-dot");
-            dash.setAttribute("fill", "url(#dashGradient)");
-            dash.setAttribute("x", "-12.5");
-            dash.setAttribute("y", "-2");
-            const am = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "animateMotion",
-            );
-            am.setAttribute("dur", 2.5 + i * 0.4 + "s");
-            am.setAttribute("repeatCount", "indefinite");
-            am.setAttribute("rotate", "auto");
-            const mp = document.createElementNS(
-              "http://www.w3.org/2000/svg",
-              "mpath",
-            );
-            mp.setAttributeNS(
-              "http://www.w3.org/1999/xlink",
-              "href",
-              "#" + pathId,
-            );
-            am.appendChild(mp);
-            dash.appendChild(am);
-            svgEl.appendChild(dash);
-            const div = document.createElement("div");
-            div.className = "hex-node";
-            div.style.left = (node.x / W) * 100 + "%";
-            div.style.top = (node.y / H) * 100 + "%";
-            div.innerHTML = `<span class="node-icon">${node.icon}</span><span class="node-label">${node.name}</span>`;
-            nodesEl.appendChild(div);
-          });
-          nodesEl.style.opacity = "1";
-          svgEl.style.opacity = "1";
-        }, 280);
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        switchCore("backend", document.querySelector(".core-tab.active"));
-      });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-    <script src="./javaScripts/backGroundAnimation.js"></script>
-
-    <script>
-      // Floating particles: red
-      function createParticles() {
-        for (let i = 0; i < 30; i++) {
-          const p = document.createElement("div");
-          p.className = "particle";
-          p.style.left = Math.random() * 100 + "vw";
-          p.style.animationDuration = 8 + Math.random() * 15 + "s";
-          p.style.animationDelay = Math.random() * 10 + "s";
-          p.style.setProperty("--drift", Math.random() * 100 - 50 + "px");
-          p.style.width = 1 + Math.random() * 2 + "px";
-          p.style.height = p.style.width;
-          document.body.appendChild(p);
-        }
-      }
-      createParticles();
-
-      // Cursor glow: red
-      const cursorGlow = document.createElement("div");
-      cursorGlow.style.cssText = `
-        position:fixed;pointer-events:none;z-index:9999;
-        width:300px;height:300px;border-radius:50%;
-        background:radial-gradient(circle,rgba(192,18,26,0.05) 0%,transparent 70%);
-        top:0;left:0;transform:translate3d(-50%,-50%,0);will-change:transform;`;
-      document.body.appendChild(cursorGlow);
-
-      // Custom cursor lag ring
-      const cursor = document.getElementById("cursor");
-      const cursorRing = document.getElementById("cursor-ring");
+      const cur = document.getElementById("cur"),
+        ring = document.getElementById("cur-ring");
       let mx = 0,
         my = 0,
         rx = 0,
@@ -1591,22 +840,57 @@
       document.addEventListener("mousemove", (e) => {
         mx = e.clientX;
         my = e.clientY;
-        cursor.style.left = mx + "px";
-        cursor.style.top = my + "px";
-        cursorGlow.style.transform = `translate3d(${mx}px,${my}px,0) translate3d(-50%,-50%,0)`;
+        cur.style.left = mx + "px";
+        cur.style.top = my + "px";
       });
-      function animRing() {
-        rx += (mx - rx) * 0.15;
-        ry += (my - ry) * 0.15;
-        cursorRing.style.left = rx + "px";
-        cursorRing.style.top = ry + "px";
-        requestAnimationFrame(animRing);
-      }
-      animRing();
-
-      function toggleMenu() {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-      }
+      (function aR() {
+        rx += (mx - rx) * 0.14;
+        ry += (my - ry) * 0.14;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(aR);
+      })();
+      document
+        .querySelectorAll(
+          "a,button,.skill-card,.project-row,.contact-item,.soc,.about-feat",
+        )
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            cur.style.width = "18px";
+            cur.style.height = "18px";
+            cur.style.opacity = ".6";
+          });
+          el.addEventListener("mouseleave", () => {
+            cur.style.width = "10px";
+            cur.style.height = "10px";
+            cur.style.opacity = "1";
+          });
+        });
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("vis");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+      const cg = document.createElement("div");
+      cg.style.cssText =
+        "position:fixed;pointer-events:none;z-index:9997;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(240,92,26,.06) 0%,transparent 70%);top:0;left:0;transform:translate(-50%,-50%);will-change:transform;";
+      document.body.appendChild(cg);
+      document.addEventListener("mousemove", (e) => {
+        cg.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0) translate3d(-50%,-50%,0)`;
+      });
     </script>
   </body>
 </html>
